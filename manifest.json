@@ -1,0 +1,9 @@
+{
+  "name": "Puntualízate",
+  "short_name": "Puntualízate",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#fffaff",
+  "theme_color": "#c98fc9",
+  "description": "Organiza tus tareas y evita las tardanzas."
+}
