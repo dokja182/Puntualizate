@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
 
 <link rel="manifest" href="manifest.json">
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="theme-color" content="#c58bc7">
 
 <title>Puntualízate</title>
 
@@ -23,18 +24,28 @@
     --color-borde:#f0e5f2;
     --color-acento:#78c5d1;
     --color-overlay:#8f6b9b66;
+    --color-texto:#3d405b;
+    --color-card:#ffffff;
+    --color-suave:#f5eafa;
+    --sombra:0 8px 25px #b8a9c933;
 }
 
 body{
     margin:0;
     font-family:Arial,sans-serif;
     background:var(--color-fondo);
-    color:#3d405b;
+    color:var(--color-texto);
+    transition:.3s;
 }
 
-/* =========================
-   APP
-========================= */
+body.oscuro{
+    --color-fondo:#17151b;
+    --color-card:#242029;
+    --color-borde:#3b3341;
+    --color-texto:#eee8f0;
+    --color-suave:#332a38;
+    --sombra:0 8px 25px #00000055;
+}
 
 .app{
     width:100%;
@@ -44,10 +55,6 @@ body{
     background:var(--color-fondo);
     box-shadow:0 0 35px #b8a9c955;
 }
-
-/* =========================
-   ENCABEZADO
-========================= */
 
 header{
     background:
@@ -78,70 +85,106 @@ header h1{
 header p{
     margin:8px 0 0;
     font-size:14px;
-    opacity:.95;
 }
 
-/* =========================
-   BARRA DE MENÚ
-========================= */
-
-.barra-menu{
+.menu{
     display:flex;
-    justify-content:center;
-    gap:8px;
-
-    padding:10px 15px;
-
+    gap:7px;
+    padding:10px;
+    overflow-x:auto;
     background:var(--color-fondo);
-
     border-bottom:1px solid var(--color-borde);
 }
 
-.barra-menu button{
+.menu button{
     flex:1;
-    max-width:180px;
-
-    background:transparent;
-
-    color:var(--color-oscuro);
-
-    border:1px solid var(--color-borde);
-
-    padding:10px 14px;
+    min-width:95px;
     margin:0;
-
+    background:transparent;
+    color:var(--color-oscuro);
+    border:1px solid var(--color-borde);
     font-weight:bold;
-    border-radius:14px;
+    padding:10px 8px;
 }
 
-.barra-menu button:hover{
-    background:var(--color-borde);
+.menu button.activo{
+    background:var(--color-principal);
+    color:white;
 }
-
-/* =========================
-   CONTENIDO
-========================= */
 
 .contenido{
-    padding:10px 22px 22px;
+    padding:12px 18px 30px;
 }
 
-/* =========================
-   BOTONES GENERALES
-========================= */
+.seccion{
+    display:none;
+}
+
+.seccion.activa{
+    display:block;
+}
+
+.card{
+    background:var(--color-card);
+    border-radius:24px;
+    padding:20px;
+    margin-bottom:18px;
+    box-shadow:var(--sombra);
+    border:1px solid var(--color-borde);
+}
+
+h2{
+    margin-top:0;
+    color:var(--color-oscuro);
+    font-size:20px;
+}
+
+h3{
+    color:var(--color-oscuro);
+}
+
+label{
+    display:block;
+    margin-top:14px;
+    margin-bottom:6px;
+    font-weight:bold;
+    font-size:14px;
+    color:var(--color-oscuro);
+}
+
+input,
+select,
+textarea{
+    width:100%;
+    padding:13px 14px;
+    margin-top:3px;
+    border:2px solid var(--color-borde);
+    border-radius:14px;
+    font-size:15px;
+    background:var(--color-card);
+    color:var(--color-texto);
+    outline:none;
+}
+
+textarea{
+    resize:vertical;
+    min-height:80px;
+}
+
+input:focus,
+select:focus,
+textarea:focus{
+    border-color:var(--color-principal);
+    box-shadow:0 0 0 4px #c58bc733;
+}
 
 button{
     border:none;
     border-radius:14px;
-
-    padding:11px 15px;
-
+    padding:11px 14px;
     cursor:pointer;
-
     font-size:14px;
-
-    margin-top:12px;
-
+    margin-top:10px;
     transition:.2s;
 }
 
@@ -150,548 +193,494 @@ button:hover{
     box-shadow:0 5px 12px #00000018;
 }
 
-/* =========================
-   BOTÓN AGREGAR
-========================= */
-
 .agregar{
     width:100%;
-
     background:
     linear-gradient(
         135deg,
         var(--color-principal),
         var(--color-acento)
     );
-
     color:white;
-
     font-weight:bold;
-
     font-size:16px;
-
     padding:14px;
-
-    margin-top:20px;
+    margin-top:18px;
 }
 
-/* =========================
-   TARJETAS
-========================= */
-
-.card{
-    background:var(--color-fondo);
-
-    border-radius:24px;
-
-    padding:21px;
-
-    margin-bottom:20px;
-
-    box-shadow:0 8px 25px #b8a9c933;
-
-    border:1px solid var(--color-borde);
-}
-
-h2{
-    margin-top:0;
-
+.secundario{
+    background:var(--color-suave);
     color:var(--color-oscuro);
-
-    font-size:20px;
 }
 
-/* =========================
-   TEXTOS
-========================= */
+.peligro{
+    background:#df8b9a;
+    color:white;
+}
 
-label{
+.exito{
+    background:#8bc9ad;
+    color:white;
+}
+
+.advertencia{
+    background:#e8b76d;
+    color:white;
+}
+
+/* RESUMEN */
+
+.resumen{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:10px;
+    margin-bottom:18px;
+}
+
+.resumen-item{
+    background:var(--color-card);
+    border:1px solid var(--color-borde);
+    border-radius:18px;
+    padding:15px;
+    text-align:center;
+    box-shadow:var(--sombra);
+}
+
+.resumen-numero{
     display:block;
-
-    margin-top:15px;
-    margin-bottom:6px;
-
+    font-size:25px;
     font-weight:bold;
-
-    font-size:14px;
-
-    color:#68556b;
+    color:var(--color-principal);
 }
 
-/* =========================
-   CAMPOS
-========================= */
+.resumen-texto{
+    font-size:12px;
+    margin-top:4px;
+}
 
-input,
-select{
+/* PROGRESO */
+
+.progreso-contenedor{
     width:100%;
-
-    padding:13px 14px;
-
-    margin-top:3px;
-
-    border:2px solid var(--color-borde);
-
-    border-radius:14px;
-
-    font-size:15px;
-
-    background:var(--color-fondo);
-
-    color:#4d4650;
-
-    outline:none;
-
-    transition:.2s;
+    height:13px;
+    background:var(--color-borde);
+    border-radius:20px;
+    overflow:hidden;
+    margin:12px 0;
 }
 
-input:focus,
-select:focus{
-    border-color:#c798ca;
-
-    box-shadow:
-    0 0 0 4px #dcb9df33;
-}
-
-/* =========================
-   TAREAS
-========================= */
-
-.tarea{
+.progreso{
+    height:100%;
+    width:0%;
     background:
     linear-gradient(
-        135deg,
-        var(--color-fondo),
-        #ffffff
+        90deg,
+        var(--color-principal),
+        var(--color-acento)
     );
+    transition:.5s;
+}
 
+/* BUSCADOR */
+
+.busqueda{
+    display:flex;
+    gap:7px;
+    margin-bottom:15px;
+}
+
+.busqueda input{
+    margin:0;
+}
+
+/* TAREAS */
+
+.tarea{
+    background:var(--color-card);
     border-left:6px solid var(--color-principal);
-
     border-radius:18px;
-
     padding:17px;
-
     margin-top:14px;
+    box-shadow:var(--sombra);
+    border-top:1px solid var(--color-borde);
+    border-right:1px solid var(--color-borde);
+    border-bottom:1px solid var(--color-borde);
+}
 
-    box-shadow:0 5px 18px #b8a9c933;
+.tarea.alta{
+    border-left-color:#df8b9a;
+}
+
+.tarea.media{
+    border-left-color:#e8b76d;
+}
+
+.tarea.baja{
+    border-left-color:#8bc9ad;
+}
+
+.tarea.completada{
+    opacity:.8;
 }
 
 .tarea h3{
     margin:0 0 8px;
-
-    color:var(--color-oscuro);
-
     font-size:17px;
 }
 
 .tarea p{
     margin:7px 0;
-
-    color:#5f5963;
-
     font-size:14px;
 }
 
 .estado{
     font-weight:bold;
-
-    color:#8a63a0 !important;
-
-    background:#f5eafa;
-
+    color:var(--color-oscuro)!important;
+    background:var(--color-suave);
     padding:9px 11px;
-
     border-radius:11px;
 }
 
-/* =========================
-   ACCIONES
-========================= */
+.etiquetas{
+    display:flex;
+    flex-wrap:wrap;
+    gap:6px;
+    margin:8px 0;
+}
+
+.etiqueta{
+    padding:5px 9px;
+    border-radius:10px;
+    font-size:11px;
+    font-weight:bold;
+}
+
+.prioridad-alta{
+    background:#f6d9df;
+    color:#9b5265;
+}
+
+.prioridad-media{
+    background:#f8e7c9;
+    color:#9a6b28;
+}
+
+.prioridad-baja{
+    background:#dcefe5;
+    color:#4f8067;
+}
+
+.vencida{
+    background:#f6d9df;
+    color:#a24e62;
+}
+
+.notas{
+    background:var(--color-suave);
+    padding:10px;
+    border-radius:12px;
+    font-size:13px!important;
+}
 
 .acciones{
     display:flex;
-
-    gap:7px;
-
+    gap:6px;
     flex-wrap:wrap;
 }
 
 .acciones button{
-    margin-right:0;
+    margin:0;
+    padding:8px 10px;
 }
 
-.hecha{
-    background:#8bc9ad;
-    color:white;
-}
-
-.recordar{
-    background:#e8b76d;
-    color:white;
-}
-
-.eliminar{
-    background:#df8b9a;
-    color:white;
-}
-
-/* =========================
-   MENSAJE VACÍO
-========================= */
-
-.pequeno{
-    font-size:13px;
-
-    color:#9a8d9e;
-
-    text-align:center;
-
-    padding:15px;
-}
-
-/* =========================
-   PERSONALIZACIÓN
-========================= */
+/* PERSONALIZACIÓN */
 
 .personalizacion{
-    text-align:center;
-
-    padding:0 20px;
-
-    margin:0;
+    margin-bottom:18px;
 }
 
 .imagen-personalizada{
     display:flex;
-
     justify-content:center;
-
-    gap:5px;
-
+    gap:6px;
     flex-wrap:wrap;
-
-    padding:0;
-
-    margin:0;
+    margin-bottom:8px;
 }
 
 .imagen-personalizada button{
-    background:var(--color-fondo);
-
+    background:var(--color-card);
     color:var(--color-oscuro);
-
-    border:2px solid var(--color-principal);
-
-    font-weight:bold;
-
-    padding:9px 13px;
-
-    margin-top:5px;
-}
-
-.personalizacion > button{
-    background:var(--color-fondo);
-
-    color:var(--color-oscuro);
-
-    font-weight:bold;
-
     border:2px solid var(--color-principal);
 }
 
 .colores{
-    margin-top:5px;
-
-    padding:10px;
-
-    background:#ffffff;
-
+    margin-top:10px;
+    padding:12px;
+    background:var(--color-card);
     border-radius:18px;
-
-    box-shadow:0 5px 18px #b8a9c933;
-}
-
-.colores p{
-    margin:5px 0 8px;
-
-    font-size:13px;
-
-    font-weight:bold;
+    box-shadow:var(--sombra);
+    text-align:center;
 }
 
 .color-opcion{
     width:42px;
     height:42px;
-
     border-radius:50%;
-
     padding:0;
-
     margin:3px;
-
     font-size:19px;
-
     border:3px solid white;
-
-    box-shadow:0 2px 8px #00000020;
 }
 
-.lila{
-    background:#c58bc7;
-}
+.lila{background:#c58bc7}
+.azul{background:#78a9d1}
+.rosa{background:#df91ae}
+.verde{background:#8bc9ad}
+.celeste{background:#79cbd1}
+.durazno{background:#e7a477}
 
-.azul{
-    background:#78a9d1;
-}
-
-.rosa{
-    background:#df91ae;
-}
-
-.verde{
-    background:#8bc9ad;
-}
-
-.celeste{
-    background:#79cbd1;
-}
-
-.durazno{
-    background:#e7a477;
-}
-
-/* =========================
-   HORARIO
-========================= */
-
-.seccion-horario{
-    padding:5px 0 20px;
-}
+/* HORARIO */
 
 .turnos{
     display:flex;
-
     gap:8px;
-
-    margin-bottom:20px;
+    margin-bottom:15px;
 }
 
 .turnos button{
     flex:1;
-
-    background:var(--color-fondo);
-
+    background:var(--color-card);
     color:var(--color-oscuro);
-
     border:2px solid var(--color-borde);
-
+    margin:0;
     font-weight:bold;
-
-    margin-top:0;
 }
 
-.turnos button:hover{
-    background:var(--color-borde);
-}
-
-.seccion-horario h3{
-    color:var(--color-oscuro);
-
-    margin-top:15px;
-}
-
-.seccion-horario h4{
-    margin-top:18px;
-
-    margin-bottom:8px;
-
-    color:var(--color-oscuro);
-
-    font-size:14px;
+.turnos button.activo{
+    background:var(--color-principal);
+    color:white;
 }
 
 .clase-horario{
     display:flex;
-
     align-items:center;
-
     gap:8px;
-
     padding:12px;
-
     margin-top:8px;
-
-    background:white;
-
+    background:var(--color-card);
     border:1px solid var(--color-borde);
-
     border-left:5px solid var(--color-principal);
-
     border-radius:14px;
-
-    box-shadow:0 4px 12px #b8a9c922;
+    box-shadow:0 4px 12px #00000012;
 }
 
-.clase-horario strong{
-    color:var(--color-oscuro);
-
-    white-space:nowrap;
+.clase-horario.hoy{
+    border-left-color:var(--color-acento);
+    background:var(--color-suave);
 }
 
-.clase-horario span{
+.clase-info{
     flex:1;
+}
 
-    font-size:14px;
+.clase-info strong{
+    color:var(--color-oscuro);
+}
+
+.clase-info small{
+    display:block;
+    margin-top:3px;
 }
 
 .clase-horario button{
-    background:#df8b9a;
-
-    color:white;
-
-    padding:7px 9px;
-
     margin:0;
+    padding:7px;
 }
 
-.formulario-clase{
-    margin-top:20px;
-
-    padding:18px;
-
-    background:white;
-
-    border:1px solid var(--color-borde);
-
-    border-radius:20px;
-
-    box-shadow:0 5px 18px #b8a9c933;
-}
-
-/* =========================
-   ALERTA
-========================= */
+/* ALERTA */
 
 .alerta{
     position:fixed;
-
     inset:0;
-
-    width:100%;
-    height:100%;
-
     background:
     linear-gradient(
         135deg,
         var(--color-oscuro),
         var(--color-principal)
     );
-
     color:white;
-
     padding:30px 22px;
-
     display:none;
-
     z-index:9999;
-
     align-items:center;
-
     justify-content:center;
-
     text-align:center;
 }
 
 .alerta-contenido{
     width:100%;
-
     max-width:500px;
 }
 
 .alerta-dibujo{
-    font-size:90px;
-
-    margin-bottom:20px;
-
+    font-size:85px;
+    margin-bottom:15px;
     animation:latido 1s infinite;
 }
 
 .alerta h2{
     font-size:28px;
-
-    margin:0 0 12px;
-
     color:white;
 }
 
 .alerta p{
     font-size:18px;
-
     line-height:1.5;
-
-    margin:10px 0 25px;
 }
 
 .alerta button{
     background:white;
-
     color:var(--color-oscuro);
-
-    margin:7px;
-
-    padding:14px 20px;
-
-    font-size:15px;
-
+    margin:6px;
     font-weight:bold;
 }
 
 @keyframes latido{
+    0%,100%{transform:scale(1)}
+    50%{transform:scale(1.12)}
+}
 
-    0%,100%{
-        transform:scale(1);
+/* MODAL */
+
+.modal{
+    position:fixed;
+    inset:0;
+    background:#00000066;
+    display:none;
+    align-items:center;
+    justify-content:center;
+    padding:18px;
+    z-index:5000;
+}
+
+.modal-contenido{
+    width:100%;
+    max-width:520px;
+    max-height:90vh;
+    overflow:auto;
+    background:var(--color-card);
+    color:var(--color-texto);
+    border-radius:24px;
+    padding:20px;
+}
+
+.modal-cerrar{
+    float:right;
+    background:var(--color-suave);
+    color:var(--color-oscuro);
+    margin:0;
+}
+
+.pequeno{
+    font-size:13px;
+    color:#9a8d9e;
+    text-align:center;
+    padding:15px;
+}
+
+.vacio{
+    text-align:center;
+    padding:25px 10px;
+}
+
+.oculto{
+    display:none!important;
+}
+
+.instalar{
+    background:var(--color-principal);
+    color:white;
+    width:100%;
+}
+
+.config-boton{
+    width:100%;
+    margin-top:8px;
+}
+
+/* TOAST */
+
+.toast{
+    position:fixed;
+    bottom:20px;
+    left:50%;
+    transform:translateX(-50%) translateY(100px);
+    background:#302b35;
+    color:white;
+    padding:12px 18px;
+    border-radius:14px;
+    z-index:10000;
+    transition:.3s;
+    font-size:13px;
+}
+
+.toast.visible{
+    transform:translateX(-50%) translateY(0);
+}
+
+/* RESPONSIVE */
+
+@media(max-width:400px){
+
+    .contenido{
+        padding:10px 13px 25px;
     }
 
-    50%{
-        transform:scale(1.12);
+    header h1{
+        font-size:28px;
+    }
+
+    .acciones button{
+        font-size:12px;
     }
 
 }
 
 </style>
-
 </head>
 
 <body>
 
 <div class="app">
 
-<!-- =========================
-     ENCABEZADO
-========================= -->
-
 <header>
-
-    <h1>Puntualízate</h1>
-
-    <p>
-        Organiza tus tareas y evita las tardanzas
-    </p>
-
+    <h1>⏰ Puntualízate</h1>
+    <p>Organiza tus tareas y evita las tardanzas</p>
 </header>
 
-<!-- =========================
-     MENÚ
-========================= -->
+<!-- MENÚ -->
 
-<div class="barra-menu">
+<div class="menu">
 
-    <button onclick="mostrarInicio()">
+    <button id="btnInicio"
+            class="activo"
+            onclick="mostrarSeccion('inicio')">
         🏠 Inicio
     </button>
 
-    <button onclick="mostrarHorario()">
+    <button id="btnHorario"
+            onclick="mostrarSeccion('horario')">
         🕒 Horario
+    </button>
+
+    <button id="btnProgreso"
+            onclick="mostrarSeccion('progreso')">
+        📊 Progreso
+    </button>
+
+    <button id="btnAjustes"
+            onclick="mostrarSeccion('ajustes')">
+        ⚙️ Ajustes
     </button>
 
 </div>
@@ -699,70 +688,289 @@ select:focus{
 <div class="contenido">
 
 <!-- =========================
+     INICIO
+========================= -->
+
+<section id="inicio" class="seccion activa">
+
+    <div class="resumen">
+
+        <div class="resumen-item">
+            <span id="totalTareas" class="resumen-numero">0</span>
+            <span class="resumen-texto">📚 Pendientes</span>
+        </div>
+
+        <div class="resumen-item">
+            <span id="tareasHoy" class="resumen-numero">0</span>
+            <span class="resumen-texto">📅 Para hoy</span>
+        </div>
+
+        <div class="resumen-item">
+            <span id="tareasVencidas" class="resumen-numero">0</span>
+            <span class="resumen-texto">⚠️ Vencidas</span>
+        </div>
+
+        <div class="resumen-item">
+            <span id="tareasHechas" class="resumen-numero">0</span>
+            <span class="resumen-texto">✅ Terminadas</span>
+        </div>
+
+    </div>
+
+    <!-- PERSONALIZACIÓN -->
+
+    <div class="personalizacion">
+
+        <div class="imagen-personalizada">
+
+            <button onclick="elegirImagen()">
+                🖼️ Cambiar imagen
+            </button>
+
+            <input
+                type="file"
+                id="imagenPersonalizada"
+                accept="image/*"
+                style="display:none;"
+            >
+
+            <button onclick="restaurarImagen()">
+                🔄 Imagen original
+            </button>
+
+        </div>
+
+        <button
+            class="secundario"
+            onclick="mostrarColores()">
+            🎨 Personalizar colores
+        </button>
+
+        <div id="colores"
+             class="colores oculto">
+
+            <p><b>Elige tu color:</b></p>
+
+            <button class="color-opcion lila"
+                    onclick="cambiarColor('lila')">💜</button>
+
+            <button class="color-opcion azul"
+                    onclick="cambiarColor('azul')">💙</button>
+
+            <button class="color-opcion rosa"
+                    onclick="cambiarColor('rosa')">🩷</button>
+
+            <button class="color-opcion verde"
+                    onclick="cambiarColor('verde')">💚</button>
+
+            <button class="color-opcion celeste"
+                    onclick="cambiarColor('celeste')">🩵</button>
+
+            <button class="color-opcion durazno"
+                    onclick="cambiarColor('durazno')">🧡</button>
+
+        </div>
+
+    </div>
+
+    <!-- NUEVA ACTIVIDAD -->
+
+    <div class="card">
+
+        <h2>➕ Nueva actividad</h2>
+
+        <label>Materia</label>
+
+        <select id="materia">
+
+            <option>Matemática</option>
+            <option>Comunicación</option>
+            <option>Ciencia y Tecnología</option>
+            <option>EPT</option>
+            <option>Inglés</option>
+            <option>Historia</option>
+            <option>Religión</option>
+            <option>Economía</option>
+            <option>Filosofía</option>
+            <option>Ética</option>
+            <option>Otra</option>
+
+        </select>
+
+        <label>Nombre de la actividad</label>
+
+        <input
+            id="actividad"
+            type="text"
+            placeholder="Ej.: Resolver ejercicios de probabilidad"
+        >
+
+        <label>📅 Fecha y hora</label>
+
+        <input
+            id="fecha"
+            type="datetime-local"
+        >
+
+        <label>⭐ Prioridad</label>
+
+        <select id="prioridad">
+
+            <option value="alta">🔴 Alta</option>
+            <option value="media" selected>🟡 Media</option>
+            <option value="baja">🟢 Baja</option>
+
+        </select>
+
+        <label>🔔 Avisarme</label>
+
+        <select id="minutos">
+
+            <option value="1">1 minuto antes</option>
+            <option value="5" selected>5 minutos antes</option>
+            <option value="10">10 minutos antes</option>
+            <option value="15">15 minutos antes</option>
+            <option value="30">30 minutos antes</option>
+            <option value="60">1 hora antes</option>
+            <option value="120">2 horas antes</option>
+
+        </select>
+
+        <label>🔊 Sonido</label>
+
+        <select id="sonido">
+
+            <option value="campana">🔔 Campanita</option>
+            <option value="melodia">🎵 Melodía</option>
+            <option value="alarma">🚨 Alarma</option>
+            <option value="digital">💻 Digital</option>
+            <option value="ninguno">🔇 Sin sonido</option>
+            <option value="personalizado">🎵 Mi propio sonido</option>
+
+        </select>
+
+        <input
+            type="file"
+            id="archivoSonido"
+            accept="audio/*"
+            style="display:none;"
+        >
+
+        <label>🗣️ Aviso por voz</label>
+
+        <select id="voz">
+
+            <option value="si">Activado</option>
+            <option value="no">Desactivado</option>
+
+        </select>
+
+        <label>📝 Notas</label>
+
+        <textarea
+            id="notas"
+            placeholder="Ej.: Llevar cartulina, terminar la página 25..."
+        ></textarea>
+
+        <button
+            class="agregar"
+            onclick="agregarTarea()">
+            ＋ Agregar actividad
+        </button>
+
+    </div>
+
+    <!-- LISTA -->
+
+    <div class="card">
+
+        <h2>📅 Mis actividades</h2>
+
+        <div class="busqueda">
+
+            <input
+                id="buscar"
+                type="search"
+                placeholder="🔎 Buscar actividad..."
+                oninput="mostrarTareas()"
+            >
+
+            <select
+                id="filtro"
+                onchange="mostrarTareas()">
+
+                <option value="todas">Todas</option>
+                <option value="pendientes">Pendientes</option>
+                <option value="hoy">Hoy</option>
+                <option value="vencidas">Vencidas</option>
+                <option value="completadas">Completadas</option>
+
+            </select>
+
+        </div>
+
+        <div id="lista"></div>
+
+    </div>
+
+</section>
+
+<!-- =========================
      HORARIO
 ========================= -->
 
-<div
-    id="seccionHorario"
-    class="seccion-horario"
-    style="display:none;"
->
+<section id="horario" class="seccion">
 
-    <h2>🕒 Mi horario</h2>
+    <div class="card">
 
-    <div class="turnos">
+        <h2>🕒 Mi horario</h2>
 
-        <button onclick="mostrarTurno('manana')">
-            ☀️ Mañana
+        <div class="turnos">
+
+            <button id="turnoManana"
+                    class="activo"
+                    onclick="mostrarTurno('manana')">
+                ☀️ Mañana
+            </button>
+
+            <button id="turnoTarde"
+                    onclick="mostrarTurno('tarde')">
+                🌙 Tarde
+            </button>
+
+        </div>
+
+        <div id="horarioManana">
+
+            <h3>☀️ Turno mañana</h3>
+
+            <div id="listaManana"></div>
+
+        </div>
+
+        <div id="horarioTarde" class="oculto">
+
+            <h3>🌙 Turno tarde</h3>
+
+            <div id="listaTarde"></div>
+
+        </div>
+
+        <button
+            class="agregar"
+            onclick="mostrarFormularioClase()">
+            ＋ Agregar clase
         </button>
 
-        <button onclick="mostrarTurno('tarde')">
-            🌙 Tarde
-        </button>
-
     </div>
-
-    <!-- MAÑANA -->
-
-    <div id="horarioManana">
-
-        <h3>☀️ Turno mañana</h3>
-
-        <div id="listaManana"></div>
-
-    </div>
-
-    <!-- TARDE -->
-
-    <div
-        id="horarioTarde"
-        style="display:none;"
-    >
-
-        <h3>🌙 Turno tarde</h3>
-
-        <div id="listaTarde"></div>
-
-    </div>
-
-    <!-- AGREGAR CLASE -->
-
-    <button
-        class="agregar"
-        onclick="agregarClase()"
-    >
-        ＋ Agregar clase
-    </button>
-
-    <!-- FORMULARIO -->
 
     <div
         id="formularioClase"
-        class="formulario-clase"
-        style="display:none;"
-    >
+        class="card oculto">
 
-        <h3>➕ Nueva clase</h3>
+        <h2>➕ Nueva clase</h2>
+
+        <input type="hidden" id="idClaseEditar">
 
         <label>Día</label>
 
@@ -779,10 +987,7 @@ select:focus{
 
         <label>Hora</label>
 
-        <input
-            id="horaClase"
-            type="time"
-        >
+        <input id="horaClase" type="time">
 
         <label>Curso</label>
 
@@ -792,287 +997,202 @@ select:focus{
             placeholder="Ej.: Matemática"
         >
 
+        <label>👩‍🏫 Profesor/a</label>
+
+        <input
+            id="profesorClase"
+            type="text"
+            placeholder="Opcional"
+        >
+
+        <label>🚪 Aula</label>
+
+        <input
+            id="aulaClase"
+            type="text"
+            placeholder="Ej.: Aula 204"
+        >
+
         <label>Turno</label>
 
         <select id="turnoClase">
 
-            <option value="manana">
-                ☀️ Mañana
-            </option>
-
-            <option value="tarde">
-                🌙 Tarde
-            </option>
+            <option value="manana">☀️ Mañana</option>
+            <option value="tarde">🌙 Tarde</option>
 
         </select>
 
         <button
             class="agregar"
-            onclick="guardarClase()"
-        >
+            onclick="guardarClase()">
             💾 Guardar clase
         </button>
 
+        <button
+            class="secundario config-boton"
+            onclick="cerrarFormularioClase()">
+            Cancelar
+        </button>
+
     </div>
 
-</div>
+</section>
 
 <!-- =========================
-     CAMBIAR IMAGEN
+     PROGRESO
 ========================= -->
 
-<div class="imagen-personalizada">
+<section id="progreso" class="seccion">
 
-    <button onclick="elegirImagen()">
-        🖼️ Cambiar imagen
-    </button>
+    <div class="card">
 
-    <input
-        type="file"
-        id="imagenPersonalizada"
-        accept="image/*"
-        style="display:none;"
-    >
+        <h2>📊 Mi progreso</h2>
 
-    <button onclick="restaurarImagen()">
-        🔄 Imagen original
-    </button>
+        <p id="textoProgreso">
+            Todavía no hay actividades.
+        </p>
 
-</div>
+        <div class="progreso-contenedor">
 
-<!-- =========================
-     PERSONALIZACIÓN
-========================= -->
+            <div
+                id="barraProgreso"
+                class="progreso">
+            </div>
 
-<div class="personalizacion">
+        </div>
 
-    <button onclick="mostrarColores()">
-        🎨 Personalizar
-    </button>
-
-    <div
-        id="colores"
-        class="colores"
-        style="display:none;"
-    >
+        <h3>📚 Resumen</h3>
 
         <p>
-            Elige tu color:
+            Total de actividades:
+            <b id="progresoTotal">0</b>
+        </p>
+
+        <p>
+            Terminadas:
+            <b id="progresoTerminadas">0</b>
+        </p>
+
+        <p>
+            Pendientes:
+            <b id="progresoPendientes">0</b>
+        </p>
+
+        <p>
+            Vencidas:
+            <b id="progresoVencidas">0</b>
+        </p>
+
+    </div>
+
+    <div class="card">
+
+        <h2>🏆 Consejo</h2>
+
+        <p id="consejo">
+            Organiza primero las actividades con prioridad alta.
+        </p>
+
+    </div>
+
+</section>
+
+<!-- =========================
+     AJUSTES
+========================= -->
+
+<section id="ajustes" class="seccion">
+
+    <div class="card">
+
+        <h2>⚙️ Ajustes</h2>
+
+        <button
+            class="secundario config-boton"
+            onclick="activarNotificaciones()">
+            🔔 Activar notificaciones
+        </button>
+
+        <button
+            class="secundario config-boton"
+            onclick="probarSonido('melodia')">
+            🔊 Probar sonido
+        </button>
+
+        <button
+            class="secundario config-boton"
+            onclick="probarVoz()">
+            🗣️ Probar voz
+        </button>
+
+        <button
+            id="botonOscuro"
+            class="secundario config-boton"
+            onclick="alternarModoOscuro()">
+            🌙 Modo oscuro
+        </button>
+
+        <button
+            id="botonInstalar"
+            class="instalar oculto"
+            onclick="instalarApp()">
+            📱 Instalar Puntualízate
+        </button>
+
+    </div>
+
+    <div class="card">
+
+        <h2>💾 Copia de seguridad</h2>
+
+        <p class="pequeno">
+            Guarda tus tareas y horario para no perderlos.
         </p>
 
         <button
-            class="color-opcion lila"
-            onclick="cambiarColor('lila')"
-        >
-            💜
+            class="exito config-boton"
+            onclick="exportarDatos()">
+            📥 Exportar mis datos
         </button>
 
         <button
-            class="color-opcion azul"
-            onclick="cambiarColor('azul')"
-        >
-            💙
+            class="secundario config-boton"
+            onclick="document.getElementById('importarArchivo').click()">
+            📤 Importar datos
         </button>
 
-        <button
-            class="color-opcion rosa"
-            onclick="cambiarColor('rosa')"
+        <input
+            type="file"
+            id="importarArchivo"
+            accept=".json"
+            style="display:none;"
+            onchange="importarDatos(event)"
         >
-            🩷
-        </button>
+
+    </div>
+
+    <div class="card">
+
+        <h2>🗑️ Datos</h2>
 
         <button
-            class="color-opcion verde"
-            onclick="cambiarColor('verde')"
-        >
-            💚
-        </button>
-
-        <button
-            class="color-opcion celeste"
-            onclick="cambiarColor('celeste')"
-        >
-            🩵
-        </button>
-
-        <button
-            class="color-opcion durazno"
-            onclick="cambiarColor('durazno')"
-        >
-            🧡
+            class="peligro config-boton"
+            onclick="borrarCompletadas()">
+            🧹 Borrar tareas terminadas
         </button>
 
     </div>
 
-</div>
-
-<!-- =========================
-     NUEVA ACTIVIDAD
-========================= -->
-
-<div class="card">
-
-    <h2>
-        ➕ Nueva actividad
-    </h2>
-
-    <label>
-        Materia
-    </label>
-
-    <select id="materia">
-
-        <option>Matemática</option>
-        <option>Comunicación</option>
-        <option>Ciencia y Tecnología</option>
-        <option>EPT</option>
-        <option>Inglés</option>
-        <option>Historia</option>
-        <option>Religión</option>
-        <option>Otra</option>
-
-    </select>
-
-    <label>
-        Nombre de la actividad
-    </label>
-
-    <input
-        id="actividad"
-        type="text"
-        placeholder="Ej.: Resolver ejercicios de probabilidad"
-    >
-
-    <label>
-        Fecha y hora
-    </label>
-
-    <input
-        id="fecha"
-        type="datetime-local"
-    >
-
-    <label>
-        Avisarme
-    </label>
-
-    <select id="minutos">
-
-        <option value="1">
-            1 minuto antes
-        </option>
-
-        <option
-            value="5"
-            selected
-        >
-            5 minutos antes
-        </option>
-
-        <option value="10">
-            10 minutos antes
-        </option>
-
-        <option value="15">
-            15 minutos antes
-        </option>
-
-        <option value="30">
-            30 minutos antes
-        </option>
-
-    </select>
-
-    <label>
-        🔔 Sonido
-    </label>
-
-    <select id="sonido">
-
-        <option value="campana">
-            🔔 Campanita
-        </option>
-
-        <option value="melodia">
-            🎵 Melodía
-        </option>
-
-        <option value="alarma">
-            🚨 Alarma
-        </option>
-
-        <option value="digital">
-            💻 Digital
-        </option>
-
-        <option value="ninguno">
-            🔇 Sin sonido
-        </option>
-
-        <option value="personalizado">
-            🎵 Mi propio sonido
-        </option>
-
-    </select>
-
-    <input
-        type="file"
-        id="archivoSonido"
-        accept="audio/*"
-        style="display:none;"
-    >
-
-    <label>
-        🔊 Aviso por voz
-    </label>
-
-    <select id="voz">
-
-        <option value="si">
-            Activado
-        </option>
-
-        <option value="no">
-            Desactivado
-        </option>
-
-    </select>
-
-    <button
-        class="agregar"
-        onclick="agregarTarea()"
-    >
-        ＋ Agregar actividad
-    </button>
+</section>
 
 </div>
-
-<!-- =========================
-     ACTIVIDADES
-========================= -->
-
-<div class="card">
-
-    <h2>
-        📅 Mis actividades
-    </h2>
-
-    <div id="lista"></div>
-
-</div>
-
-</div>
-
 </div>
 
 <!-- =========================
      ALERTA
 ========================= -->
 
-<div
-    class="alerta"
-    id="alerta"
->
+<div id="alerta" class="alerta">
 
     <div class="alerta-contenido">
 
@@ -1090,19 +1210,133 @@ select:focus{
             ✅ Ya la hice
         </button>
 
-        <button onclick="recordarDespues()">
+        <button onclick="mostrarOpcionesRecordatorio()">
             ⏳ Recordarme después
+        </button>
+
+        <div id="opcionesRecordatorio"
+             class="oculto">
+
+            <button onclick="posponer(5)">
+                5 min
+            </button>
+
+            <button onclick="posponer(10)">
+                10 min
+            </button>
+
+            <button onclick="posponer(15)">
+                15 min
+            </button>
+
+            <button onclick="posponer(30)">
+                30 min
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- =========================
+     MODAL EDITAR
+========================= -->
+
+<div id="modalEditar" class="modal">
+
+    <div class="modal-contenido">
+
+        <button
+            class="modal-cerrar"
+            onclick="cerrarModal()">
+            ✕
+        </button>
+
+        <h2>✏️ Editar actividad</h2>
+
+        <input type="hidden" id="editarId">
+
+        <label>Materia</label>
+
+        <select id="editarMateria">
+
+            <option>Matemática</option>
+            <option>Comunicación</option>
+            <option>Ciencia y Tecnología</option>
+            <option>EPT</option>
+            <option>Inglés</option>
+            <option>Historia</option>
+            <option>Religión</option>
+            <option>Economía</option>
+            <option>Filosofía</option>
+            <option>Ética</option>
+            <option>Otra</option>
+
+        </select>
+
+        <label>Actividad</label>
+
+        <input id="editarActividad">
+
+        <label>Fecha y hora</label>
+
+        <input id="editarFecha" type="datetime-local">
+
+        <label>Prioridad</label>
+
+        <select id="editarPrioridad">
+
+            <option value="alta">🔴 Alta</option>
+            <option value="media">🟡 Media</option>
+            <option value="baja">🟢 Baja</option>
+
+        </select>
+
+        <label>Recordatorio</label>
+
+        <select id="editarMinutos">
+
+            <option value="1">1 minuto</option>
+            <option value="5">5 minutos</option>
+            <option value="10">10 minutos</option>
+            <option value="15">15 minutos</option>
+            <option value="30">30 minutos</option>
+            <option value="60">1 hora</option>
+            <option value="120">2 horas</option>
+
+        </select>
+
+        <label>Voz</label>
+
+        <select id="editarVoz">
+
+            <option value="si">Activada</option>
+            <option value="no">Desactivada</option>
+
+        </select>
+
+        <label>Notas</label>
+
+        <textarea id="editarNotas"></textarea>
+
+        <button
+            class="agregar"
+            onclick="guardarEdicion()">
+            💾 Guardar cambios
         </button>
 
     </div>
 
 </div>
 
+<div id="toast" class="toast"></div>
+
 <script>
 
-/* =========================
-   TAREAS
-========================= */
+/* =====================================================
+   DATOS
+===================================================== */
 
 let tareas =
     JSON.parse(
@@ -1110,11 +1344,19 @@ let tareas =
     ) || [];
 
 let tareaActual = null;
+let colaRecordatorios = [];
+
+let horario =
+    JSON.parse(
+        localStorage.getItem("horarioPuntualizate")
+    ) || [];
+
+let deferredPrompt = null;
 
 
-/* =========================
-   GUARDAR TAREAS
-========================= */
+/* =====================================================
+   UTILIDADES
+===================================================== */
 
 function guardar(){
 
@@ -1125,134 +1367,1777 @@ function guardar(){
 
 }
 
+function guardarHorario(){
 
-/* =========================
-   INICIO
-========================= */
+    localStorage.setItem(
+        "horarioPuntualizate",
+        JSON.stringify(horario)
+    );
 
-function mostrarInicio(){
+}
+
+function escapeHTML(texto){
+
+    if(texto === undefined || texto === null)
+        return "";
+
+    return String(texto)
+        .replace(/&/g,"&amp;")
+        .replace(/</g,"&lt;")
+        .replace(/>/g,"&gt;")
+        .replace(/"/g,"&quot;")
+        .replace(/'/g,"&#039;");
+
+}
+
+function mostrarToast(mensaje){
+
+    const toast =
+        document.getElementById("toast");
+
+    toast.textContent = mensaje;
+
+    toast.classList.add("visible");
+
+    setTimeout(()=>{
+        toast.classList.remove("visible");
+    },2500);
+
+}
+
+function formatoFecha(fecha){
+
+    return new Date(fecha).toLocaleDateString(
+        "es-PE",
+        {
+            day:"2-digit",
+            month:"2-digit",
+            year:"numeric"
+        }
+    );
+
+}
+
+function formatoHora(fecha){
+
+    return new Date(fecha).toLocaleTimeString(
+        "es-PE",
+        {
+            hour:"2-digit",
+            minute:"2-digit"
+        }
+    );
+
+}
+
+
+/* =====================================================
+   NAVEGACIÓN
+===================================================== */
+
+function mostrarSeccion(nombre){
+
+    document
+    .querySelectorAll(".seccion")
+    .forEach(seccion=>{
+        seccion.classList.remove("activa");
+    });
+
+    document
+    .getElementById(nombre)
+    .classList.add("activa");
+
+    document
+    .querySelectorAll(".menu button")
+    .forEach(boton=>{
+        boton.classList.remove("activo");
+    });
+
+    const boton =
+        document.getElementById(
+            "btn"+
+            nombre.charAt(0).toUpperCase()+
+            nombre.slice(1)
+        );
+
+    if(boton)
+        boton.classList.add("activo");
+
+    if(nombre==="horario")
+        mostrarHorarioClases();
+
+    if(nombre==="progreso")
+        actualizarProgreso();
+
+}
+
+
+/* =====================================================
+   AGREGAR TAREA
+===================================================== */
+
+async function agregarTarea(){
+
+    const materia =
+        document.getElementById("materia").value;
+
+    const actividad =
+        document.getElementById("actividad").value.trim();
+
+    const fecha =
+        document.getElementById("fecha").value;
+
+    const minutos =
+        Number(
+            document.getElementById("minutos").value
+        );
+
+    const prioridad =
+        document.getElementById("prioridad").value;
+
+    const sonido =
+        document.getElementById("sonido").value;
+
+    const voz =
+        document.getElementById("voz").value;
+
+    const notas =
+        document.getElementById("notas").value.trim();
+
+    const archivo =
+        document.getElementById("archivoSonido").files[0];
+
+    let sonidoPersonalizado = "";
+
+    if(!actividad || !fecha){
+
+        alert(
+            "Completa el nombre de la actividad y la fecha."
+        );
+
+        return;
+
+    }
+
+    if(
+        new Date(fecha).getTime() < Date.now()
+    ){
+
+        if(
+            !confirm(
+                "La fecha indicada ya pasó. ¿Quieres agregarla de todas formas?"
+            )
+        )
+            return;
+
+    }
+
+    if(sonido==="personalizado"){
+
+        if(!archivo){
+
+            alert(
+                "Selecciona primero tu archivo de sonido."
+            );
+
+            return;
+
+        }
+
+        try{
+
+            sonidoPersonalizado =
+                await convertirAudioBase64(
+                    archivo
+                );
+
+        }catch(e){
+
+            alert(
+                "No se pudo guardar el sonido."
+            );
+
+            return;
+
+        }
+
+    }
+
+    const tarea = {
+
+        id:Date.now(),
+
+        materia,
+
+        actividad,
+
+        fecha,
+
+        minutos,
+
+        sonido,
+
+        sonidoPersonalizado,
+
+        voz,
+
+        prioridad,
+
+        notas,
+
+        avisada:false,
+
+        completada:false
+
+    };
+
+    tareas.push(tarea);
+
+    guardar();
+
+    document.getElementById("actividad").value="";
+    document.getElementById("fecha").value="";
+    document.getElementById("notas").value="";
+    document.getElementById("archivoSonido").value="";
+
+    mostrarTareas();
+    actualizarResumen();
+    actualizarProgreso();
+
+    mostrarToast("✅ Actividad agregada");
+
+}
+
+
+/* =====================================================
+   AUDIO BASE64
+===================================================== */
+
+function convertirAudioBase64(archivo){
+
+    return new Promise((resolve,reject)=>{
+
+        const lector =
+            new FileReader();
+
+        lector.onload=()=>{
+            resolve(lector.result);
+        };
+
+        lector.onerror=()=>{
+            reject(lector.error);
+        };
+
+        lector.readAsDataURL(archivo);
+
+    });
+
+}
+
+
+/* =====================================================
+   MOSTRAR TAREAS
+===================================================== */
+
+function mostrarTareas(){
+
+    const lista =
+        document.getElementById("lista");
+
+    const buscar =
+        document
+        .getElementById("buscar")
+        .value
+        .toLowerCase()
+        .trim();
+
+    const filtro =
+        document.getElementById("filtro").value;
+
+    lista.innerHTML="";
+
+    let filtradas =
+        [...tareas];
+
+    if(buscar){
+
+        filtradas =
+            filtradas.filter(t=>
+                t.actividad.toLowerCase().includes(buscar) ||
+                t.materia.toLowerCase().includes(buscar) ||
+                (t.notas || "").toLowerCase().includes(buscar)
+            );
+
+    }
+
+    const ahora = new Date();
+
+    filtradas =
+        filtradas.filter(t=>{
+
+            const fecha =
+                new Date(t.fecha);
+
+            if(filtro==="pendientes")
+                return !t.completada;
+
+            if(filtro==="completadas")
+                return t.completada;
+
+            if(filtro==="hoy"){
+
+                return
+                !t.completada &&
+                fecha.toDateString() ===
+                ahora.toDateString();
+
+            }
+
+            if(filtro==="vencidas"){
+
+                return
+                !t.completada &&
+                fecha < ahora;
+
+            }
+
+            return true;
+
+        });
+
+
+    filtradas.sort((a,b)=>{
+
+        if(a.completada!==b.completada)
+            return a.completada ? 1 : -1;
+
+        return new Date(a.fecha)-new Date(b.fecha);
+
+    });
+
+
+    if(filtradas.length===0){
+
+        lista.innerHTML=`
+            <div class="vacio">
+                <div style="font-size:45px;">🌷</div>
+                <p class="pequeno">
+                    No encontré actividades con ese filtro.
+                </p>
+            </div>
+        `;
+
+        actualizarResumen();
+
+        return;
+
+    }
+
+
+    filtradas.forEach(t=>{
+
+        const fecha =
+            new Date(t.fecha);
+
+        const vencida =
+            !t.completada &&
+            fecha < ahora;
+
+        const div =
+            document.createElement("div");
+
+        div.className =
+            "tarea "+t.prioridad+
+            (t.completada ? " completada" : "");
+
+        let prioridadTexto =
+            t.prioridad==="alta"
+            ? "🔴 Prioridad alta"
+            : t.prioridad==="media"
+            ? "🟡 Prioridad media"
+            : "🟢 Prioridad baja";
+
+        let estado;
+
+        if(t.completada){
+
+            estado =
+                "✅ Actividad terminada";
+
+        }else if(vencida){
+
+            estado =
+                "⚠️ Actividad vencida";
+
+        }else{
+
+            estado =
+                "⏳ "+tiempoRestante(t);
+
+        }
+
+        div.innerHTML=`
+
+            <h3>
+                📚 ${escapeHTML(t.materia)}
+            </h3>
+
+            <p>
+                <strong>
+                    ${escapeHTML(t.actividad)}
+                </strong>
+            </p>
+
+            <div class="etiquetas">
+
+                <span class="etiqueta prioridad-${t.prioridad}">
+                    ${prioridadTexto}
+                </span>
+
+                ${
+                    vencida
+                    ?
+                    `<span class="etiqueta vencida">
+                        ⚠️ Vencida
+                    </span>`
+                    :
+                    ""
+                }
+
+            </div>
+
+            <p>
+                📅 ${formatoFecha(t.fecha)}
+                <br>
+                ⏰ ${formatoHora(t.fecha)}
+            </p>
+
+            <p class="estado">
+                ${estado}
+            </p>
+
+            <p>
+                🔔 Aviso ${t.minutos} min antes
+            </p>
+
+            ${
+                t.notas
+                ?
+                `<p class="notas">
+                    📝 ${escapeHTML(t.notas)}
+                </p>`
+                :
+                ""
+            }
+
+            <div class="acciones">
+
+                ${
+                    t.completada
+                    ?
+                    `<button
+                        class="secundario"
+                        onclick="volverPendiente(${t.id})">
+                        ↩️ Pendiente
+                    </button>`
+                    :
+                    `<button
+                        class="exito"
+                        onclick="completar(${t.id})">
+                        ✅ Hecha
+                    </button>`
+                }
+
+                <button
+                    class="secundario"
+                    onclick="editarTarea(${t.id})">
+                    ✏️ Editar
+                </button>
+
+                <button
+                    class="peligro"
+                    onclick="eliminarTarea(${t.id})">
+                    🗑️
+                </button>
+
+            </div>
+
+        `;
+
+        lista.appendChild(div);
+
+    });
+
+    actualizarResumen();
+
+}
+
+
+/* =====================================================
+   TIEMPO RESTANTE
+===================================================== */
+
+function tiempoRestante(t){
+
+    const diferencia =
+        new Date(t.fecha)-new Date();
+
+    if(diferencia<=0)
+        return "Actividad pendiente";
+
+    const segundos =
+        Math.floor(diferencia/1000);
+
+    const minutos =
+        Math.floor(segundos/60);
+
+    if(minutos<1)
+        return "Menos de 1 minuto";
+
+    if(minutos<60)
+        return `Faltan ${minutos} min`;
+
+    const horas =
+        Math.floor(minutos/60);
+
+    const min =
+        minutos%60;
+
+    if(horas<24)
+        return `Faltan ${horas} h ${min} min`;
+
+    const dias =
+        Math.floor(horas/24);
+
+    const horasRestantes =
+        horas%24;
+
+    return `Faltan ${dias} d ${horasRestantes} h`;
+
+}
+
+
+/* =====================================================
+   COMPLETAR
+===================================================== */
+
+function completar(id){
+
+    const tarea =
+        tareas.find(t=>t.id===id);
+
+    if(!tarea)
+        return;
+
+    tarea.completada=true;
+    tarea.avisada=true;
+
+    guardar();
+
+    mostrarTareas();
+    actualizarProgreso();
+
+    mostrarToast("🎉 ¡Actividad completada!");
+
+}
+
+
+/* =====================================================
+   VOLVER A PENDIENTE
+===================================================== */
+
+function volverPendiente(id){
+
+    const tarea =
+        tareas.find(t=>t.id===id);
+
+    if(!tarea)
+        return;
+
+    tarea.completada=false;
+    tarea.avisada=false;
+
+    guardar();
+
+    mostrarTareas();
+    actualizarProgreso();
+
+}
+
+
+/* =====================================================
+   ELIMINAR
+===================================================== */
+
+function eliminarTarea(id){
+
+    const tarea =
+        tareas.find(t=>t.id===id);
+
+    if(!tarea)
+        return;
+
+    if(
+        !confirm(
+            `¿Eliminar "${tarea.actividad}"?`
+        )
+    )
+        return;
+
+    tareas =
+        tareas.filter(t=>t.id!==id);
+
+    guardar();
+
+    mostrarTareas();
+    actualizarProgreso();
+
+    mostrarToast("🗑️ Actividad eliminada");
+
+}
+
+
+/* =====================================================
+   EDITAR
+===================================================== */
+
+function editarTarea(id){
+
+    const tarea =
+        tareas.find(t=>t.id===id);
+
+    if(!tarea)
+        return;
+
+    document.getElementById("editarId").value=id;
+    document.getElementById("editarMateria").value=tarea.materia;
+    document.getElementById("editarActividad").value=tarea.actividad;
+    document.getElementById("editarFecha").value=tarea.fecha;
+    document.getElementById("editarPrioridad").value=tarea.prioridad || "media";
+    document.getElementById("editarMinutos").value=tarea.minutos;
+    document.getElementById("editarVoz").value=tarea.voz || "si";
+    document.getElementById("editarNotas").value=tarea.notas || "";
+
+    document.getElementById("modalEditar").style.display="flex";
+
+}
+
+function cerrarModal(){
 
     document.getElementById(
-        "seccionHorario"
+        "modalEditar"
     ).style.display="none";
 
-    document.querySelector(
-        ".imagen-personalizada"
+}
+
+function guardarEdicion(){
+
+    const id =
+        Number(
+            document.getElementById("editarId").value
+        );
+
+    const tarea =
+        tareas.find(t=>t.id===id);
+
+    if(!tarea)
+        return;
+
+    tarea.materia =
+        document.getElementById("editarMateria").value;
+
+    tarea.actividad =
+        document.getElementById("editarActividad").value.trim();
+
+    tarea.fecha =
+        document.getElementById("editarFecha").value;
+
+    tarea.prioridad =
+        document.getElementById("editarPrioridad").value;
+
+    tarea.minutos =
+        Number(
+            document.getElementById("editarMinutos").value
+        );
+
+    tarea.voz =
+        document.getElementById("editarVoz").value;
+
+    tarea.notas =
+        document.getElementById("editarNotas").value.trim();
+
+    tarea.avisada=false;
+
+    if(!tarea.actividad || !tarea.fecha){
+
+        alert(
+            "Completa el nombre y la fecha."
+        );
+
+        return;
+
+    }
+
+    guardar();
+
+    cerrarModal();
+
+    mostrarTareas();
+    actualizarProgreso();
+
+    mostrarToast("✏️ Actividad actualizada");
+
+}
+
+
+/* =====================================================
+   RESUMEN
+===================================================== */
+
+function actualizarResumen(){
+
+    const pendientes =
+        tareas.filter(t=>!t.completada);
+
+    const hoy =
+        pendientes.filter(t=>
+            new Date(t.fecha).toDateString() ===
+            new Date().toDateString()
+        );
+
+    const vencidas =
+        pendientes.filter(t=>
+            new Date(t.fecha)<new Date()
+        );
+
+    const hechas =
+        tareas.filter(t=>t.completada);
+
+    document.getElementById("totalTareas").textContent =
+        pendientes.length;
+
+    document.getElementById("tareasHoy").textContent =
+        hoy.length;
+
+    document.getElementById("tareasVencidas").textContent =
+        vencidas.length;
+
+    document.getElementById("tareasHechas").textContent =
+        hechas.length;
+
+}
+
+
+/* =====================================================
+   PROGRESO
+===================================================== */
+
+function actualizarProgreso(){
+
+    const total =
+        tareas.length;
+
+    const terminadas =
+        tareas.filter(t=>t.completada).length;
+
+    const pendientes =
+        total-terminadas;
+
+    const vencidas =
+        tareas.filter(t=>
+            !t.completada &&
+            new Date(t.fecha)<new Date()
+        ).length;
+
+    const porcentaje =
+        total===0
+        ? 0
+        : Math.round(
+            terminadas/total*100
+        );
+
+    document.getElementById(
+        "progresoTotal"
+    ).textContent=total;
+
+    document.getElementById(
+        "progresoTerminadas"
+    ).textContent=terminadas;
+
+    document.getElementById(
+        "progresoPendientes"
+    ).textContent=pendientes;
+
+    document.getElementById(
+        "progresoVencidas"
+    ).textContent=vencidas;
+
+    document.getElementById(
+        "barraProgreso"
+    ).style.width=porcentaje+"%";
+
+    document.getElementById(
+        "textoProgreso"
+    ).textContent =
+        total===0
+        ? "Todavía no tienes actividades."
+        : `Has completado el ${porcentaje}% de tus actividades.`;
+
+    const consejo =
+        document.getElementById("consejo");
+
+    if(vencidas>0){
+
+        consejo.textContent =
+            "⚠️ Tienes actividades vencidas. Intenta terminarlas primero.";
+
+    }else if(pendientes===0 && total>0){
+
+        consejo.textContent =
+            "🎉 ¡Excelente! Terminaste todas tus actividades.";
+
+    }else{
+
+        consejo.textContent =
+            "💡 Empieza por las actividades de prioridad alta.";
+
+    }
+
+}
+
+
+/* =====================================================
+   SONIDOS
+===================================================== */
+
+function crearContexto(){
+
+    return new (
+        window.AudioContext ||
+        window.webkitAudioContext
+    )();
+
+}
+
+function sonidoCampana(){
+
+    const ctx =
+        crearContexto();
+
+    const osc =
+        ctx.createOscillator();
+
+    const gain =
+        ctx.createGain();
+
+    osc.connect(gain);
+    gain.connect(ctx.destination);
+
+    osc.frequency.value=900;
+
+    gain.gain.setValueAtTime(
+        .3,
+        ctx.currentTime
+    );
+
+    gain.gain.exponentialRampToValueAtTime(
+        .001,
+        ctx.currentTime+1
+    );
+
+    osc.start();
+    osc.stop(ctx.currentTime+1);
+
+}
+
+function sonidoDigital(){
+
+    const ctx =
+        crearContexto();
+
+    [700,1000,700].forEach(
+        (frecuencia,i)=>{
+
+            const osc =
+                ctx.createOscillator();
+
+            const gain =
+                ctx.createGain();
+
+            osc.connect(gain);
+            gain.connect(ctx.destination);
+
+            osc.frequency.value=frecuencia;
+
+            const inicio =
+                ctx.currentTime+i*.25;
+
+            gain.gain.setValueAtTime(
+                .2,
+                inicio
+            );
+
+            gain.gain.exponentialRampToValueAtTime(
+                .001,
+                inicio+.2
+            );
+
+            osc.start(inicio);
+            osc.stop(inicio+.2);
+
+        }
+    );
+
+}
+
+function sonidoAlarma(){
+
+    const ctx =
+        crearContexto();
+
+    let i=0;
+
+    const intervalo =
+        setInterval(()=>{
+
+            const osc =
+                ctx.createOscillator();
+
+            const gain =
+                ctx.createGain();
+
+            osc.connect(gain);
+            gain.connect(ctx.destination);
+
+            osc.frequency.value =
+                i%2===0 ? 900 : 600;
+
+            gain.gain.value=.2;
+
+            osc.start();
+            osc.stop(ctx.currentTime+.18);
+
+            i++;
+
+            if(i>=6)
+                clearInterval(intervalo);
+
+        },250);
+
+}
+
+function sonidoMelodia(){
+
+    const ctx =
+        crearContexto();
+
+    const notas=[
+        523,
+        659,
+        784,
+        659,
+        880
+    ];
+
+    notas.forEach(
+        (frecuencia,i)=>{
+
+            const osc =
+                ctx.createOscillator();
+
+            const gain =
+                ctx.createGain();
+
+            osc.connect(gain);
+            gain.connect(ctx.destination);
+
+            osc.frequency.value=frecuencia;
+
+            const inicio =
+                ctx.currentTime+i*.3;
+
+            gain.gain.setValueAtTime(
+                .2,
+                inicio
+            );
+
+            gain.gain.exponentialRampToValueAtTime(
+                .001,
+                inicio+.28
+            );
+
+            osc.start(inicio);
+            osc.stop(inicio+.28);
+
+        }
+    );
+
+}
+
+function reproducirSonido(tipo){
+
+    try{
+
+        if(tipo==="campana")
+            sonidoCampana();
+
+        if(tipo==="digital")
+            sonidoDigital();
+
+        if(tipo==="alarma")
+            sonidoAlarma();
+
+        if(tipo==="melodia")
+            sonidoMelodia();
+
+    }catch(e){
+
+        console.log(e);
+
+    }
+
+}
+
+function reproducirSonidoPersonalizado(tarea){
+
+    if(!tarea.sonidoPersonalizado)
+        return;
+
+    const audio =
+        new Audio(
+            tarea.sonidoPersonalizado
+        );
+
+    audio.play().catch(()=>{});
+
+}
+
+function probarSonido(tipo){
+
+    reproducirSonido(tipo);
+
+}
+
+
+/* =====================================================
+   VOZ
+===================================================== */
+
+function hablar(tarea){
+
+    if(tarea.voz!=="si")
+        return;
+
+    if(!("speechSynthesis" in window))
+        return;
+
+    speechSynthesis.cancel();
+
+    const mensaje =
+        `Atención. Te quedan ${tarea.minutos} minutos para completar tu actividad de ${tarea.materia}: ${tarea.actividad}.`;
+
+    const voz =
+        new SpeechSynthesisUtterance(
+            mensaje
+        );
+
+    voz.lang="es-ES";
+    voz.rate=.9;
+
+    speechSynthesis.speak(voz);
+
+}
+
+function probarVoz(){
+
+    if(!("speechSynthesis" in window)){
+
+        alert(
+            "Tu navegador no permite la función de voz."
+        );
+
+        return;
+
+    }
+
+    const voz =
+        new SpeechSynthesisUtterance(
+            "Hola. Esta es una prueba de voz de Puntualízate."
+        );
+
+    voz.lang="es-ES";
+    voz.rate=.9;
+
+    speechSynthesis.speak(voz);
+
+}
+
+
+/* =====================================================
+   ALERTAS
+===================================================== */
+
+function mostrarAlerta(tarea){
+
+    tareaActual=tarea;
+
+    document.getElementById(
+        "mensajeAlerta"
+    ).textContent =
+        `⏰ Te quedan ${tarea.minutos} minutos para: ${tarea.actividad}`;
+
+    document.getElementById(
+        "opcionesRecordatorio"
+    ).classList.add("oculto");
+
+    document.getElementById(
+        "alerta"
     ).style.display="flex";
 
-    document.querySelector(
-        ".personalizacion"
-    ).style.display="block";
+    if(tarea.sonido==="personalizado"){
 
-    document.querySelectorAll(
-        ".card"
-    ).forEach(card=>{
+        reproducirSonidoPersonalizado(tarea);
 
-        card.style.display="block";
+    }else if(tarea.sonido!=="ninguno"){
 
-    });
+        reproducirSonido(tarea.sonido);
+
+    }
+
+    hablar(tarea);
+
+    enviarNotificacion(tarea);
 
 }
 
+function cerrarAlerta(){
 
-/* =========================
-   MOSTRAR HORARIO
-========================= */
+    if(!tareaActual)
+        return;
 
-function mostrarHorario(){
+    tareaActual.avisada=true;
 
-    document.querySelector(
-        ".imagen-personalizada"
-    ).style.display="none";
-
-    document.querySelector(
-        ".personalizacion"
-    ).style.display="none";
-
-    document.querySelectorAll(
-        ".card"
-    ).forEach(card=>{
-
-        card.style.display="none";
-
-    });
+    guardar();
 
     document.getElementById(
-        "seccionHorario"
-    ).style.display="block";
+        "alerta"
+    ).style.display="none";
 
-    mostrarHorarioClases();
+    tareaActual=null;
+
+    mostrarTareas();
+
+    mostrarSiguienteRecordatorio();
+
+}
+
+function mostrarOpcionesRecordatorio(){
+
+    document
+    .getElementById("opcionesRecordatorio")
+    .classList.toggle("oculto");
+
+}
+
+function posponer(minutos){
+
+    if(!tareaActual)
+        return;
+
+    const tarea =
+        tareaActual;
+
+    tarea.fecha =
+        convertirFechaLocal(
+            new Date(
+                Date.now()+minutos*60000
+            )
+        );
+
+    tarea.avisada=false;
+
+    guardar();
+
+    document.getElementById(
+        "alerta"
+    ).style.display="none";
+
+    tareaActual=null;
+
+    mostrarTareas();
+
+    mostrarToast(
+        `⏳ Te recordaré en ${minutos} minutos`
+    );
+
+    mostrarSiguienteRecordatorio();
+
+}
+
+function convertirFechaLocal(fecha){
+
+    const año =
+        fecha.getFullYear();
+
+    const mes =
+        String(
+            fecha.getMonth()+1
+        ).padStart(2,"0");
+
+    const dia =
+        String(
+            fecha.getDate()
+        ).padStart(2,"0");
+
+    const hora =
+        String(
+            fecha.getHours()
+        ).padStart(2,"0");
+
+    const minuto =
+        String(
+            fecha.getMinutes()
+        ).padStart(2,"0");
+
+    return `${año}-${mes}-${dia}T${hora}:${minuto}`;
 
 }
 
 
-/* =========================
-   MOSTRAR TURNO
-========================= */
+/* =====================================================
+   REVISAR RECORDATORIOS
+===================================================== */
+
+function revisarRecordatorios(){
+
+    const ahora =
+        new Date();
+
+    tareas.forEach(t=>{
+
+        if(
+            t.completada ||
+            t.avisada
+        )
+            return;
+
+        const fecha =
+            new Date(t.fecha);
+
+        const aviso =
+            new Date(
+                fecha.getTime()-
+                t.minutos*60000
+            );
+
+        if(
+            ahora>=aviso &&
+            ahora<fecha
+        ){
+
+            t.avisada=true;
+
+            if(!colaRecordatorios.includes(t.id)){
+
+                colaRecordatorios.push(t.id);
+
+            }
+
+        }
+
+    });
+
+    guardar();
+
+    if(
+        !tareaActual &&
+        colaRecordatorios.length>0
+    ){
+
+        mostrarSiguienteRecordatorio();
+
+    }
+
+    mostrarTareas();
+
+}
+
+function mostrarSiguienteRecordatorio(){
+
+    if(tareaActual)
+        return;
+
+    if(colaRecordatorios.length===0)
+        return;
+
+    const id =
+        colaRecordatorios.shift();
+
+    const tarea =
+        tareas.find(t=>t.id===id);
+
+    if(tarea && !tarea.completada){
+
+        mostrarAlerta(tarea);
+
+    }
+
+}
+
+
+/* =====================================================
+   NOTIFICACIONES
+===================================================== */
+
+async function activarNotificaciones(){
+
+    if(!("Notification" in window)){
+
+        alert(
+            "Este navegador no permite notificaciones."
+        );
+
+        return;
+
+    }
+
+    const permiso =
+        await Notification.requestPermission();
+
+    if(permiso==="granted"){
+
+        mostrarToast(
+            "🔔 Notificaciones activadas"
+        );
+
+        new Notification(
+            "Puntualízate",
+            {
+                body:"Las notificaciones están activadas."
+            }
+        );
+
+    }else{
+
+        alert(
+            "No se concedió el permiso para notificaciones."
+        );
+
+    }
+
+}
+
+function enviarNotificacion(tarea){
+
+    if(
+        !("Notification" in window)
+    )
+        return;
+
+    if(
+        Notification.permission!=="granted"
+    )
+        return;
+
+    try{
+
+        new Notification(
+            "⏰ Puntualízate",
+            {
+                body:
+                `Te quedan ${tarea.minutos} minutos para: ${tarea.actividad}`
+            }
+        );
+
+    }catch(e){
+
+        console.log(e);
+
+    }
+
+}
+
+
+/* =====================================================
+   IMAGEN
+===================================================== */
+
+function elegirImagen(){
+
+    document
+    .getElementById("imagenPersonalizada")
+    .click();
+
+}
+
+document
+.getElementById("imagenPersonalizada")
+.addEventListener(
+    "change",
+    function(){
+
+        const archivo =
+            this.files[0];
+
+        if(!archivo)
+            return;
+
+        const lector =
+            new FileReader();
+
+        lector.onload=function(){
+
+            const imagen =
+                lector.result;
+
+            try{
+
+                localStorage.setItem(
+                    "imagenPuntualizate",
+                    imagen
+                );
+
+            }catch(e){
+
+                alert(
+                    "La imagen es demasiado grande. Prueba con una imagen más pequeña."
+                );
+
+                return;
+
+            }
+
+            aplicarImagen(imagen);
+
+            mostrarToast(
+                "🖼️ Imagen cambiada"
+            );
+
+        };
+
+        lector.readAsDataURL(archivo);
+
+    }
+);
+
+function aplicarImagen(imagen){
+
+    const overlay =
+        getOverlay();
+
+    document.querySelector(
+        "header"
+    ).style.backgroundImage =
+        `linear-gradient(${overlay},${overlay}), url("${imagen}")`;
+
+}
+
+function restaurarImagen(){
+
+    localStorage.removeItem(
+        "imagenPuntualizate"
+    );
+
+    aplicarImagen(
+        "lan-zhan.png"
+    );
+
+    document.getElementById(
+        "imagenPersonalizada"
+    ).value="";
+
+    mostrarToast(
+        "🔄 Imagen original restaurada"
+    );
+
+}
+
+
+/* =====================================================
+   SONIDO PERSONALIZADO
+===================================================== */
+
+document
+.getElementById("sonido")
+.addEventListener(
+    "change",
+    function(){
+
+        if(
+            this.value==="personalizado"
+        ){
+
+            document
+            .getElementById("archivoSonido")
+            .click();
+
+        }
+
+    }
+);
+
+
+/* =====================================================
+   COLORES
+===================================================== */
+
+const temas={
+
+    lila:{
+        principal:"#c58bc7",
+        oscuro:"#76527a",
+        fondo:"#fffaff",
+        borde:"#f0e5f2",
+        overlay:"#8f6b9b66"
+    },
+
+    azul:{
+        principal:"#78a9d1",
+        oscuro:"#4d7095",
+        fondo:"#f8fcff",
+        borde:"#dcebf5",
+        overlay:"#527da566"
+    },
+
+    rosa:{
+        principal:"#df91ae",
+        oscuro:"#9b5872",
+        fondo:"#fff8fb",
+        borde:"#f3dce5",
+        overlay:"#a45f7866"
+    },
+
+    verde:{
+        principal:"#8bc9ad",
+        oscuro:"#4f8067",
+        fondo:"#f7fffa",
+        borde:"#dcefe5",
+        overlay:"#568a7066"
+    },
+
+    celeste:{
+        principal:"#79cbd1",
+        oscuro:"#43838a",
+        fondo:"#f5feff",
+        borde:"#d8eff1",
+        overlay:"#438b9166"
+    },
+
+    durazno:{
+        principal:"#e7a477",
+        oscuro:"#9a6543",
+        fondo:"#fffaf6",
+        borde:"#f2e1d5",
+        overlay:"#a86f4d66"
+    }
+
+};
+
+function mostrarColores(){
+
+    document
+    .getElementById("colores")
+    .classList.toggle("oculto");
+
+}
+
+function cambiarColor(color){
+
+    const tema =
+        temas[color];
+
+    if(!tema)
+        return;
+
+    Object.entries(tema)
+    .forEach(([variable,valor])=>{
+
+        document.documentElement
+        .style
+        .setProperty(
+            "--color-"+variable,
+            valor
+        );
+
+    });
+
+    localStorage.setItem(
+        "temaPuntualizate",
+        color
+    );
+
+    if(
+        !localStorage.getItem(
+            "imagenPuntualizate"
+        )
+    ){
+
+        aplicarImagen(
+            "lan-zhan.png"
+        );
+
+    }
+
+    document
+    .querySelector('meta[name="theme-color"]')
+    .setAttribute(
+        "content",
+        tema.principal
+    );
+
+    mostrarToast(
+        "🎨 Color actualizado"
+    );
+
+}
+
+function getOverlay(){
+
+    const tema =
+        localStorage.getItem(
+            "temaPuntualizate"
+        ) || "lila";
+
+    return temas[tema].overlay;
+
+}
+
+function aplicarTema(){
+
+    const tema =
+        localStorage.getItem(
+            "temaPuntualizate"
+        ) || "lila";
+
+    cambiarColor(tema);
+
+    const imagen =
+        localStorage.getItem(
+            "imagenPuntualizate"
+        );
+
+    if(imagen)
+        aplicarImagen(imagen);
+
+}
+
+
+/* =====================================================
+   MODO OSCURO
+===================================================== */
+
+function alternarModoOscuro(){
+
+    document
+    .body
+    .classList
+    .toggle("oscuro");
+
+    const activo =
+        document
+        .body
+        .classList
+        .contains("oscuro");
+
+    localStorage.setItem(
+        "modoOscuroPuntualizate",
+        activo
+    );
+
+    document.getElementById(
+        "botonOscuro"
+    ).textContent =
+        activo
+        ? "☀️ Modo claro"
+        : "🌙 Modo oscuro";
+
+}
+
+function cargarModoOscuro(){
+
+    const activo =
+        localStorage.getItem(
+            "modoOscuroPuntualizate"
+        )==="true";
+
+    if(activo){
+
+        document.body.classList.add("oscuro");
+
+        document.getElementById(
+            "botonOscuro"
+        ).textContent =
+            "☀️ Modo claro";
+
+    }
+
+}
+
+
+/* =====================================================
+   HORARIO
+===================================================== */
 
 function mostrarTurno(turno){
 
+    const mañana =
+        document.getElementById("horarioManana");
+
+    const tarde =
+        document.getElementById("horarioTarde");
+
+    const btnM =
+        document.getElementById("turnoManana");
+
+    const btnT =
+        document.getElementById("turnoTarde");
+
     if(turno==="manana"){
 
-        document.getElementById(
-            "horarioManana"
-        ).style.display="block";
+        mañana.classList.remove("oculto");
+        tarde.classList.add("oculto");
 
-        document.getElementById(
-            "horarioTarde"
-        ).style.display="none";
+        btnM.classList.add("activo");
+        btnT.classList.remove("activo");
 
-    }
+    }else{
 
-    else{
+        mañana.classList.add("oculto");
+        tarde.classList.remove("oculto");
 
-        document.getElementById(
-            "horarioManana"
-        ).style.display="none";
-
-        document.getElementById(
-            "horarioTarde"
-        ).style.display="block";
+        btnM.classList.remove("activo");
+        btnT.classList.add("activo");
 
     }
 
 }
 
+function mostrarFormularioClase(){
 
-/* =========================
-   AGREGAR CLASE
-========================= */
-
-function agregarClase(){
-
-    const formulario =
-        document.getElementById(
-            "formularioClase"
-        );
-
-    if(
-        formulario.style.display==="none" ||
-        formulario.style.display===""
-    ){
-
-        formulario.style.display="block";
-
-    }
-
-    else{
-
-        formulario.style.display="none";
-
-    }
+    document
+    .getElementById("formularioClase")
+    .classList.remove("oculto");
 
 }
 
+function cerrarFormularioClase(){
 
-/* =========================
-   GUARDAR CLASE
-========================= */
+    document
+    .getElementById("formularioClase")
+    .classList.add("oculto");
+
+    document.getElementById(
+        "idClaseEditar"
+    ).value="";
+
+}
 
 function guardarClase(){
+
+    const idEditar =
+        document.getElementById(
+            "idClaseEditar"
+        ).value;
 
     const dia =
         document.getElementById(
@@ -1267,6 +3152,16 @@ function guardarClase(){
     const nombre =
         document.getElementById(
             "nombreClase"
+        ).value.trim();
+
+    const profesor =
+        document.getElementById(
+            "profesorClase"
+        ).value.trim();
+
+    const aula =
+        document.getElementById(
+            "aulaClase"
         ).value.trim();
 
     const turno =
@@ -1284,65 +3179,70 @@ function guardarClase(){
 
     }
 
-    const clase = {
+    if(idEditar){
 
-        id:Date.now(),
+        const clase =
+            horario.find(
+                c=>c.id===Number(idEditar)
+            );
 
-        dia:dia,
+        if(clase){
 
-        hora:hora,
+            clase.dia=dia;
+            clase.hora=hora;
+            clase.nombre=nombre;
+            clase.profesor=profesor;
+            clase.aula=aula;
+            clase.turno=turno;
 
-        nombre:nombre,
+        }
 
-        turno:turno
+    }else{
 
-    };
+        horario.push({
 
-    let horario =
-        JSON.parse(
-            localStorage.getItem(
-                "horarioPuntualizate"
-            )
-        ) || [];
+            id:Date.now(),
 
-    horario.push(clase);
+            dia,
+            hora,
+            nombre,
+            profesor,
+            aula,
+            turno
 
-    localStorage.setItem(
-        "horarioPuntualizate",
-        JSON.stringify(horario)
-    );
+        });
 
-    document.getElementById(
-        "horaClase"
-    ).value="";
+    }
 
-    document.getElementById(
-        "nombreClase"
-    ).value="";
+    guardarHorario();
 
-    document.getElementById(
-        "formularioClase"
-    ).style.display="none";
+    limpiarFormularioClase();
+
+    cerrarFormularioClase();
 
     mostrarHorarioClases();
 
+    mostrarToast(
+        idEditar
+        ? "✏️ Clase actualizada"
+        : "📚 Clase agregada"
+    );
+
 }
 
+function limpiarFormularioClase(){
 
-/* =========================
-   MOSTRAR CLASES
-========================= */
+    document.getElementById("horaClase").value="";
+    document.getElementById("nombreClase").value="";
+    document.getElementById("profesorClase").value="";
+    document.getElementById("aulaClase").value="";
+    document.getElementById("idClaseEditar").value="";
+
+}
 
 function mostrarHorarioClases(){
 
-    const horario =
-        JSON.parse(
-            localStorage.getItem(
-                "horarioPuntualizate"
-            )
-        ) || [];
-
-    const dias = [
+    const dias=[
 
         "Lunes",
         "Martes",
@@ -1356,6 +3256,17 @@ function mostrarHorarioClases(){
     let manana="";
     let tarde="";
 
+    const diaActual =
+        new Date()
+        .toLocaleDateString(
+            "es-PE",
+            {weekday:"long"}
+        );
+
+    const diaCapitalizado =
+        diaActual.charAt(0).toUpperCase()+
+        diaActual.slice(1);
+
     dias.forEach(dia=>{
 
         const clasesManana =
@@ -1365,9 +3276,7 @@ function mostrarHorarioClases(){
                 c.turno==="manana"
             )
             .sort((a,b)=>
-                a.hora.localeCompare(
-                    b.hora
-                )
+                a.hora.localeCompare(b.hora)
             );
 
         const clasesTarde =
@@ -1377,78 +3286,37 @@ function mostrarHorarioClases(){
                 c.turno==="tarde"
             )
             .sort((a,b)=>
-                a.hora.localeCompare(
-                    b.hora
-                )
+                a.hora.localeCompare(b.hora)
             );
 
 
-        /* MAÑANA */
+        if(clasesManana.length){
 
-        if(clasesManana.length>0){
-
-            manana +=
+            manana+=
                 `<h4>📅 ${dia}</h4>`;
 
             clasesManana.forEach(c=>{
 
-                manana += `
-
-                    <div class="clase-horario">
-
-                        <strong>
-                            ⏰ ${c.hora}
-                        </strong>
-
-                        <span>
-                            📚 ${c.nombre}
-                        </span>
-
-                        <button
-                            onclick="eliminarClase(${c.id})"
-                        >
-                            🗑️
-                        </button>
-
-                    </div>
-
-                `;
+                manana+=crearHTMLClase(
+                    c,
+                    dia===diaCapitalizado
+                );
 
             });
 
         }
 
+        if(clasesTarde.length){
 
-        /* TARDE */
-
-        if(clasesTarde.length>0){
-
-            tarde +=
+            tarde+=
                 `<h4>📅 ${dia}</h4>`;
 
             clasesTarde.forEach(c=>{
 
-                tarde += `
-
-                    <div class="clase-horario">
-
-                        <strong>
-                            ⏰ ${c.hora}
-                        </strong>
-
-                        <span>
-                            📚 ${c.nombre}
-                        </span>
-
-                        <button
-                            onclick="eliminarClase(${c.id})"
-                        >
-                            🗑️
-                        </button>
-
-                    </div>
-
-                `;
+                tarde+=crearHTMLClase(
+                    c,
+                    dia===diaCapitalizado
+                );
 
             });
 
@@ -1456,1401 +3324,493 @@ function mostrarHorarioClases(){
 
     });
 
-
     document.getElementById(
         "listaManana"
     ).innerHTML =
         manana ||
-        '<p class="pequeno">No hay clases en la mañana.</p>';
-
+        `<p class="pequeno">
+            No hay clases en la mañana.
+        </p>`;
 
     document.getElementById(
         "listaTarde"
     ).innerHTML =
         tarde ||
-        '<p class="pequeno">No hay clases en la tarde.</p>';
+        `<p class="pequeno">
+            No hay clases en la tarde.
+        </p>`;
 
 }
 
+function crearHTMLClase(c,hoy){
 
-/* =========================
-   ELIMINAR CLASE
-========================= */
+    return `
+
+        <div class="clase-horario ${hoy ? "hoy":""}">
+
+            <strong>
+                ⏰ ${escapeHTML(c.hora)}
+            </strong>
+
+            <div class="clase-info">
+
+                <strong>
+                    📚 ${escapeHTML(c.nombre)}
+                </strong>
+
+                ${
+                    c.profesor
+                    ?
+                    `<small>
+                        👩‍🏫 ${escapeHTML(c.profesor)}
+                    </small>`
+                    :
+                    ""
+                }
+
+                ${
+                    c.aula
+                    ?
+                    `<small>
+                        🚪 ${escapeHTML(c.aula)}
+                    </small>`
+                    :
+                    ""
+                }
+
+            </div>
+
+            <button
+                class="secundario"
+                onclick="editarClase(${c.id})">
+                ✏️
+            </button>
+
+            <button
+                class="peligro"
+                onclick="eliminarClase(${c.id})">
+                🗑️
+            </button>
+
+        </div>
+
+    `;
+
+}
+
+function editarClase(id){
+
+    const clase =
+        horario.find(
+            c=>c.id===id
+        );
+
+    if(!clase)
+        return;
+
+    document.getElementById(
+        "idClaseEditar"
+    ).value=clase.id;
+
+    document.getElementById(
+        "diaClase"
+    ).value=clase.dia;
+
+    document.getElementById(
+        "horaClase"
+    ).value=clase.hora;
+
+    document.getElementById(
+        "nombreClase"
+    ).value=clase.nombre;
+
+    document.getElementById(
+        "profesorClase"
+    ).value=clase.profesor || "";
+
+    document.getElementById(
+        "aulaClase"
+    ).value=clase.aula || "";
+
+    document.getElementById(
+        "turnoClase"
+    ).value=clase.turno;
+
+    mostrarFormularioClase();
+
+    document
+    .getElementById("formularioClase")
+    .scrollIntoView({
+        behavior:"smooth"
+    });
+
+}
 
 function eliminarClase(id){
 
-    let horario =
-        JSON.parse(
-            localStorage.getItem(
-                "horarioPuntualizate"
-            )
-        ) || [];
+    const clase =
+        horario.find(
+            c=>c.id===id
+        );
+
+    if(!clase)
+        return;
+
+    if(
+        !confirm(
+            `¿Eliminar la clase de ${clase.nombre}?`
+        )
+    )
+        return;
 
     horario =
         horario.filter(
             c=>c.id!==id
         );
 
-    localStorage.setItem(
-        "horarioPuntualizate",
-        JSON.stringify(horario)
-    );
+    guardarHorario();
 
     mostrarHorarioClases();
 
+    mostrarToast(
+        "🗑️ Clase eliminada"
+    );
+
 }
 
 
-/* =========================
-   AGREGAR TAREA
-========================= */
+/* =====================================================
+   EXPORTAR DATOS
+===================================================== */
 
-async function agregarTarea(){
+function exportarDatos(){
 
-    const materia =
-        document.getElementById(
-            "materia"
-        ).value;
+    const respaldo={
 
-    const actividad =
-        document.getElementById(
-            "actividad"
-        ).value.trim();
+        version:2,
 
-    const fecha =
-        document.getElementById(
-            "fecha"
-        ).value;
+        fecha:
+            new Date().toISOString(),
 
-    const minutos =
-        Number(
-            document.getElementById(
-                "minutos"
-            ).value
-        );
+        tareas,
 
-    const sonido =
-        document.getElementById(
-            "sonido"
-        ).value;
+        horario,
 
-    const archivoSonido =
-        document.getElementById(
-            "archivoSonido"
-        ).files[0];
+        tema:
+            localStorage.getItem(
+                "temaPuntualizate"
+            ),
 
-    let sonidoPersonalizado="";
-
-
-    if(
-        sonido==="personalizado"
-    ){
-
-        if(!archivoSonido){
-
-            alert(
-                "Selecciona un archivo de sonido."
-            );
-
-            return;
-
-        }
-
-        sonidoPersonalizado =
-            await convertirAudioBase64(
-                archivoSonido
-            );
-
-    }
-
-
-    const voz =
-        document.getElementById(
-            "voz"
-        ).value;
-
-
-    if(!actividad || !fecha){
-
-        alert(
-            "Completa el nombre de la actividad y la fecha."
-        );
-
-        return;
-
-    }
-
-
-    const tarea={
-
-        id:Date.now(),
-
-        materia:materia,
-
-        actividad:actividad,
-
-        fecha:fecha,
-
-        minutos:minutos,
-
-        sonido:sonido,
-
-        sonidoPersonalizado:
-            sonidoPersonalizado,
-
-        voz:voz,
-
-        avisada:false,
-
-        completada:false
+        modoOscuro:
+            localStorage.getItem(
+                "modoOscuroPuntualizate"
+            )
 
     };
 
+    const contenido =
+        JSON.stringify(
+            respaldo,
+            null,
+            2
+        );
 
-    tareas.push(tarea);
+    const blob =
+        new Blob(
+            [contenido],
+            {
+                type:"application/json"
+            }
+        );
 
-    guardar();
+    const url =
+        URL.createObjectURL(blob);
 
+    const enlace =
+        document.createElement("a");
 
-    document.getElementById(
-        "actividad"
-    ).value="";
+    enlace.href=url;
 
-    document.getElementById(
-        "archivoSonido"
-    ).value="";
+    enlace.download =
+        "respaldo-puntualizate.json";
 
+    enlace.click();
 
-    mostrarTareas();
+    URL.revokeObjectURL(url);
+
+    mostrarToast(
+        "💾 Respaldo creado"
+    );
 
 }
 
 
-/* =========================
-   CONVERTIR AUDIO
-========================= */
+/* =====================================================
+   IMPORTAR DATOS
+===================================================== */
 
-function convertirAudioBase64(
-    archivo
-){
+function importarDatos(event){
 
-    return new Promise(
-        (resolve,reject)=>{
+    const archivo =
+        event.target.files[0];
 
-            const lector =
-                new FileReader();
+    if(!archivo)
+        return;
 
-            lector.onload=()=>{
-                resolve(
+    const lector =
+        new FileReader();
+
+    lector.onload=function(){
+
+        try{
+
+            const datos =
+                JSON.parse(
                     lector.result
                 );
-            };
 
-            lector.onerror=()=>{
-                reject(
-                    lector.error
-                );
-            };
+            if(
+                !Array.isArray(datos.tareas) ||
+                !Array.isArray(datos.horario)
+            ){
 
-            lector.readAsDataURL(
-                archivo
-            );
+                throw new Error();
 
-        }
-    );
+            }
 
-}
+            if(
+                !confirm(
+                    "Esto reemplazará tus tareas y horario actuales. ¿Continuar?"
+                )
+            )
+                return;
 
+            tareas =
+                datos.tareas;
 
-/* =========================
-   MOSTRAR TAREAS
-========================= */
+            horario =
+                datos.horario;
 
-function mostrarTareas(){
+            guardar();
+            guardarHorario();
 
-    const lista =
-        document.getElementById(
-            "lista"
-        );
+            if(datos.tema){
 
-    lista.innerHTML="";
-
-
-    if(tareas.length===0){
-
-        lista.innerHTML=
-            '<p class="pequeno">Todavía no tienes actividades.</p>';
-
-        return;
-
-    }
-
-
-    tareas
-
-    .filter(
-        t=>!t.completada
-    )
-
-    .sort(
-        (a,b)=>
-            new Date(a.fecha) -
-            new Date(b.fecha)
-    )
-
-    .forEach(t=>{
-
-        const fecha =
-            new Date(t.fecha);
-
-        const div =
-            document.createElement(
-                "div"
-            );
-
-        div.className="tarea";
-
-
-        div.innerHTML=`
-
-            <h3>
-                📚 ${t.materia}
-            </h3>
-
-            <p>
-                <strong>
-                    ${t.actividad}
-                </strong>
-            </p>
-
-            <p>
-
-                📅 ${fecha.toLocaleDateString()}
-
-                <br>
-
-                ⏰ ${fecha.toLocaleTimeString(
-                    [],
-                    {
-                        hour:'2-digit',
-                        minute:'2-digit'
-                    }
-                )}
-
-            </p>
-
-            <p>
-                🔔 Aviso ${t.minutos} min antes
-            </p>
-
-            <p class="estado">
-                ⏳ ${tiempoRestante(t)}
-            </p>
-
-            <div class="acciones">
-
-                <button
-                    class="hecha"
-                    onclick="completar(${t.id})"
-                >
-                    ✅ Ya la hice
-                </button>
-
-                <button
-                    class="recordar"
-                    onclick="editarTarea(${t.id})"
-                >
-                    ✏️ Cambiar
-                </button>
-
-                <button
-                    class="eliminar"
-                    onclick="eliminarTarea(${t.id})"
-                >
-                    🗑️
-                </button>
-
-            </div>
-
-        `;
-
-
-        lista.appendChild(div);
-
-    });
-
-}
-
-
-/* =========================
-   TIEMPO RESTANTE
-========================= */
-
-function tiempoRestante(t){
-
-    const ahora =
-        new Date();
-
-    const fecha =
-        new Date(t.fecha);
-
-    const diferencia =
-        fecha-ahora;
-
-
-    if(diferencia<=0){
-
-        return "⚠️ Actividad pendiente";
-
-    }
-
-
-    const minutos =
-        Math.floor(
-            diferencia/60000
-        );
-
-
-    if(minutos<60){
-
-        return `Faltan ${minutos} minutos`;
-
-    }
-
-
-    const horas =
-        Math.floor(
-            minutos/60
-        );
-
-    const min =
-        minutos%60;
-
-
-    return `Faltan ${horas} h ${min} min`;
-
-}
-
-
-/* =========================
-   COMPLETAR TAREA
-========================= */
-
-function completar(id){
-
-    const tarea =
-        tareas.find(
-            t=>t.id===id
-        );
-
-
-    if(tarea){
-
-        tarea.completada=true;
-
-        guardar();
-
-        mostrarTareas();
-
-    }
-
-}
-
-
-/* =========================
-   ELIMINAR TAREA
-========================= */
-
-function eliminarTarea(id){
-
-    if(
-        confirm(
-            "¿Eliminar esta actividad?"
-        )
-    ){
-
-        tareas =
-            tareas.filter(
-                t=>t.id!==id
-            );
-
-        guardar();
-
-        mostrarTareas();
-
-    }
-
-}
-
-
-/* =========================
-   EDITAR TAREA
-========================= */
-
-function editarTarea(id){
-
-    const tarea =
-        tareas.find(
-            t=>t.id===id
-        );
-
-
-    if(!tarea)
-        return;
-
-
-    const nuevoNombre =
-        prompt(
-            "Cambiar nombre de la actividad:",
-            tarea.actividad
-        );
-
-
-    if(nuevoNombre){
-
-        tarea.actividad =
-            nuevoNombre;
-
-        guardar();
-
-        mostrarTareas();
-
-    }
-
-}
-
-
-/* =========================
-   SONIDOS
-========================= */
-
-function sonidoCampana(){
-
-    const ctx =
-        new AudioContext();
-
-    const osc =
-        ctx.createOscillator();
-
-    const gain =
-        ctx.createGain();
-
-
-    osc.connect(gain);
-
-    gain.connect(
-        ctx.destination
-    );
-
-
-    osc.frequency.value=900;
-
-
-    gain.gain.setValueAtTime(
-        0.3,
-        ctx.currentTime
-    );
-
-
-    gain.gain.exponentialRampToValueAtTime(
-        0.001,
-        ctx.currentTime+1
-    );
-
-
-    osc.start();
-
-    osc.stop(
-        ctx.currentTime+1
-    );
-
-}
-
-
-function sonidoDigital(){
-
-    const ctx =
-        new AudioContext();
-
-
-    [700,1000,700].forEach(
-        (frecuencia,i)=>{
-
-            const osc =
-                ctx.createOscillator();
-
-            const gain =
-                ctx.createGain();
-
-
-            osc.connect(gain);
-
-            gain.connect(
-                ctx.destination
-            );
-
-
-            osc.frequency.value =
-                frecuencia;
-
-
-            const inicio =
-                ctx.currentTime +
-                i*0.25;
-
-
-            gain.gain.setValueAtTime(
-                0.2,
-                inicio
-            );
-
-
-            gain.gain.exponentialRampToValueAtTime(
-                0.001,
-                inicio+0.2
-            );
-
-
-            osc.start(inicio);
-
-            osc.stop(
-                inicio+0.2
-            );
-
-        }
-    );
-
-}
-
-
-function sonidoAlarma(){
-
-    const ctx =
-        new AudioContext();
-
-    let i=0;
-
-
-    const intervalo =
-        setInterval(()=>{
-
-            const osc =
-                ctx.createOscillator();
-
-            const gain =
-                ctx.createGain();
-
-
-            osc.connect(gain);
-
-            gain.connect(
-                ctx.destination
-            );
-
-
-            osc.frequency.value =
-                i%2===0
-                ? 900
-                : 600;
-
-
-            gain.gain.value=0.2;
-
-
-            osc.start();
-
-            osc.stop(
-                ctx.currentTime+0.18
-            );
-
-
-            i++;
-
-
-            if(i>=6){
-
-                clearInterval(
-                    intervalo
+                localStorage.setItem(
+                    "temaPuntualizate",
+                    datos.tema
                 );
 
             }
 
-        },250);
+            mostrarTareas();
+            mostrarHorarioClases();
+            actualizarProgreso();
 
-}
-
-
-function sonidoMelodia(){
-
-    const ctx =
-        new AudioContext();
-
-
-    const notas=[
-        523,
-        659,
-        784,
-        659,
-        880
-    ];
-
-
-    notas.forEach(
-        (frecuencia,i)=>{
-
-            const osc =
-                ctx.createOscillator();
-
-            const gain =
-                ctx.createGain();
-
-
-            osc.connect(gain);
-
-            gain.connect(
-                ctx.destination
+            alert(
+                "✅ Datos importados correctamente."
             );
 
+        }catch(e){
 
-            osc.frequency.value =
-                frecuencia;
-
-
-            const inicio =
-                ctx.currentTime+
-                i*0.3;
-
-
-            gain.gain.setValueAtTime(
-                0.2,
-                inicio
-            );
-
-
-            gain.gain.exponentialRampToValueAtTime(
-                0.001,
-                inicio+0.28
-            );
-
-
-            osc.start(inicio);
-
-            osc.stop(
-                inicio+0.28
+            alert(
+                "❌ El archivo no parece ser un respaldo válido de Puntualízate."
             );
 
         }
-    );
+
+        event.target.value="";
+
+    };
+
+    lector.readAsText(archivo);
 
 }
 
 
-function reproducirSonidoPersonalizado(
-    tarea
-){
+/* =====================================================
+   BORRAR COMPLETADAS
+===================================================== */
+
+function borrarCompletadas(){
+
+    const cantidad =
+        tareas.filter(
+            t=>t.completada
+        ).length;
+
+    if(cantidad===0){
+
+        alert(
+            "No tienes actividades terminadas para borrar."
+        );
+
+        return;
+
+    }
 
     if(
-        !tarea.sonidoPersonalizado
+        !confirm(
+            `Se eliminarán ${cantidad} actividades terminadas. ¿Continuar?`
+        )
     )
         return;
 
-
-    const audio =
-        new Audio(
-            tarea.sonidoPersonalizado
+    tareas =
+        tareas.filter(
+            t=>!t.completada
         );
-
-
-    audio.play().catch(
-        error=>{
-            console.log(
-                "No se pudo reproducir el sonido:",
-                error
-            );
-        }
-    );
-
-}
-
-
-function reproducirSonido(tipo){
-
-    if(tipo==="campana")
-        sonidoCampana();
-
-    if(tipo==="digital")
-        sonidoDigital();
-
-    if(tipo==="alarma")
-        sonidoAlarma();
-
-    if(tipo==="melodia")
-        sonidoMelodia();
-
-}
-
-
-/* =========================
-   VOZ
-========================= */
-
-function hablar(tarea){
-
-    if(tarea.voz!=="si")
-        return;
-
-
-    if(
-        !("speechSynthesis" in window)
-    )
-        return;
-
-
-    const mensaje =
-        `Atención. Te quedan ${tarea.minutos} minutos para completar tu actividad de ${tarea.materia}: ${tarea.actividad}.`;
-
-
-    const voz =
-        new SpeechSynthesisUtterance(
-            mensaje
-        );
-
-
-    voz.lang="es-ES";
-
-    voz.rate=0.9;
-
-
-    speechSynthesis.speak(
-        voz
-    );
-
-}
-
-
-/* =========================
-   ALERTA
-========================= */
-
-function mostrarAlerta(tarea){
-
-    tareaActual=tarea;
-
-
-    document.getElementById(
-        "mensajeAlerta"
-    ).textContent =
-        `⏰ Te quedan ${tarea.minutos} minutos para: ${tarea.actividad}`;
-
-
-    document.getElementById(
-        "alerta"
-    ).style.display="flex";
-
-
-    if(
-        tarea.sonido==="personalizado"
-    ){
-
-        reproducirSonidoPersonalizado(
-            tarea
-        );
-
-    }
-
-    else if(
-        tarea.sonido!=="ninguno"
-    ){
-
-        reproducirSonido(
-            tarea.sonido
-        );
-
-    }
-
-
-    hablar(tarea);
-
-}
-
-
-/* =========================
-   CERRAR ALERTA
-========================= */
-
-function cerrarAlerta(){
-
-    if(tareaActual){
-
-        tareaActual.avisada=true;
-
-        guardar();
-
-    }
-
-
-    document.getElementById(
-        "alerta"
-    ).style.display="none";
-
-
-    tareaActual=null;
-
-
-    mostrarTareas();
-
-}
-
-
-/* =========================
-   RECORDAR DESPUÉS
-========================= */
-
-function recordarDespues(){
-
-    if(!tareaActual)
-        return;
-
-
-    tareaActual.avisada=false;
-
-
-    const nuevaFecha =
-        new Date(
-            Date.now()+
-            5*60000
-        );
-
-
-    tareaActual.fecha =
-        nuevaFecha.toISOString();
-
 
     guardar();
 
-
-    document.getElementById(
-        "alerta"
-    ).style.display="none";
-
-
-    tareaActual=null;
-
-
     mostrarTareas();
+    actualizarProgreso();
+
+    mostrarToast(
+        "🧹 Actividades terminadas eliminadas"
+    );
 
 }
 
 
-/* =========================
-   REVISAR RECORDATORIOS
-========================= */
+/* =====================================================
+   INSTALACIÓN PWA
+===================================================== */
 
-function revisarRecordatorios(){
+window.addEventListener(
+    "beforeinstallprompt",
+    event=>{
 
-    const ahora =
-        new Date();
+        event.preventDefault();
 
+        deferredPrompt=event;
 
-    tareas.forEach(t=>{
-
-        if(
-            t.completada ||
-            t.avisada
-        )
-            return;
-
-
-        const fecha =
-            new Date(t.fecha);
-
-
-        const aviso =
-            new Date(
-                fecha.getTime()-
-                t.minutos*60000
-            );
-
-
-        if(
-            ahora>=aviso &&
-            ahora<fecha
-        ){
-
-            t.avisada=true;
-
-
-            mostrarAlerta(t);
-
-
-            guardar();
-
-        }
-
-    });
-
-
-    mostrarTareas();
-
-}
-
-
-/* =========================
-   IMAGEN PERSONALIZADA
-========================= */
-
-function elegirImagen(){
-
-    const archivo =
-        document.getElementById(
-            "imagenPersonalizada"
-        );
-
-    archivo.click();
-
-}
-
-
-document
-.getElementById(
-    "imagenPersonalizada"
-)
-.addEventListener(
-    "change",
-    function(){
-
-        const archivo =
-            this.files[0];
-
-
-        if(!archivo)
-            return;
-
-
-        const lector =
-            new FileReader();
-
-
-        lector.onload=function(){
-
-            const imagen =
-                lector.result;
-
-
-            localStorage.setItem(
-                "imagenPuntualizate",
-                imagen
-            );
-
-
-            document.querySelector(
-                "header"
-            ).style.backgroundImage =
-                `linear-gradient(#8f6b9b66,#8f6b9b66), url("${imagen}")`;
-
-        };
-
-
-        lector.readAsDataURL(
-            archivo
-        );
+        document
+        .getElementById("botonInstalar")
+        .classList.remove("oculto");
 
     }
 );
 
+async function instalarApp(){
 
-/* =========================
-   RESTAURAR IMAGEN
-========================= */
+    if(!deferredPrompt)
+        return;
 
-function restaurarImagen(){
+    deferredPrompt.prompt();
 
-    localStorage.removeItem(
-        "imagenPuntualizate"
-    );
+    const resultado =
+        await deferredPrompt.userChoice;
 
+    if(
+        resultado.outcome==="accepted"
+    ){
 
-    const tema =
-        localStorage.getItem(
-            "temaPuntualizate"
-        ) || "lila";
-
-
-    const overlays={
-
-        lila:"#8f6b9b66",
-
-        azul:"#527da566",
-
-        rosa:"#a45f7866",
-
-        verde:"#568a7066",
-
-        celeste:"#438b9166",
-
-        durazno:"#a86f4d66"
-
-    };
-
-
-    document.querySelector(
-        "header"
-    ).style.backgroundImage =
-        `linear-gradient(${overlays[tema]},${overlays[tema]}), url("lan-zhan.png")`;
-
-
-    document.getElementById(
-        "imagenPersonalizada"
-    ).value="";
-
-}
-
-
-/* =========================
-   CARGAR IMAGEN GUARDADA
-========================= */
-
-const imagenGuardada =
-    localStorage.getItem(
-        "imagenPuntualizate"
-    );
-
-
-if(imagenGuardada){
-
-    document.querySelector(
-        "header"
-    ).style.backgroundImage =
-        `linear-gradient(#8f6b9b66,#8f6b9b66), url("${imagenGuardada}")`;
-
-}
-
-
-/* =========================
-   SONIDO PERSONALIZADO
-========================= */
-
-document
-.getElementById(
-    "sonido"
-)
-.addEventListener(
-    "change",
-    function(){
-
-        const archivo =
-            document.getElementById(
-                "archivoSonido"
-            );
-
-
-        if(
-            this.value==="personalizado"
-        ){
-
-            archivo.click();
-
-        }
-
-    }
-);
-
-
-/* =========================
-   COLORES
-========================= */
-
-function mostrarColores(){
-
-    const colores =
-        document.getElementById(
-            "colores"
+        mostrarToast(
+            "📱 Instalando Puntualízate..."
         );
 
-
-    if(
-        colores.style.display==="none"
-    ){
-
-        colores.style.display="block";
-
     }
 
-    else{
+    deferredPrompt=null;
 
-        colores.style.display="none";
-
-    }
+    document
+    .getElementById("botonInstalar")
+    .classList.add("oculto");
 
 }
 
 
-/* =========================
-   CAMBIAR COLOR
-========================= */
+/* =====================================================
+   CARGAR
+===================================================== */
 
-function cambiarColor(color){
+function iniciar(){
 
-    const temas={
+    aplicarTema();
 
-        lila:{
-            principal:"#c58bc7",
-            oscuro:"#76527a",
-            fondo:"#fffaff",
-            borde:"#f0e5f2",
-            overlay:"#8f6b9b66"
-        },
+    cargarModoOscuro();
 
-        azul:{
-            principal:"#78a9d1",
-            oscuro:"#4d7095",
-            fondo:"#f8fcff",
-            borde:"#dcebf5",
-            overlay:"#527da566"
-        },
+    mostrarTareas();
 
-        rosa:{
-            principal:"#df91ae",
-            oscuro:"#9b5872",
-            fondo:"#fff8fb",
-            borde:"#f3dce5",
-            overlay:"#a45f7866"
-        },
+    mostrarHorarioClases();
 
-        verde:{
-            principal:"#8bc9ad",
-            oscuro:"#4f8067",
-            fondo:"#f7fffa",
-            borde:"#dcefe5",
-            overlay:"#568a7066"
-        },
+    actualizarResumen();
 
-        celeste:{
-            principal:"#79cbd1",
-            oscuro:"#43838a",
-            fondo:"#f5feff",
-            borde:"#d8eff1",
-            overlay:"#438b9166"
-        },
-
-        durazno:{
-            principal:"#e7a477",
-            oscuro:"#9a6543",
-            fondo:"#fffaf6",
-            borde:"#f2e1d5",
-            overlay:"#a86f4d66"
-        }
-
-    };
-
-
-    const tema =
-        temas[color];
-
-
-    document.documentElement.style.setProperty(
-        "--color-principal",
-        tema.principal
-    );
-
-
-    document.documentElement.style.setProperty(
-        "--color-oscuro",
-        tema.oscuro
-    );
-
-
-    document.documentElement.style.setProperty(
-        "--color-fondo",
-        tema.fondo
-    );
-
-
-    document.documentElement.style.setProperty(
-        "--color-borde",
-        tema.borde
-    );
-
-
-    document.documentElement.style.setProperty(
-        "--color-overlay",
-        tema.overlay
-    );
-
-
-    localStorage.setItem(
-        "temaPuntualizate",
-        color
-    );
-
-
-    if(
-        !localStorage.getItem(
-            "imagenPuntualizate"
-        )
-    ){
-
-        document.querySelector(
-            "header"
-        ).style.backgroundImage =
-            `linear-gradient(${tema.overlay},${tema.overlay}), url("lan-zhan.png")`;
-
-    }
+    actualizarProgreso();
 
 }
 
-
-/* =========================
-   APLICAR TEMA GUARDADO
-========================= */
-
-function aplicarTema(){
-
-    const tema =
-        localStorage.getItem(
-            "temaPuntualizate"
-        ) || "lila";
+iniciar();
 
 
-    const estilos={
-
-        lila:[
-            "#c58bc7",
-            "#76527a",
-            "#fffaff",
-            "#f0e5f2",
-            "#8f6b9b66"
-        ],
-
-        azul:[
-            "#78a9d1",
-            "#4d7095",
-            "#f8fcff",
-            "#dcebf5",
-            "#527da566"
-        ],
-
-        rosa:[
-            "#df91ae",
-            "#9b5872",
-            "#fff8fb",
-            "#f3dce5",
-            "#a45f7866"
-        ],
-
-        verde:[
-            "#8bc9ad",
-            "#4f8067",
-            "#f7fffa",
-            "#dcefe5",
-            "#568a7066"
-        ],
-
-        celeste:[
-            "#79cbd1",
-            "#43838a",
-            "#f5feff",
-            "#d8eff1",
-            "#438b9166"
-        ],
-
-        durazno:[
-            "#e7a477",
-            "#9a6543",
-            "#fffaf6",
-            "#f2e1d5",
-            "#a86f4d66"
-        ]
-
-    };
-
-
-    const colores =
-        estilos[tema];
-
-
-    document.documentElement.style.setProperty(
-        "--color-principal",
-        colores[0]
-    );
-
-
-    document.documentElement.style.setProperty(
-        "--color-oscuro",
-        colores[1]
-    );
-
-
-    document.documentElement.style.setProperty(
-        "--color-fondo",
-        colores[2]
-    );
-
-
-    document.documentElement.style.setProperty(
-        "--color-borde",
-        colores[3]
-    );
-
-
-    document.documentElement.style.setProperty(
-        "--color-overlay",
-        colores[4]
-    );
-
-
-    if(
-        !localStorage.getItem(
-            "imagenPuntualizate"
-        )
-    ){
-
-        document.querySelector(
-            "header"
-        ).style.backgroundImage =
-            `linear-gradient(${colores[4]},${colores[4]}), url("lan-zhan.png")`;
-
-    }
-
-}
-
-
-/* =========================
-INICIAR APLICACIÓN
-========================= */
-
-aplicarTema();
-
-mostrarTareas();
-
-mostrarHorarioClases();
-
-
-/* =========================
-REVISAR CADA 10 SEGUNDOS
-========================= */
+/* =====================================================
+   ACTUALIZAR CADA 10 SEGUNDOS
+===================================================== */
 
 setInterval(
     revisarRecordatorios,
     10000
 );
 
+setInterval(
+    ()=>{
+        mostrarTareas();
+    },
+    30000
+);
 
-/* =========================
-SERVICE WORKER
-========================= */
+
+/* =====================================================
+   REVISAR AL VOLVER A LA APP
+===================================================== */
+
+document.addEventListener(
+    "visibilitychange",
+    ()=>{
+
+        if(
+            !document.hidden
+        ){
+
+            revisarRecordatorios();
+
+        }
+
+    }
+);
+
+window.addEventListener(
+    "focus",
+    revisarRecordatorios
+);
+
+
+/* =====================================================
+   SERVICE WORKER
+===================================================== */
 
 if(
     "serviceWorker" in navigator
 ){
 
-    navigator.serviceWorker.register(
-        "sw.js"
-    );
+    navigator.serviceWorker
+    .register("sw.js")
+    .then(()=>{
+        console.log(
+            "Service Worker registrado."
+        );
+    })
+    .catch(error=>{
+        console.log(
+            "Error Service Worker:",
+            error
+        );
+    });
 
 }
 
 </script>
 
 </body>
-</html>
+    </html>
