@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
 
 <link rel="manifest" href="manifest.json">
@@ -15,40 +16,59 @@
     box-sizing:border-box;
 }
 
+:root{
+    --color-principal:#c58bc7;
+    --color-oscuro:#76527a;
+    --color-fondo:#fffaff;
+    --color-borde:#f0e5f2;
+    --color-acento:#78c5d1;
+    --color-overlay:#8f6b9b66;
+}
+
 body{
     margin:0;
     font-family:Arial,sans-serif;
-    background:linear-gradient(135deg,#fdf1f7,#eef9ff,#f4efff);
+    background:var(--color-fondo);
     color:#3d405b;
 }
 
-/* CONTENEDOR PRINCIPAL */
+/* =========================
+   APP
+========================= */
 
 .app{
     width:100%;
     max-width:560px;
     margin:auto;
     min-height:100vh;
-    background:#fffaff;
+    background:var(--color-fondo);
     box-shadow:0 0 35px #b8a9c955;
 }
 
-/* ENCABEZADO */
+/* =========================
+   ENCABEZADO
+========================= */
 
 header{
     background:
-        linear-gradient(#8f6b9b66,#8f6b9b66),
-        url("lan-zhan.png");
+    linear-gradient(var(--color-overlay),var(--color-overlay)),
+    url("lan-zhan.png");
+
     background-size:cover;
     background-position:center 35%;
     background-repeat:no-repeat;
+
     color:white;
     padding:45px 20px;
     text-align:center;
+
     position:relative;
+
     border-radius:0 0 30px 30px;
+
     box-shadow:0 5px 20px #9d8ab044;
 }
+
 header h1{
     margin:0;
     font-size:32px;
@@ -61,71 +81,67 @@ header p{
     opacity:.95;
 }
 
-/* CONTENIDO */
+/* =========================
+   BARRA DE MENÚ
+========================= */
+
+.barra-menu{
+    display:flex;
+    justify-content:center;
+    gap:8px;
+
+    padding:10px 15px;
+
+    background:var(--color-fondo);
+
+    border-bottom:1px solid var(--color-borde);
+}
+
+.barra-menu button{
+    flex:1;
+    max-width:180px;
+
+    background:transparent;
+
+    color:var(--color-oscuro);
+
+    border:1px solid var(--color-borde);
+
+    padding:10px 14px;
+    margin:0;
+
+    font-weight:bold;
+    border-radius:14px;
+}
+
+.barra-menu button:hover{
+    background:var(--color-borde);
+}
+
+/* =========================
+   CONTENIDO
+========================= */
 
 .contenido{
-    padding:22px;
+    padding:10px 22px 22px;
 }
 
-/* TARJETAS */
-
-.card{
-    background:#ffffff;
-    border-radius:24px;
-    padding:21px;
-    margin-bottom:20px;
-    box-shadow:0 8px 25px #b8a9c933;
-    border:1px solid #f0e5f2;
-}
-
-h2{
-    margin-top:0;
-    color:#76527a;
-    font-size:20px;
-}
-
-/* TEXTOS */
-
-label{
-    display:block;
-    margin-top:15px;
-    margin-bottom:6px;
-    font-weight:bold;
-    font-size:14px;
-    color:#68556b;
-}
-
-/* CAMPOS */
-
-input,
-select{
-    width:100%;
-    padding:13px 14px;
-    margin-top:3px;
-    border:2px solid #eee4f1;
-    border-radius:14px;
-    font-size:15px;
-    background:#fffaff;
-    color:#4d4650;
-    outline:none;
-    transition:.2s;
-}
-
-input:focus,
-select:focus{
-    border-color:#c798ca;
-    box-shadow:0 0 0 4px #dcb9df33;
-}
-
-/* BOTONES */
+/* =========================
+   BOTONES GENERALES
+========================= */
 
 button{
     border:none;
     border-radius:14px;
+
     padding:11px 15px;
+
     cursor:pointer;
+
     font-size:14px;
+
     margin-top:12px;
+
     transition:.2s;
 }
 
@@ -134,52 +150,169 @@ button:hover{
     box-shadow:0 5px 12px #00000018;
 }
 
+/* =========================
+   BOTÓN AGREGAR
+========================= */
+
 .agregar{
     width:100%;
-    background:linear-gradient(135deg,#c58bc7,#78c5d1);
+
+    background:
+    linear-gradient(
+        135deg,
+        var(--color-principal),
+        var(--color-acento)
+    );
+
     color:white;
+
     font-weight:bold;
+
     font-size:16px;
+
     padding:14px;
+
     margin-top:20px;
 }
 
-/* TARJETAS DE ACTIVIDADES */
+/* =========================
+   TARJETAS
+========================= */
+
+.card{
+    background:var(--color-fondo);
+
+    border-radius:24px;
+
+    padding:21px;
+
+    margin-bottom:20px;
+
+    box-shadow:0 8px 25px #b8a9c933;
+
+    border:1px solid var(--color-borde);
+}
+
+h2{
+    margin-top:0;
+
+    color:var(--color-oscuro);
+
+    font-size:20px;
+}
+
+/* =========================
+   TEXTOS
+========================= */
+
+label{
+    display:block;
+
+    margin-top:15px;
+    margin-bottom:6px;
+
+    font-weight:bold;
+
+    font-size:14px;
+
+    color:#68556b;
+}
+
+/* =========================
+   CAMPOS
+========================= */
+
+input,
+select{
+    width:100%;
+
+    padding:13px 14px;
+
+    margin-top:3px;
+
+    border:2px solid var(--color-borde);
+
+    border-radius:14px;
+
+    font-size:15px;
+
+    background:var(--color-fondo);
+
+    color:#4d4650;
+
+    outline:none;
+
+    transition:.2s;
+}
+
+input:focus,
+select:focus{
+    border-color:#c798ca;
+
+    box-shadow:
+    0 0 0 4px #dcb9df33;
+}
+
+/* =========================
+   TAREAS
+========================= */
 
 .tarea{
-    background:linear-gradient(135deg,#ffffff,#fff8fd);
-    border-left:6px solid #c58bc7;
+    background:
+    linear-gradient(
+        135deg,
+        var(--color-fondo),
+        #ffffff
+    );
+
+    border-left:6px solid var(--color-principal);
+
     border-radius:18px;
+
     padding:17px;
+
     margin-top:14px;
+
     box-shadow:0 5px 18px #b8a9c933;
 }
 
 .tarea h3{
     margin:0 0 8px;
-    color:#77517d;
+
+    color:var(--color-oscuro);
+
     font-size:17px;
 }
 
 .tarea p{
     margin:7px 0;
+
     color:#5f5963;
+
     font-size:14px;
 }
 
 .estado{
     font-weight:bold;
+
     color:#8a63a0 !important;
+
     background:#f5eafa;
+
     padding:9px 11px;
+
     border-radius:11px;
 }
 
-/* BOTONES DE LAS TAREAS */
+/* =========================
+   ACCIONES
+========================= */
 
 .acciones{
     display:flex;
+
     gap:7px;
+
     flex-wrap:wrap;
 }
 
@@ -202,217 +335,1253 @@ button:hover{
     color:white;
 }
 
-/* MENSAJE DE ACTIVIDADES VACÍAS */
+/* =========================
+   MENSAJE VACÍO
+========================= */
 
 .pequeno{
     font-size:13px;
+
     color:#9a8d9e;
+
     text-align:center;
+
     padding:15px;
 }
 
-/* ALERTA */
+/* =========================
+   PERSONALIZACIÓN
+========================= */
+
+.personalizacion{
+    text-align:center;
+
+    padding:0 20px;
+
+    margin:0;
+}
+
+.imagen-personalizada{
+    display:flex;
+
+    justify-content:center;
+
+    gap:5px;
+
+    flex-wrap:wrap;
+
+    padding:0;
+
+    margin:0;
+}
+
+.imagen-personalizada button{
+    background:var(--color-fondo);
+
+    color:var(--color-oscuro);
+
+    border:2px solid var(--color-principal);
+
+    font-weight:bold;
+
+    padding:9px 13px;
+
+    margin-top:5px;
+}
+
+.personalizacion > button{
+    background:var(--color-fondo);
+
+    color:var(--color-oscuro);
+
+    font-weight:bold;
+
+    border:2px solid var(--color-principal);
+}
+
+.colores{
+    margin-top:5px;
+
+    padding:10px;
+
+    background:#ffffff;
+
+    border-radius:18px;
+
+    box-shadow:0 5px 18px #b8a9c933;
+}
+
+.colores p{
+    margin:5px 0 8px;
+
+    font-size:13px;
+
+    font-weight:bold;
+}
+
+.color-opcion{
+    width:42px;
+    height:42px;
+
+    border-radius:50%;
+
+    padding:0;
+
+    margin:3px;
+
+    font-size:19px;
+
+    border:3px solid white;
+
+    box-shadow:0 2px 8px #00000020;
+}
+
+.lila{
+    background:#c58bc7;
+}
+
+.azul{
+    background:#78a9d1;
+}
+
+.rosa{
+    background:#df91ae;
+}
+
+.verde{
+    background:#8bc9ad;
+}
+
+.celeste{
+    background:#79cbd1;
+}
+
+.durazno{
+    background:#e7a477;
+}
+
+/* =========================
+   HORARIO
+========================= */
+
+.seccion-horario{
+    padding:5px 0 20px;
+}
+
+.turnos{
+    display:flex;
+
+    gap:8px;
+
+    margin-bottom:20px;
+}
+
+.turnos button{
+    flex:1;
+
+    background:var(--color-fondo);
+
+    color:var(--color-oscuro);
+
+    border:2px solid var(--color-borde);
+
+    font-weight:bold;
+
+    margin-top:0;
+}
+
+.turnos button:hover{
+    background:var(--color-borde);
+}
+
+.seccion-horario h3{
+    color:var(--color-oscuro);
+
+    margin-top:15px;
+}
+
+.seccion-horario h4{
+    margin-top:18px;
+
+    margin-bottom:8px;
+
+    color:var(--color-oscuro);
+
+    font-size:14px;
+}
+
+.clase-horario{
+    display:flex;
+
+    align-items:center;
+
+    gap:8px;
+
+    padding:12px;
+
+    margin-top:8px;
+
+    background:white;
+
+    border:1px solid var(--color-borde);
+
+    border-left:5px solid var(--color-principal);
+
+    border-radius:14px;
+
+    box-shadow:0 4px 12px #b8a9c922;
+}
+
+.clase-horario strong{
+    color:var(--color-oscuro);
+
+    white-space:nowrap;
+}
+
+.clase-horario span{
+    flex:1;
+
+    font-size:14px;
+}
+
+.clase-horario button{
+    background:#df8b9a;
+
+    color:white;
+
+    padding:7px 9px;
+
+    margin:0;
+}
+
+.formulario-clase{
+    margin-top:20px;
+
+    padding:18px;
+
+    background:white;
+
+    border:1px solid var(--color-borde);
+
+    border-radius:20px;
+
+    box-shadow:0 5px 18px #b8a9c933;
+}
+
+/* =========================
+   ALERTA
+========================= */
 
 .alerta{
     position:fixed;
-    bottom:22px;
-    left:50%;
-    transform:translateX(-50%);
-    width:90%;
-    max-width:450px;
-    background:linear-gradient(135deg,#76527a,#9b6fa0);
+
+    inset:0;
+
+    width:100%;
+    height:100%;
+
+    background:
+    linear-gradient(
+        135deg,
+        var(--color-oscuro),
+        var(--color-principal)
+    );
+
     color:white;
-    padding:20px;
-    border-radius:22px;
-    box-shadow:0 10px 35px #00000040;
+
+    padding:30px 22px;
+
     display:none;
-    z-index:10;
+
+    z-index:9999;
+
+    align-items:center;
+
+    justify-content:center;
+
+    text-align:center;
+}
+
+.alerta-contenido{
+    width:100%;
+
+    max-width:500px;
+}
+
+.alerta-dibujo{
+    font-size:90px;
+
+    margin-bottom:20px;
+
+    animation:latido 1s infinite;
+}
+
+.alerta h2{
+    font-size:28px;
+
+    margin:0 0 12px;
+
+    color:white;
+}
+
+.alerta p{
+    font-size:18px;
+
+    line-height:1.5;
+
+    margin:10px 0 25px;
 }
 
 .alerta button{
     background:white;
-    color:#76527a;
-    margin-right:6px;
+
+    color:var(--color-oscuro);
+
+    margin:7px;
+
+    padding:14px 20px;
+
+    font-size:15px;
+
+    font-weight:bold;
+}
+
+@keyframes latido{
+
+    0%,100%{
+        transform:scale(1);
+    }
+
+    50%{
+        transform:scale(1.12);
+    }
+
 }
 
 </style>
+
 </head>
 
 <body>
 
 <div class="app">
 
+<!-- =========================
+     ENCABEZADO
+========================= -->
+
 <header>
-    <h1> Puntualízate</h1>
-    <p>Organiza tus tareas y evita las tardanzas</p>
+
+    <h1>Puntualízate</h1>
+
+    <p>
+        Organiza tus tareas y evita las tardanzas
+    </p>
+
 </header>
+
+<!-- =========================
+     MENÚ
+========================= -->
+
+<div class="barra-menu">
+
+    <button onclick="mostrarInicio()">
+        🏠 Inicio
+    </button>
+
+    <button onclick="mostrarHorario()">
+        🕒 Horario
+    </button>
+
+</div>
 
 <div class="contenido">
 
+<!-- =========================
+     HORARIO
+========================= -->
+
+<div
+    id="seccionHorario"
+    class="seccion-horario"
+    style="display:none;"
+>
+
+    <h2>🕒 Mi horario</h2>
+
+    <div class="turnos">
+
+        <button onclick="mostrarTurno('manana')">
+            ☀️ Mañana
+        </button>
+
+        <button onclick="mostrarTurno('tarde')">
+            🌙 Tarde
+        </button>
+
+    </div>
+
+    <!-- MAÑANA -->
+
+    <div id="horarioManana">
+
+        <h3>☀️ Turno mañana</h3>
+
+        <div id="listaManana"></div>
+
+    </div>
+
+    <!-- TARDE -->
+
+    <div
+        id="horarioTarde"
+        style="display:none;"
+    >
+
+        <h3>🌙 Turno tarde</h3>
+
+        <div id="listaTarde"></div>
+
+    </div>
+
+    <!-- AGREGAR CLASE -->
+
+    <button
+        class="agregar"
+        onclick="agregarClase()"
+    >
+        ＋ Agregar clase
+    </button>
+
+    <!-- FORMULARIO -->
+
+    <div
+        id="formularioClase"
+        class="formulario-clase"
+        style="display:none;"
+    >
+
+        <h3>➕ Nueva clase</h3>
+
+        <label>Día</label>
+
+        <select id="diaClase">
+
+            <option>Lunes</option>
+            <option>Martes</option>
+            <option>Miércoles</option>
+            <option>Jueves</option>
+            <option>Viernes</option>
+            <option>Sábado</option>
+
+        </select>
+
+        <label>Hora</label>
+
+        <input
+            id="horaClase"
+            type="time"
+        >
+
+        <label>Curso</label>
+
+        <input
+            id="nombreClase"
+            type="text"
+            placeholder="Ej.: Matemática"
+        >
+
+        <label>Turno</label>
+
+        <select id="turnoClase">
+
+            <option value="manana">
+                ☀️ Mañana
+            </option>
+
+            <option value="tarde">
+                🌙 Tarde
+            </option>
+
+        </select>
+
+        <button
+            class="agregar"
+            onclick="guardarClase()"
+        >
+            💾 Guardar clase
+        </button>
+
+    </div>
+
+</div>
+
+<!-- =========================
+     CAMBIAR IMAGEN
+========================= -->
+
+<div class="imagen-personalizada">
+
+    <button onclick="elegirImagen()">
+        🖼️ Cambiar imagen
+    </button>
+
+    <input
+        type="file"
+        id="imagenPersonalizada"
+        accept="image/*"
+        style="display:none;"
+    >
+
+    <button onclick="restaurarImagen()">
+        🔄 Imagen original
+    </button>
+
+</div>
+
+<!-- =========================
+     PERSONALIZACIÓN
+========================= -->
+
+<div class="personalizacion">
+
+    <button onclick="mostrarColores()">
+        🎨 Personalizar
+    </button>
+
+    <div
+        id="colores"
+        class="colores"
+        style="display:none;"
+    >
+
+        <p>
+            Elige tu color:
+        </p>
+
+        <button
+            class="color-opcion lila"
+            onclick="cambiarColor('lila')"
+        >
+            💜
+        </button>
+
+        <button
+            class="color-opcion azul"
+            onclick="cambiarColor('azul')"
+        >
+            💙
+        </button>
+
+        <button
+            class="color-opcion rosa"
+            onclick="cambiarColor('rosa')"
+        >
+            🩷
+        </button>
+
+        <button
+            class="color-opcion verde"
+            onclick="cambiarColor('verde')"
+        >
+            💚
+        </button>
+
+        <button
+            class="color-opcion celeste"
+            onclick="cambiarColor('celeste')"
+        >
+            🩵
+        </button>
+
+        <button
+            class="color-opcion durazno"
+            onclick="cambiarColor('durazno')"
+        >
+            🧡
+        </button>
+
+    </div>
+
+</div>
+
+<!-- =========================
+     NUEVA ACTIVIDAD
+========================= -->
+
 <div class="card">
 
-<h2>➕ Nueva actividad</h2>
+    <h2>
+        ➕ Nueva actividad
+    </h2>
 
-<label>Materia</label>
-<select id="materia">
-    <option>Matemática</option>
-    <option>Comunicación</option>
-    <option>Ciencia y Tecnología</option>
-    <option>EPT</option>
-    <option>Inglés</option>
-    <option>Historia</option>
-    <option>Religión</option>
-    <option>Otra</option>
-</select>
+    <label>
+        Materia
+    </label>
 
-<label>Nombre de la actividad</label>
-<input id="actividad" type="text" placeholder="Ej.: Resolver ejercicios de probabilidad">
+    <select id="materia">
 
-<label>Fecha y hora</label>
-<input id="fecha" type="datetime-local">
+        <option>Matemática</option>
+        <option>Comunicación</option>
+        <option>Ciencia y Tecnología</option>
+        <option>EPT</option>
+        <option>Inglés</option>
+        <option>Historia</option>
+        <option>Religión</option>
+        <option>Otra</option>
 
-<label>Avisarme</label>
-<select id="minutos">
-    <option value="1">1 minuto antes</option>
-    <option value="5" selected>5 minutos antes</option>
-    <option value="10">10 minutos antes</option>
-    <option value="15">15 minutos antes</option>
-    <option value="30">30 minutos antes</option>
-</select>
+    </select>
 
-<label>🔔 Sonido</label>
-<select id="sonido">
-    <option value="campana">🔔 Campanita</option>
-    <option value="melodia">🎵 Melodía</option>
-    <option value="alarma">🚨 Alarma</option>
-    <option value="digital">💻 Digital</option>
-    <option value="ninguno">🔇 Sin sonido</option>
-    <option value="personalizado">🎵Mi propio sonido</option>
-</select>
-<input type="file" id="archivoSonido" accept="audio/*" style="display:none;">
+    <label>
+        Nombre de la actividad
+    </label>
 
-<label>
-    🔊 Aviso por voz
-</label>
+    <input
+        id="actividad"
+        type="text"
+        placeholder="Ej.: Resolver ejercicios de probabilidad"
+    >
 
-<select id="voz">
-    <option value="si">Activado</option>
-    <option value="no">Desactivado</option>
-</select>
+    <label>
+        Fecha y hora
+    </label>
 
-<button class="agregar" onclick="agregarTarea()">
-    ＋ Agregar actividad
-</button>
+    <input
+        id="fecha"
+        type="datetime-local"
+    >
+
+    <label>
+        Avisarme
+    </label>
+
+    <select id="minutos">
+
+        <option value="1">
+            1 minuto antes
+        </option>
+
+        <option
+            value="5"
+            selected
+        >
+            5 minutos antes
+        </option>
+
+        <option value="10">
+            10 minutos antes
+        </option>
+
+        <option value="15">
+            15 minutos antes
+        </option>
+
+        <option value="30">
+            30 minutos antes
+        </option>
+
+    </select>
+
+    <label>
+        🔔 Sonido
+    </label>
+
+    <select id="sonido">
+
+        <option value="campana">
+            🔔 Campanita
+        </option>
+
+        <option value="melodia">
+            🎵 Melodía
+        </option>
+
+        <option value="alarma">
+            🚨 Alarma
+        </option>
+
+        <option value="digital">
+            💻 Digital
+        </option>
+
+        <option value="ninguno">
+            🔇 Sin sonido
+        </option>
+
+        <option value="personalizado">
+            🎵 Mi propio sonido
+        </option>
+
+    </select>
+
+    <input
+        type="file"
+        id="archivoSonido"
+        accept="audio/*"
+        style="display:none;"
+    >
+
+    <label>
+        🔊 Aviso por voz
+    </label>
+
+    <select id="voz">
+
+        <option value="si">
+            Activado
+        </option>
+
+        <option value="no">
+            Desactivado
+        </option>
+
+    </select>
+
+    <button
+        class="agregar"
+        onclick="agregarTarea()"
+    >
+        ＋ Agregar actividad
+    </button>
 
 </div>
+
+<!-- =========================
+     ACTIVIDADES
+========================= -->
 
 <div class="card">
 
-<h2>📅 Mis actividades</h2>
+    <h2>
+        📅 Mis actividades
+    </h2>
 
-<div id="lista"></div>
+    <div id="lista"></div>
 
 </div>
 
 </div>
+
 </div>
 
-<div class="alerta" id="alerta">
+<!-- =========================
+     ALERTA
+========================= -->
 
-<strong id="mensajeAlerta"></strong>
+<div
+    class="alerta"
+    id="alerta"
+>
 
-<br>
+    <div class="alerta-contenido">
 
-<button onclick="cerrarAlerta()">
-Ya la hice ✅
-</button>
+        <div class="alerta-dibujo">
+            ⏰
+        </div>
 
-<button onclick="recordarDespues()">
-Recordarme después ⏳
-</button>
+        <h2>
+            ¡Hora de tu actividad!
+        </h2>
+
+        <p id="mensajeAlerta"></p>
+
+        <button onclick="cerrarAlerta()">
+            ✅ Ya la hice
+        </button>
+
+        <button onclick="recordarDespues()">
+            ⏳ Recordarme después
+        </button>
+
+    </div>
 
 </div>
 
 <script>
 
-let tareas = JSON.parse(localStorage.getItem("tareasPuntualizate")) || [];
+/* =========================
+   TAREAS
+========================= */
+
+let tareas =
+    JSON.parse(
+        localStorage.getItem("tareasPuntualizate")
+    ) || [];
 
 let tareaActual = null;
 
+
+/* =========================
+   GUARDAR TAREAS
+========================= */
+
 function guardar(){
+
     localStorage.setItem(
         "tareasPuntualizate",
         JSON.stringify(tareas)
     );
+
 }
-function convertirAudioBase64(archivo){
 
-    return new Promise((resolve, reject) => {
 
-        const lector = new FileReader();
+/* =========================
+   INICIO
+========================= */
 
-        lector.onload = () => {
-            resolve(lector.result);
-        };
+function mostrarInicio(){
 
-        lector.onerror = () => {
-            reject(lector.error);
-        };
+    document.getElementById(
+        "seccionHorario"
+    ).style.display="none";
 
-        lector.readAsDataURL(archivo);
+    document.querySelector(
+        ".imagen-personalizada"
+    ).style.display="flex";
+
+    document.querySelector(
+        ".personalizacion"
+    ).style.display="block";
+
+    document.querySelectorAll(
+        ".card"
+    ).forEach(card=>{
+
+        card.style.display="block";
 
     });
 
 }
 
 
+/* =========================
+   MOSTRAR HORARIO
+========================= */
+
+function mostrarHorario(){
+
+    document.querySelector(
+        ".imagen-personalizada"
+    ).style.display="none";
+
+    document.querySelector(
+        ".personalizacion"
+    ).style.display="none";
+
+    document.querySelectorAll(
+        ".card"
+    ).forEach(card=>{
+
+        card.style.display="none";
+
+    });
+
+    document.getElementById(
+        "seccionHorario"
+    ).style.display="block";
+
+    mostrarHorarioClases();
+
+}
+
+
+/* =========================
+   MOSTRAR TURNO
+========================= */
+
+function mostrarTurno(turno){
+
+    if(turno==="manana"){
+
+        document.getElementById(
+            "horarioManana"
+        ).style.display="block";
+
+        document.getElementById(
+            "horarioTarde"
+        ).style.display="none";
+
+    }
+
+    else{
+
+        document.getElementById(
+            "horarioManana"
+        ).style.display="none";
+
+        document.getElementById(
+            "horarioTarde"
+        ).style.display="block";
+
+    }
+
+}
+
+
+/* =========================
+   AGREGAR CLASE
+========================= */
+
+function agregarClase(){
+
+    const formulario =
+        document.getElementById(
+            "formularioClase"
+        );
+
+    if(
+        formulario.style.display==="none" ||
+        formulario.style.display===""
+    ){
+
+        formulario.style.display="block";
+
+    }
+
+    else{
+
+        formulario.style.display="none";
+
+    }
+
+}
+
+
+/* =========================
+   GUARDAR CLASE
+========================= */
+
+function guardarClase(){
+
+    const dia =
+        document.getElementById(
+            "diaClase"
+        ).value;
+
+    const hora =
+        document.getElementById(
+            "horaClase"
+        ).value;
+
+    const nombre =
+        document.getElementById(
+            "nombreClase"
+        ).value.trim();
+
+    const turno =
+        document.getElementById(
+            "turnoClase"
+        ).value;
+
+    if(!hora || !nombre){
+
+        alert(
+            "Completa la hora y el nombre de la clase."
+        );
+
+        return;
+
+    }
+
+    const clase = {
+
+        id:Date.now(),
+
+        dia:dia,
+
+        hora:hora,
+
+        nombre:nombre,
+
+        turno:turno
+
+    };
+
+    let horario =
+        JSON.parse(
+            localStorage.getItem(
+                "horarioPuntualizate"
+            )
+        ) || [];
+
+    horario.push(clase);
+
+    localStorage.setItem(
+        "horarioPuntualizate",
+        JSON.stringify(horario)
+    );
+
+    document.getElementById(
+        "horaClase"
+    ).value="";
+
+    document.getElementById(
+        "nombreClase"
+    ).value="";
+
+    document.getElementById(
+        "formularioClase"
+    ).style.display="none";
+
+    mostrarHorarioClases();
+
+}
+
+
+/* =========================
+   MOSTRAR CLASES
+========================= */
+
+function mostrarHorarioClases(){
+
+    const horario =
+        JSON.parse(
+            localStorage.getItem(
+                "horarioPuntualizate"
+            )
+        ) || [];
+
+    const dias = [
+
+        "Lunes",
+        "Martes",
+        "Miércoles",
+        "Jueves",
+        "Viernes",
+        "Sábado"
+
+    ];
+
+    let manana="";
+    let tarde="";
+
+    dias.forEach(dia=>{
+
+        const clasesManana =
+            horario
+            .filter(c=>
+                c.dia===dia &&
+                c.turno==="manana"
+            )
+            .sort((a,b)=>
+                a.hora.localeCompare(
+                    b.hora
+                )
+            );
+
+        const clasesTarde =
+            horario
+            .filter(c=>
+                c.dia===dia &&
+                c.turno==="tarde"
+            )
+            .sort((a,b)=>
+                a.hora.localeCompare(
+                    b.hora
+                )
+            );
+
+
+        /* MAÑANA */
+
+        if(clasesManana.length>0){
+
+            manana +=
+                `<h4>📅 ${dia}</h4>`;
+
+            clasesManana.forEach(c=>{
+
+                manana += `
+
+                    <div class="clase-horario">
+
+                        <strong>
+                            ⏰ ${c.hora}
+                        </strong>
+
+                        <span>
+                            📚 ${c.nombre}
+                        </span>
+
+                        <button
+                            onclick="eliminarClase(${c.id})"
+                        >
+                            🗑️
+                        </button>
+
+                    </div>
+
+                `;
+
+            });
+
+        }
+
+
+        /* TARDE */
+
+        if(clasesTarde.length>0){
+
+            tarde +=
+                `<h4>📅 ${dia}</h4>`;
+
+            clasesTarde.forEach(c=>{
+
+                tarde += `
+
+                    <div class="clase-horario">
+
+                        <strong>
+                            ⏰ ${c.hora}
+                        </strong>
+
+                        <span>
+                            📚 ${c.nombre}
+                        </span>
+
+                        <button
+                            onclick="eliminarClase(${c.id})"
+                        >
+                            🗑️
+                        </button>
+
+                    </div>
+
+                `;
+
+            });
+
+        }
+
+    });
+
+
+    document.getElementById(
+        "listaManana"
+    ).innerHTML =
+        manana ||
+        '<p class="pequeno">No hay clases en la mañana.</p>';
+
+
+    document.getElementById(
+        "listaTarde"
+    ).innerHTML =
+        tarde ||
+        '<p class="pequeno">No hay clases en la tarde.</p>';
+
+}
+
+
+/* =========================
+   ELIMINAR CLASE
+========================= */
+
+function eliminarClase(id){
+
+    let horario =
+        JSON.parse(
+            localStorage.getItem(
+                "horarioPuntualizate"
+            )
+        ) || [];
+
+    horario =
+        horario.filter(
+            c=>c.id!==id
+        );
+
+    localStorage.setItem(
+        "horarioPuntualizate",
+        JSON.stringify(horario)
+    );
+
+    mostrarHorarioClases();
+
+}
+
+
+/* =========================
+   AGREGAR TAREA
+========================= */
+
 async function agregarTarea(){
 
     const materia =
-        document.getElementById("materia").value;
+        document.getElementById(
+            "materia"
+        ).value;
 
     const actividad =
-        document.getElementById("actividad").value.trim();
+        document.getElementById(
+            "actividad"
+        ).value.trim();
 
     const fecha =
-        document.getElementById("fecha").value;
+        document.getElementById(
+            "fecha"
+        ).value;
 
     const minutos =
-        Number(document.getElementById("minutos").value);
+        Number(
+            document.getElementById(
+                "minutos"
+            ).value
+        );
 
     const sonido =
-        document.getElementById("sonido").value;
+        document.getElementById(
+            "sonido"
+        ).value;
 
     const archivoSonido =
-        document.getElementById("archivoSonido").files[0];
+        document.getElementById(
+            "archivoSonido"
+        ).files[0];
 
-    let sonidoPersonalizado = "";
+    let sonidoPersonalizado="";
 
-    if(sonido === "personalizado"){
+
+    if(
+        sonido==="personalizado"
+    ){
 
         if(!archivoSonido){
 
-            alert("Selecciona un archivo de sonido.");
+            alert(
+                "Selecciona un archivo de sonido."
+            );
+
             return;
 
         }
 
         sonidoPersonalizado =
-            await convertirAudioBase64(archivoSonido);
+            await convertirAudioBase64(
+                archivoSonido
+            );
 
     }
 
+
     const voz =
-        document.getElementById("voz").value;
+        document.getElementById(
+            "voz"
+        ).value;
+
 
     if(!actividad || !fecha){
 
-        alert("Completa el nombre de la actividad y la fecha.");
+        alert(
+            "Completa el nombre de la actividad y la fecha."
+        );
+
         return;
 
     }
 
-    const tarea = {
+
+    const tarea={
 
         id:Date.now(),
 
@@ -426,7 +1595,8 @@ async function agregarTarea(){
 
         sonido:sonido,
 
-        sonidoPersonalizado:sonidoPersonalizado,
+        sonidoPersonalizado:
+            sonidoPersonalizado,
 
         voz:voz,
 
@@ -436,95 +1606,185 @@ async function agregarTarea(){
 
     };
 
+
     tareas.push(tarea);
 
     guardar();
 
-    document.getElementById("actividad").value="";
 
-    document.getElementById("archivoSonido").value="";
+    document.getElementById(
+        "actividad"
+    ).value="";
+
+    document.getElementById(
+        "archivoSonido"
+    ).value="";
+
 
     mostrarTareas();
 
 }
+
+
+/* =========================
+   CONVERTIR AUDIO
+========================= */
+
+function convertirAudioBase64(
+    archivo
+){
+
+    return new Promise(
+        (resolve,reject)=>{
+
+            const lector =
+                new FileReader();
+
+            lector.onload=()=>{
+                resolve(
+                    lector.result
+                );
+            };
+
+            lector.onerror=()=>{
+                reject(
+                    lector.error
+                );
+            };
+
+            lector.readAsDataURL(
+                archivo
+            );
+
+        }
+    );
+
+}
+
+
+/* =========================
+   MOSTRAR TAREAS
+========================= */
+
 function mostrarTareas(){
 
     const lista =
-        document.getElementById("lista");
+        document.getElementById(
+            "lista"
+        );
 
     lista.innerHTML="";
+
 
     if(tareas.length===0){
 
         lista.innerHTML=
-        '<p class="pequeno">Todavía no tienes actividades.</p>';
+            '<p class="pequeno">Todavía no tienes actividades.</p>';
 
         return;
+
     }
 
+
     tareas
-    .filter(t => !t.completada)
-    .sort((a,b)=>
-        new Date(a.fecha)-new Date(b.fecha)
+
+    .filter(
+        t=>!t.completada
     )
-    .forEach(t => {
+
+    .sort(
+        (a,b)=>
+            new Date(a.fecha) -
+            new Date(b.fecha)
+    )
+
+    .forEach(t=>{
 
         const fecha =
             new Date(t.fecha);
 
         const div =
-            document.createElement("div");
+            document.createElement(
+                "div"
+            );
 
         div.className="tarea";
 
+
         div.innerHTML=`
 
-            <h3>📚 ${t.materia}</h3>
-
-            <p><strong>${t.actividad}</strong></p>
+            <h3>
+                📚 ${t.materia}
+            </h3>
 
             <p>
-            📅 ${fecha.toLocaleDateString()}
-            <br>
-            ⏰ ${fecha.toLocaleTimeString([],{
-                hour:'2-digit',
-                minute:'2-digit'
-            })}
+                <strong>
+                    ${t.actividad}
+                </strong>
             </p>
 
             <p>
-            🔔 Aviso ${t.minutos} min antes
+
+                📅 ${fecha.toLocaleDateString()}
+
+                <br>
+
+                ⏰ ${fecha.toLocaleTimeString(
+                    [],
+                    {
+                        hour:'2-digit',
+                        minute:'2-digit'
+                    }
+                )}
+
+            </p>
+
+            <p>
+                🔔 Aviso ${t.minutos} min antes
             </p>
 
             <p class="estado">
-            ⏳ ${tiempoRestante(t)}
+                ⏳ ${tiempoRestante(t)}
             </p>
 
             <div class="acciones">
 
-                <button class="hecha"
-                onclick="completar(${t.id})">
-                ✅ Ya la hice
+                <button
+                    class="hecha"
+                    onclick="completar(${t.id})"
+                >
+                    ✅ Ya la hice
                 </button>
 
-                <button class="recordar"
-                onclick="editarTarea(${t.id})">
-                ✏️ Cambiar
+                <button
+                    class="recordar"
+                    onclick="editarTarea(${t.id})"
+                >
+                    ✏️ Cambiar
                 </button>
 
-                <button class="eliminar"
-                onclick="eliminarTarea(${t.id})">
-                🗑️
+                <button
+                    class="eliminar"
+                    onclick="eliminarTarea(${t.id})"
+                >
+                    🗑️
                 </button>
 
             </div>
+
         `;
+
 
         lista.appendChild(div);
 
     });
 
 }
+
+
+/* =========================
+   TIEMPO RESTANTE
+========================= */
 
 function tiempoRestante(t){
 
@@ -537,29 +1797,52 @@ function tiempoRestante(t){
     const diferencia =
         fecha-ahora;
 
-    if(diferencia<=0)
+
+    if(diferencia<=0){
+
         return "⚠️ Actividad pendiente";
 
-    const minutos =
-        Math.floor(diferencia/60000);
+    }
 
-    if(minutos<60)
+
+    const minutos =
+        Math.floor(
+            diferencia/60000
+        );
+
+
+    if(minutos<60){
+
         return `Faltan ${minutos} minutos`;
 
+    }
+
+
     const horas =
-        Math.floor(minutos/60);
+        Math.floor(
+            minutos/60
+        );
 
     const min =
         minutos%60;
+
 
     return `Faltan ${horas} h ${min} min`;
 
 }
 
+
+/* =========================
+   COMPLETAR TAREA
+========================= */
+
 function completar(id){
 
     const tarea =
-        tareas.find(t=>t.id===id);
+        tareas.find(
+            t=>t.id===id
+        );
+
 
     if(tarea){
 
@@ -568,36 +1851,60 @@ function completar(id){
         guardar();
 
         mostrarTareas();
+
     }
 
 }
 
+
+/* =========================
+   ELIMINAR TAREA
+========================= */
+
 function eliminarTarea(id){
 
-    if(confirm("¿Eliminar esta actividad?")){
+    if(
+        confirm(
+            "¿Eliminar esta actividad?"
+        )
+    ){
 
         tareas =
-            tareas.filter(t=>t.id!==id);
+            tareas.filter(
+                t=>t.id!==id
+            );
 
         guardar();
 
         mostrarTareas();
+
     }
 
 }
 
+
+/* =========================
+   EDITAR TAREA
+========================= */
+
 function editarTarea(id){
 
     const tarea =
-        tareas.find(t=>t.id===id);
+        tareas.find(
+            t=>t.id===id
+        );
 
-    if(!tarea)return;
+
+    if(!tarea)
+        return;
+
 
     const nuevoNombre =
         prompt(
             "Cambiar nombre de la actividad:",
             tarea.actividad
         );
+
 
     if(nuevoNombre){
 
@@ -607,9 +1914,15 @@ function editarTarea(id){
         guardar();
 
         mostrarTareas();
+
     }
 
 }
+
+
+/* =========================
+   SONIDOS
+========================= */
 
 function sonidoCampana(){
 
@@ -622,21 +1935,28 @@ function sonidoCampana(){
     const gain =
         ctx.createGain();
 
+
     osc.connect(gain);
 
-    gain.connect(ctx.destination);
+    gain.connect(
+        ctx.destination
+    );
+
 
     osc.frequency.value=900;
+
 
     gain.gain.setValueAtTime(
         0.3,
         ctx.currentTime
     );
 
+
     gain.gain.exponentialRampToValueAtTime(
         0.001,
         ctx.currentTime+1
     );
+
 
     osc.start();
 
@@ -646,10 +1966,12 @@ function sonidoCampana(){
 
 }
 
+
 function sonidoDigital(){
 
     const ctx =
         new AudioContext();
+
 
     [700,1000,700].forEach(
         (frecuencia,i)=>{
@@ -660,34 +1982,46 @@ function sonidoDigital(){
             const gain =
                 ctx.createGain();
 
+
             osc.connect(gain);
 
-            gain.connect(ctx.destination);
+            gain.connect(
+                ctx.destination
+            );
 
-            osc.frequency.value=
+
+            osc.frequency.value =
                 frecuencia;
 
+
             const inicio =
-                ctx.currentTime+i*0.25;
+                ctx.currentTime +
+                i*0.25;
+
 
             gain.gain.setValueAtTime(
                 0.2,
                 inicio
             );
 
+
             gain.gain.exponentialRampToValueAtTime(
                 0.001,
                 inicio+0.2
             );
 
+
             osc.start(inicio);
 
-            osc.stop(inicio+0.2);
+            osc.stop(
+                inicio+0.2
+            );
 
         }
     );
 
 }
+
 
 function sonidoAlarma(){
 
@@ -695,6 +2029,7 @@ function sonidoAlarma(){
         new AudioContext();
 
     let i=0;
+
 
     const intervalo =
         setInterval(()=>{
@@ -705,14 +2040,22 @@ function sonidoAlarma(){
             const gain =
                 ctx.createGain();
 
+
             osc.connect(gain);
 
-            gain.connect(ctx.destination);
+            gain.connect(
+                ctx.destination
+            );
+
 
             osc.frequency.value =
-                i%2===0 ? 900 : 600;
+                i%2===0
+                ? 900
+                : 600;
+
 
             gain.gain.value=0.2;
+
 
             osc.start();
 
@@ -720,11 +2063,15 @@ function sonidoAlarma(){
                 ctx.currentTime+0.18
             );
 
+
             i++;
+
 
             if(i>=6){
 
-                clearInterval(intervalo);
+                clearInterval(
+                    intervalo
+                );
 
             }
 
@@ -732,14 +2079,21 @@ function sonidoAlarma(){
 
 }
 
+
 function sonidoMelodia(){
 
     const ctx =
         new AudioContext();
 
+
     const notas=[
-        523,659,784,659,880
+        523,
+        659,
+        784,
+        659,
+        880
     ];
+
 
     notas.forEach(
         (frecuencia,i)=>{
@@ -750,49 +2104,77 @@ function sonidoMelodia(){
             const gain =
                 ctx.createGain();
 
+
             osc.connect(gain);
 
-            gain.connect(ctx.destination);
+            gain.connect(
+                ctx.destination
+            );
 
-            osc.frequency.value=
+
+            osc.frequency.value =
                 frecuencia;
 
+
             const inicio =
-                ctx.currentTime+i*0.3;
+                ctx.currentTime+
+                i*0.3;
+
 
             gain.gain.setValueAtTime(
                 0.2,
                 inicio
             );
 
+
             gain.gain.exponentialRampToValueAtTime(
                 0.001,
                 inicio+0.28
             );
 
+
             osc.start(inicio);
 
-            osc.stop(inicio+0.28);
+            osc.stop(
+                inicio+0.28
+            );
 
         }
     );
 
 }
 
-function reproducirSonidoPersonalizado(tarea){
-    
-    if(!tarea.sonidoPersonalizado)
+
+function reproducirSonidoPersonalizado(
+    tarea
+){
+
+    if(
+        !tarea.sonidoPersonalizado
+    )
         return;
 
-    const audio =
-        new Audio(tarea.sonidoPersonalizado);
 
-    audio.play().catch(error => {
-        console.log("No se pudo reproducir el sonido:", error);
-    });
+    const audio =
+        new Audio(
+            tarea.sonidoPersonalizado
+        );
+
+
+    audio.play().catch(
+        error=>{
+            console.log(
+                "No se pudo reproducir el sonido:",
+                error
+            );
+        }
+    );
 
 }
+
+
 function reproducirSonido(tipo){
+
     if(tipo==="campana")
         sonidoCampana();
 
@@ -807,56 +2189,94 @@ function reproducirSonido(tipo){
 
 }
 
+
+/* =========================
+   VOZ
+========================= */
+
 function hablar(tarea){
 
     if(tarea.voz!=="si")
         return;
 
-    if(!("speechSynthesis" in window))
+
+    if(
+        !("speechSynthesis" in window)
+    )
         return;
+
 
     const mensaje =
         `Atención. Te quedan ${tarea.minutos} minutos para completar tu actividad de ${tarea.materia}: ${tarea.actividad}.`;
 
+
     const voz =
-        new SpeechSynthesisUtterance(mensaje);
+        new SpeechSynthesisUtterance(
+            mensaje
+        );
+
 
     voz.lang="es-ES";
 
     voz.rate=0.9;
 
-    speechSynthesis.speak(voz);
+
+    speechSynthesis.speak(
+        voz
+    );
 
 }
+
+
+/* =========================
+   ALERTA
+========================= */
 
 function mostrarAlerta(tarea){
 
     tareaActual=tarea;
 
+
     document.getElementById(
         "mensajeAlerta"
-    ).textContent=
+    ).textContent =
         `⏰ Te quedan ${tarea.minutos} minutos para: ${tarea.actividad}`;
+
 
     document.getElementById(
         "alerta"
-    ).style.display="block";
+    ).style.display="flex";
 
-    if(tarea.sonido === "personalizado"){
 
-    reproducirSonidoPersonalizado(tarea);
+    if(
+        tarea.sonido==="personalizado"
+    ){
 
-}else{
+        reproducirSonidoPersonalizado(
+            tarea
+        );
 
-    reproducirSonido(
-        tarea.sonido
-    );
+    }
 
-}
+    else if(
+        tarea.sonido!=="ninguno"
+    ){
+
+        reproducirSonido(
+            tarea.sonido
+        );
+
+    }
+
 
     hablar(tarea);
 
 }
+
+
+/* =========================
+   CERRAR ALERTA
+========================= */
 
 function cerrarAlerta(){
 
@@ -868,62 +2288,89 @@ function cerrarAlerta(){
 
     }
 
+
     document.getElementById(
         "alerta"
     ).style.display="none";
 
+
     tareaActual=null;
+
 
     mostrarTareas();
 
 }
+
+
+/* =========================
+   RECORDAR DESPUÉS
+========================= */
 
 function recordarDespues(){
 
     if(!tareaActual)
         return;
 
+
     tareaActual.avisada=false;
+
 
     const nuevaFecha =
         new Date(
-            Date.now()+5*60000
+            Date.now()+
+            5*60000
         );
+
 
     tareaActual.fecha =
         nuevaFecha.toISOString();
 
+
     guardar();
+
 
     document.getElementById(
         "alerta"
     ).style.display="none";
 
+
     tareaActual=null;
+
 
     mostrarTareas();
 
 }
+
+
+/* =========================
+   REVISAR RECORDATORIOS
+========================= */
 
 function revisarRecordatorios(){
 
     const ahora =
         new Date();
 
+
     tareas.forEach(t=>{
 
-        if(t.completada || t.avisada)
+        if(
+            t.completada ||
+            t.avisada
+        )
             return;
+
 
         const fecha =
             new Date(t.fecha);
 
+
         const aviso =
             new Date(
-                fecha.getTime()
-                -
+                fecha.getTime()-
                 t.minutos*60000
             );
+
 
         if(
             ahora>=aviso &&
@@ -932,7 +2379,9 @@ function revisarRecordatorios(){
 
             t.avisada=true;
 
+
             mostrarAlerta(t);
+
 
             guardar();
 
@@ -940,26 +2389,467 @@ function revisarRecordatorios(){
 
     });
 
+
     mostrarTareas();
 
 }
 
+
+/* =========================
+   IMAGEN PERSONALIZADA
+========================= */
+
+function elegirImagen(){
+
+    const archivo =
+        document.getElementById(
+            "imagenPersonalizada"
+        );
+
+    archivo.click();
+
+}
+
+
+document
+.getElementById(
+    "imagenPersonalizada"
+)
+.addEventListener(
+    "change",
+    function(){
+
+        const archivo =
+            this.files[0];
+
+
+        if(!archivo)
+            return;
+
+
+        const lector =
+            new FileReader();
+
+
+        lector.onload=function(){
+
+            const imagen =
+                lector.result;
+
+
+            localStorage.setItem(
+                "imagenPuntualizate",
+                imagen
+            );
+
+
+            document.querySelector(
+                "header"
+            ).style.backgroundImage =
+                `linear-gradient(#8f6b9b66,#8f6b9b66), url("${imagen}")`;
+
+        };
+
+
+        lector.readAsDataURL(
+            archivo
+        );
+
+    }
+);
+
+
+/* =========================
+   RESTAURAR IMAGEN
+========================= */
+
+function restaurarImagen(){
+
+    localStorage.removeItem(
+        "imagenPuntualizate"
+    );
+
+
+    const tema =
+        localStorage.getItem(
+            "temaPuntualizate"
+        ) || "lila";
+
+
+    const overlays={
+
+        lila:"#8f6b9b66",
+
+        azul:"#527da566",
+
+        rosa:"#a45f7866",
+
+        verde:"#568a7066",
+
+        celeste:"#438b9166",
+
+        durazno:"#a86f4d66"
+
+    };
+
+
+    document.querySelector(
+        "header"
+    ).style.backgroundImage =
+        `linear-gradient(${overlays[tema]},${overlays[tema]}), url("lan-zhan.png")`;
+
+
+    document.getElementById(
+        "imagenPersonalizada"
+    ).value="";
+
+}
+
+
+/* =========================
+   CARGAR IMAGEN GUARDADA
+========================= */
+
+const imagenGuardada =
+    localStorage.getItem(
+        "imagenPuntualizate"
+    );
+
+
+if(imagenGuardada){
+
+    document.querySelector(
+        "header"
+    ).style.backgroundImage =
+        `linear-gradient(#8f6b9b66,#8f6b9b66), url("${imagenGuardada}")`;
+
+}
+
+
+/* =========================
+   SONIDO PERSONALIZADO
+========================= */
+
+document
+.getElementById(
+    "sonido"
+)
+.addEventListener(
+    "change",
+    function(){
+
+        const archivo =
+            document.getElementById(
+                "archivoSonido"
+            );
+
+
+        if(
+            this.value==="personalizado"
+        ){
+
+            archivo.click();
+
+        }
+
+    }
+);
+
+
+/* =========================
+   COLORES
+========================= */
+
+function mostrarColores(){
+
+    const colores =
+        document.getElementById(
+            "colores"
+        );
+
+
+    if(
+        colores.style.display==="none"
+    ){
+
+        colores.style.display="block";
+
+    }
+
+    else{
+
+        colores.style.display="none";
+
+    }
+
+}
+
+
+/* =========================
+   CAMBIAR COLOR
+========================= */
+
+function cambiarColor(color){
+
+    const temas={
+
+        lila:{
+            principal:"#c58bc7",
+            oscuro:"#76527a",
+            fondo:"#fffaff",
+            borde:"#f0e5f2",
+            overlay:"#8f6b9b66"
+        },
+
+        azul:{
+            principal:"#78a9d1",
+            oscuro:"#4d7095",
+            fondo:"#f8fcff",
+            borde:"#dcebf5",
+            overlay:"#527da566"
+        },
+
+        rosa:{
+            principal:"#df91ae",
+            oscuro:"#9b5872",
+            fondo:"#fff8fb",
+            borde:"#f3dce5",
+            overlay:"#a45f7866"
+        },
+
+        verde:{
+            principal:"#8bc9ad",
+            oscuro:"#4f8067",
+            fondo:"#f7fffa",
+            borde:"#dcefe5",
+            overlay:"#568a7066"
+        },
+
+        celeste:{
+            principal:"#79cbd1",
+            oscuro:"#43838a",
+            fondo:"#f5feff",
+            borde:"#d8eff1",
+            overlay:"#438b9166"
+        },
+
+        durazno:{
+            principal:"#e7a477",
+            oscuro:"#9a6543",
+            fondo:"#fffaf6",
+            borde:"#f2e1d5",
+            overlay:"#a86f4d66"
+        }
+
+    };
+
+
+    const tema =
+        temas[color];
+
+
+    document.documentElement.style.setProperty(
+        "--color-principal",
+        tema.principal
+    );
+
+
+    document.documentElement.style.setProperty(
+        "--color-oscuro",
+        tema.oscuro
+    );
+
+
+    document.documentElement.style.setProperty(
+        "--color-fondo",
+        tema.fondo
+    );
+
+
+    document.documentElement.style.setProperty(
+        "--color-borde",
+        tema.borde
+    );
+
+
+    document.documentElement.style.setProperty(
+        "--color-overlay",
+        tema.overlay
+    );
+
+
+    localStorage.setItem(
+        "temaPuntualizate",
+        color
+    );
+
+
+    if(
+        !localStorage.getItem(
+            "imagenPuntualizate"
+        )
+    ){
+
+        document.querySelector(
+            "header"
+        ).style.backgroundImage =
+            `linear-gradient(${tema.overlay},${tema.overlay}), url("lan-zhan.png")`;
+
+    }
+
+}
+
+
+/* =========================
+   APLICAR TEMA GUARDADO
+========================= */
+
+function aplicarTema(){
+
+    const tema =
+        localStorage.getItem(
+            "temaPuntualizate"
+        ) || "lila";
+
+
+    const estilos={
+
+        lila:[
+            "#c58bc7",
+            "#76527a",
+            "#fffaff",
+            "#f0e5f2",
+            "#8f6b9b66"
+        ],
+
+        azul:[
+            "#78a9d1",
+            "#4d7095",
+            "#f8fcff",
+            "#dcebf5",
+            "#527da566"
+        ],
+
+        rosa:[
+            "#df91ae",
+            "#9b5872",
+            "#fff8fb",
+            "#f3dce5",
+            "#a45f7866"
+        ],
+
+        verde:[
+            "#8bc9ad",
+            "#4f8067",
+            "#f7fffa",
+            "#dcefe5",
+            "#568a7066"
+        ],
+
+        celeste:[
+            "#79cbd1",
+            "#43838a",
+            "#f5feff",
+            "#d8eff1",
+            "#438b9166"
+        ],
+
+        durazno:[
+            "#e7a477",
+            "#9a6543",
+            "#fffaf6",
+            "#f2e1d5",
+            "#a86f4d66"
+        ]
+
+    };
+
+
+    const colores =
+        estilos[tema];
+
+
+    document.documentElement.style.setProperty(
+        "--color-principal",
+        colores[0]
+    );
+
+
+    document.documentElement.style.setProperty(
+        "--color-oscuro",
+        colores[1]
+    );
+
+
+    document.documentElement.style.setProperty(
+        "--color-fondo",
+        colores[2]
+    );
+
+
+    document.documentElement.style.setProperty(
+        "--color-borde",
+        colores[3]
+    );
+
+
+    document.documentElement.style.setProperty(
+        "--color-overlay",
+        colores[4]
+    );
+
+
+    if(
+        !localStorage.getItem(
+            "imagenPuntualizate"
+        )
+    ){
+
+        document.querySelector(
+            "header"
+        ).style.backgroundImage =
+            `linear-gradient(${colores[4]},${colores[4]}), url("lan-zhan.png")`;
+
+    }
+
+}
+
+
+/* =========================
+INICIAR APLICACIÓN
+========================= */
+
+aplicarTema();
+
 mostrarTareas();
+
+mostrarHorarioClases();
+
+
+/* =========================
+REVISAR CADA 10 SEGUNDOS
+========================= */
 
 setInterval(
     revisarRecordatorios,
     10000
 );
-document.getElementById("sonido").addEventListener("change", function() {
-    const archivo = document.getElementById("archivoSonido");
 
-    if (this.value === "personalizado") {
-        archivo.click();
-    }
-});
-if ("serviceWorker" in navigator) {
-    navigator.serviceWorker.register("sw.js");
+
+/* =========================
+SERVICE WORKER
+========================= */
+
+if(
+    "serviceWorker" in navigator
+){
+
+    navigator.serviceWorker.register(
+        "sw.js"
+    );
+
 }
+
 </script>
 
 </body>
