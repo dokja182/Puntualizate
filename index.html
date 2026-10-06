@@ -12,7 +12,209 @@
 <title>Puntualízate</title>
 
 <style>
+/* ==========================================
+   PRUEBA GRATUITA DE 30 DÍAS
+========================================== */
 
+.pantalla-prueba {
+    position: fixed;
+    inset: 0;
+    z-index: 99999;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 20px;
+
+    background: rgba(40, 25, 45, 0.72);
+    backdrop-filter: blur(8px);
+}
+
+.caja-prueba {
+    width: 100%;
+    max-width: 420px;
+
+    padding: 28px 22px;
+
+    text-align: center;
+
+    background: var(--color-fondo, #fffaff);
+
+    border-radius: 28px;
+
+    box-shadow: 0 15px 45px rgba(0,0,0,.25);
+
+    animation: aparecerPrueba .35s ease;
+}
+
+@keyframes aparecerPrueba {
+    from {
+        opacity: 0;
+        transform: scale(.9) translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+.icono-prueba {
+    font-size: 48px;
+    margin-bottom: 8px;
+}
+
+.caja-prueba h2 {
+    margin: 5px 0 12px;
+
+    color: var(--color-oscuro, #76527a);
+
+    font-size: 25px;
+}
+
+.caja-prueba p {
+    line-height: 1.5;
+    margin: 8px 0;
+}
+
+.contador-prueba {
+    display: flex;
+    flex-direction: column;
+
+    margin: 20px auto;
+
+    padding: 15px;
+
+    border-radius: 20px;
+
+    background: linear-gradient(
+        135deg,
+        #f1d8f4,
+        #dff7fa
+    );
+}
+
+.contador-prueba span {
+    font-size: 42px;
+    font-weight: bold;
+
+    color: var(--color-oscuro, #76527a);
+}
+
+.contador-prueba small {
+    font-size: 14px;
+}
+
+.btn-prueba {
+    width: 100%;
+
+    border: none;
+    border-radius: 15px;
+
+    padding: 14px;
+
+    font-size: 16px;
+    font-weight: bold;
+
+    color: white;
+
+    background: linear-gradient(
+        135deg,
+        var(--color-principal, #c58bc7),
+        var(--color-acento, #78c5d1)
+    );
+
+    cursor: pointer;
+}
+
+.btn-prueba:active {
+    transform: scale(.97);
+}
+
+
+/* PLANES */
+
+.planes {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    gap: 12px;
+
+    margin: 20px 0;
+}
+
+.plan {
+    padding: 16px 10px;
+
+    border: 2px solid var(--color-borde, #f0e5f2);
+
+    border-radius: 18px;
+
+    background: rgba(255,255,255,.7);
+}
+
+.plan h3 {
+    margin: 0 0 10px;
+
+    font-size: 15px;
+
+    color: var(--color-oscuro, #76527a);
+}
+
+.plan strong {
+    display: block;
+
+    font-size: 23px;
+
+    color: var(--color-principal, #c58bc7);
+}
+
+.plan span {
+    display: block;
+
+    margin: 3px 0 12px;
+
+    font-size: 12px;
+}
+
+.plan button {
+    width: 100%;
+
+    padding: 9px;
+
+    border: none;
+    border-radius: 10px;
+
+    color: white;
+
+    background: var(--color-principal, #c58bc7);
+
+    cursor: pointer;
+}
+
+.texto-demo {
+    display: block;
+
+    margin-top: 10px;
+
+    opacity: .65;
+}
+
+.pantalla-finalizada {
+    background: rgba(25,20,30,.88);
+}
+
+@media (max-width: 400px) {
+
+    .planes {
+        grid-template-columns: 1fr;
+    }
+
+    .caja-prueba {
+        padding: 24px 17px;
+    }
+}
 *{
     box-sizing:border-box;
 }
@@ -650,7 +852,87 @@ button:hover{
 </head>
 
 <body>
+<!-- ==========================================
+     PRUEBA GRATUITA DE 30 DÍAS
+========================================== -->
 
+<div id="pantallaPrueba" class="pantalla-prueba">
+    <div class="caja-prueba">
+
+        <div class="icono-prueba">✨</div>
+
+        <h2>¡Bienvenida a Puntualízate!</h2>
+
+        <p>
+            Disfruta de todas las funciones de Puntualízate
+            durante <strong>30 días completamente gratis</strong>.
+        </p>
+
+        <div class="contador-prueba">
+            <span id="diasPrueba">30</span>
+            <small>días de prueba restantes</small>
+        </div>
+
+        <button onclick="cerrarPantallaPrueba()" class="btn-prueba">
+            Comenzar a usar Puntualízate
+        </button>
+
+    </div>
+</div>
+
+
+<!-- ==========================================
+     PANTALLA CUANDO TERMINA LA PRUEBA
+========================================== -->
+
+<div id="pantallaFinalizada" class="pantalla-prueba pantalla-finalizada">
+
+    <div class="caja-prueba">
+
+        <div class="icono-prueba">🔒</div>
+
+        <h2>Tu prueba gratuita terminó</h2>
+
+        <p>
+            Tus 30 días de prueba de Puntualízate han terminado.
+        </p>
+
+        <p>
+            Para continuar utilizando todas las funciones,
+            elige uno de nuestros planes.
+        </p>
+
+        <div class="planes">
+
+            <div class="plan">
+                <h3>🌷 Plan mensual</h3>
+                <strong>S/ 4.90</strong>
+                <span>por mes</span>
+
+                <button onclick="activarPlanDemo()">
+                    Continuar
+                </button>
+            </div>
+
+            <div class="plan">
+                <h3>⭐ Plan anual</h3>
+                <strong>S/ 39.90</strong>
+                <span>por año</span>
+
+                <button onclick="activarPlanDemo()">
+                    Elegir plan
+                </button>
+            </div>
+
+        </div>
+
+        <small class="texto-demo">
+            *Demostración académica. Los pagos no son reales.
+        </small>
+
+    </div>
+
+</div>
 <div class="app">
 
 <header>
@@ -3809,7 +4091,196 @@ if(
     });
 
 }
+/* ==========================================
+   SISTEMA DE PRUEBA GRATUITA - 30 DÍAS
+========================================== */
 
+const CLAVE_INICIO_PRUEBA = "puntualizateInicioPrueba";
+const CLAVE_PLAN = "puntualizatePlan";
+
+const DURACION_PRUEBA = 30;
+
+
+/* Iniciar o comprobar prueba */
+
+function comprobarPruebaGratis() {
+
+    let inicio = localStorage.getItem(CLAVE_INICIO_PRUEBA);
+
+    // Si es la primera vez que entra
+    if (!inicio) {
+
+        inicio = Date.now();
+
+        localStorage.setItem(
+            CLAVE_INICIO_PRUEBA,
+            inicio.toString()
+        );
+    }
+
+    // Si ya tiene un plan, puede usar la aplicación
+    const plan = localStorage.getItem(CLAVE_PLAN);
+
+    if (plan === "activo") {
+        permitirAplicacion();
+        return;
+    }
+
+    const ahora = Date.now();
+
+    const diferencia = ahora - Number(inicio);
+
+    const diasTranscurridos =
+        Math.floor(
+            diferencia / (1000 * 60 * 60 * 24)
+        );
+
+    const diasRestantes =
+        DURACION_PRUEBA - diasTranscurridos;
+
+
+    /* PRUEBA TERMINADA */
+
+    if (diasRestantes <= 0) {
+
+        bloquearAplicacion();
+
+        return;
+    }
+
+
+    /* PRUEBA ACTIVA */
+
+    document.getElementById("diasPrueba").textContent =
+        diasRestantes;
+
+    mostrarPantallaPrueba();
+
+}
+
+
+/* Mostrar bienvenida */
+
+function mostrarPantallaPrueba() {
+
+    const pantalla =
+        document.getElementById("pantallaPrueba");
+
+    if (pantalla) {
+        pantalla.style.display = "flex";
+    }
+}
+
+
+/* Cerrar pantalla */
+
+function cerrarPantallaPrueba() {
+
+    const pantalla =
+        document.getElementById("pantallaPrueba");
+
+    if (pantalla) {
+        pantalla.style.display = "none";
+    }
+}
+
+
+/* Bloquear aplicación */
+
+function bloquearAplicacion() {
+
+    const pantallaPrueba =
+        document.getElementById("pantallaPrueba");
+
+    const pantallaFinalizada =
+        document.getElementById("pantallaFinalizada");
+
+
+    if (pantallaPrueba) {
+        pantallaPrueba.style.display = "none";
+    }
+
+    if (pantallaFinalizada) {
+        pantallaFinalizada.style.display = "flex";
+    }
+
+
+    /*
+       Deshabilitamos los elementos principales
+       para la demostración.
+    */
+
+    document.body.classList.add(
+        "prueba-finalizada"
+    );
+}
+
+
+/* Permitir aplicación */
+
+function permitirAplicacion() {
+
+    const pantallaFinalizada =
+        document.getElementById("pantallaFinalizada");
+
+    if (pantallaFinalizada) {
+        pantallaFinalizada.style.display = "none";
+    }
+
+    document.body.classList.remove(
+        "prueba-finalizada"
+    );
+}
+
+
+/* ==========================================
+   PLAN DE DEMOSTRACIÓN
+========================================== */
+
+function activarPlanDemo() {
+
+    /*
+       Esto es solamente para la demostración
+       de tu proyecto escolar.
+
+       No realiza ningún cobro.
+    */
+
+    const confirmar = confirm(
+        "Esta es una demostración académica.\n\n" +
+        "¿Quieres activar el plan de demostración?"
+    );
+
+    if (!confirmar) {
+        return;
+    }
+
+    localStorage.setItem(
+        CLAVE_PLAN,
+        "activo"
+    );
+
+    permitirAplicacion();
+
+    alert(
+        "✨ ¡Plan activado!\n\n" +
+        "Ahora puedes continuar utilizando Puntualízate."
+    );
+}
+
+
+/* ==========================================
+   EJECUTAR AL ABRIR LA APP
+========================================== */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function () {
+
+        comprobarPruebaGratis();
+
+    }
+);
 </script>
 
 </body>
