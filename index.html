@@ -32,6 +32,10 @@ body{
     color:#3d405b;
 }
 
+/* =========================
+   APP
+========================= */
+
 .app{
     width:100%;
     max-width:560px;
@@ -74,18 +78,22 @@ header h1{
 header p{
     margin:8px 0 0;
     font-size:14px;
+    opacity:.95;
 }
 
 /* =========================
-   MENÚ
+   BARRA DE MENÚ
 ========================= */
 
 .barra-menu{
     display:flex;
     justify-content:center;
     gap:8px;
+
     padding:10px 15px;
+
     background:var(--color-fondo);
+
     border-bottom:1px solid var(--color-borde);
 }
 
@@ -94,6 +102,7 @@ header p{
     max-width:180px;
 
     background:transparent;
+
     color:var(--color-oscuro);
 
     border:1px solid var(--color-borde);
@@ -117,240 +126,28 @@ header p{
     padding:10px 22px 22px;
 }
 
+/* =========================
+   BOTONES GENERALES
+========================= */
+
 button{
     border:none;
     border-radius:14px;
+
     padding:11px 15px;
+
     cursor:pointer;
+
     font-size:14px;
+
     margin-top:12px;
+
     transition:.2s;
 }
 
 button:hover{
     transform:translateY(-2px);
     box-shadow:0 5px 12px #00000018;
-}
-
-/* =========================
-   INICIO RENOVADO
-========================= */
-
-.inicio{
-    padding-top:8px;
-}
-
-/* SALUDO */
-
-.saludo{
-    padding:20px 4px 10px;
-}
-
-.saludo h2{
-    margin:0;
-    color:var(--color-oscuro);
-    font-size:25px;
-}
-
-.saludo p{
-    margin:7px 0 0;
-    color:#817583;
-    font-size:14px;
-}
-
-/* RESUMEN */
-
-.resumen{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:9px;
-    margin:12px 0 18px;
-}
-
-.resumen-item{
-    background:white;
-    border:1px solid var(--color-borde);
-    border-radius:18px;
-    padding:14px 7px;
-    text-align:center;
-    box-shadow:0 5px 16px #b8a9c922;
-}
-
-.resumen-icono{
-    font-size:23px;
-    margin-bottom:5px;
-}
-
-.resumen-numero{
-    display:block;
-    font-size:22px;
-    font-weight:bold;
-    color:var(--color-oscuro);
-}
-
-.resumen-texto{
-    display:block;
-    font-size:11px;
-    color:#8c818f;
-    margin-top:3px;
-}
-
-/* PROGRESO */
-
-.progreso-card{
-    background:
-    linear-gradient(
-        135deg,
-        var(--color-principal),
-        var(--color-acento)
-    );
-
-    color:white;
-
-    border-radius:22px;
-
-    padding:19px;
-
-    margin-bottom:18px;
-
-    box-shadow:0 8px 22px #a98bb044;
-}
-
-.progreso-arriba{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    margin-bottom:11px;
-}
-
-.progreso-arriba strong{
-    font-size:16px;
-}
-
-.porcentaje{
-    font-size:20px;
-    font-weight:bold;
-}
-
-.barra-progreso{
-    width:100%;
-    height:12px;
-    background:#ffffff55;
-    border-radius:20px;
-    overflow:hidden;
-}
-
-.barra-progreso-interior{
-    height:100%;
-    width:0%;
-    background:white;
-    border-radius:20px;
-    transition:width .5s ease;
-}
-
-.mensaje-progreso{
-    margin:11px 0 0;
-    font-size:13px;
-}
-
-/* PRÓXIMA ACTIVIDAD */
-
-.proxima-card{
-    background:white;
-
-    border:1px solid var(--color-borde);
-
-    border-radius:22px;
-
-    padding:18px;
-
-    margin-bottom:20px;
-
-    box-shadow:0 7px 20px #b8a9c922;
-}
-
-.proxima-titulo{
-    font-size:13px;
-    color:#968a98;
-    font-weight:bold;
-    margin-bottom:8px;
-}
-
-.proxima-nombre{
-    font-size:19px;
-    font-weight:bold;
-    color:var(--color-oscuro);
-}
-
-.proxima-info{
-    font-size:13px;
-    color:#706873;
-    margin-top:7px;
-}
-
-.sin-proxima{
-    text-align:center;
-    color:#918594;
-    padding:5px;
-}
-
-/* =========================
-   TARJETAS
-========================= */
-
-.card{
-    background:var(--color-fondo);
-
-    border-radius:24px;
-
-    padding:21px;
-
-    margin-bottom:20px;
-
-    box-shadow:0 8px 25px #b8a9c933;
-
-    border:1px solid var(--color-borde);
-}
-
-h2{
-    margin-top:0;
-    color:var(--color-oscuro);
-    font-size:20px;
-}
-
-label{
-    display:block;
-    margin-top:15px;
-    margin-bottom:6px;
-    font-weight:bold;
-    font-size:14px;
-    color:#68556b;
-}
-
-input,
-select{
-    width:100%;
-
-    padding:13px 14px;
-
-    margin-top:3px;
-
-    border:2px solid var(--color-borde);
-
-    border-radius:14px;
-
-    font-size:15px;
-
-    background:var(--color-fondo);
-
-    color:#4d4650;
-
-    outline:none;
-}
-
-input:focus,
-select:focus{
-    border-color:#c798ca;
 }
 
 /* =========================
@@ -379,11 +176,94 @@ select:focus{
 }
 
 /* =========================
+   TARJETAS
+========================= */
+
+.card{
+    background:var(--color-fondo);
+
+    border-radius:24px;
+
+    padding:21px;
+
+    margin-bottom:20px;
+
+    box-shadow:0 8px 25px #b8a9c933;
+
+    border:1px solid var(--color-borde);
+}
+
+h2{
+    margin-top:0;
+
+    color:var(--color-oscuro);
+
+    font-size:20px;
+}
+
+/* =========================
+   TEXTOS
+========================= */
+
+label{
+    display:block;
+
+    margin-top:15px;
+    margin-bottom:6px;
+
+    font-weight:bold;
+
+    font-size:14px;
+
+    color:#68556b;
+}
+
+/* =========================
+   CAMPOS
+========================= */
+
+input,
+select{
+    width:100%;
+
+    padding:13px 14px;
+
+    margin-top:3px;
+
+    border:2px solid var(--color-borde);
+
+    border-radius:14px;
+
+    font-size:15px;
+
+    background:var(--color-fondo);
+
+    color:#4d4650;
+
+    outline:none;
+
+    transition:.2s;
+}
+
+input:focus,
+select:focus{
+    border-color:#c798ca;
+
+    box-shadow:
+    0 0 0 4px #dcb9df33;
+}
+
+/* =========================
    TAREAS
 ========================= */
 
 .tarea{
-    background:white;
+    background:
+    linear-gradient(
+        135deg,
+        var(--color-fondo),
+        #ffffff
+    );
 
     border-left:6px solid var(--color-principal);
 
@@ -398,27 +278,41 @@ select:focus{
 
 .tarea h3{
     margin:0 0 8px;
+
     color:var(--color-oscuro);
+
     font-size:17px;
 }
 
 .tarea p{
     margin:7px 0;
+
     color:#5f5963;
+
     font-size:14px;
 }
 
 .estado{
     font-weight:bold;
+
     color:#8a63a0 !important;
+
     background:#f5eafa;
+
     padding:9px 11px;
+
     border-radius:11px;
 }
 
+/* =========================
+   ACCIONES
+========================= */
+
 .acciones{
     display:flex;
+
     gap:7px;
+
     flex-wrap:wrap;
 }
 
@@ -441,70 +335,104 @@ select:focus{
     color:white;
 }
 
+/* =========================
+   MENSAJE VACÍO
+========================= */
+
 .pequeno{
     font-size:13px;
+
     color:#9a8d9e;
+
     text-align:center;
+
     padding:15px;
 }
 
 /* =========================
-   IMAGEN Y PERSONALIZACIÓN
+   PERSONALIZACIÓN
 ========================= */
 
 .personalizacion{
     text-align:center;
+
     padding:0 20px;
+
     margin:0;
 }
 
 .imagen-personalizada{
     display:flex;
+
     justify-content:center;
+
     gap:5px;
+
     flex-wrap:wrap;
+
     padding:0;
+
     margin:0;
 }
 
 .imagen-personalizada button{
     background:var(--color-fondo);
+
     color:var(--color-oscuro);
+
     border:2px solid var(--color-principal);
+
     font-weight:bold;
+
     padding:9px 13px;
+
     margin-top:5px;
 }
 
 .personalizacion > button{
     background:var(--color-fondo);
+
     color:var(--color-oscuro);
+
     font-weight:bold;
+
     border:2px solid var(--color-principal);
 }
 
 .colores{
     margin-top:5px;
+
     padding:10px;
+
     background:#ffffff;
+
     border-radius:18px;
+
     box-shadow:0 5px 18px #b8a9c933;
 }
 
 .colores p{
     margin:5px 0 8px;
+
     font-size:13px;
+
     font-weight:bold;
 }
 
 .color-opcion{
     width:42px;
     height:42px;
+
     border-radius:50%;
+
     padding:0;
+
     margin:3px;
+
     font-size:19px;
+
     border:3px solid white;
+
     box-shadow:0 2px 8px #00000020;
 }
 
@@ -542,67 +470,101 @@ select:focus{
 
 .turnos{
     display:flex;
+
     gap:8px;
+
     margin-bottom:20px;
 }
 
 .turnos button{
     flex:1;
+
     background:var(--color-fondo);
+
     color:var(--color-oscuro);
+
     border:2px solid var(--color-borde);
+
     font-weight:bold;
+
     margin-top:0;
+}
+
+.turnos button:hover{
+    background:var(--color-borde);
 }
 
 .seccion-horario h3{
     color:var(--color-oscuro);
+
     margin-top:15px;
 }
 
 .seccion-horario h4{
     margin-top:18px;
+
     margin-bottom:8px;
+
     color:var(--color-oscuro);
+
     font-size:14px;
 }
 
 .clase-horario{
     display:flex;
+
     align-items:center;
+
     gap:8px;
+
     padding:12px;
+
     margin-top:8px;
+
     background:white;
+
     border:1px solid var(--color-borde);
+
     border-left:5px solid var(--color-principal);
+
     border-radius:14px;
+
     box-shadow:0 4px 12px #b8a9c922;
 }
 
 .clase-horario strong{
     color:var(--color-oscuro);
+
     white-space:nowrap;
 }
 
 .clase-horario span{
     flex:1;
+
     font-size:14px;
 }
 
 .clase-horario button{
     background:#df8b9a;
+
     color:white;
+
     padding:7px 9px;
+
     margin:0;
 }
 
 .formulario-clase{
     margin-top:20px;
+
     padding:18px;
+
     background:white;
+
     border:1px solid var(--color-borde);
+
     border-radius:20px;
+
     box-shadow:0 5px 18px #b8a9c933;
 }
 
@@ -612,6 +574,7 @@ select:focus{
 
 .alerta{
     position:fixed;
+
     inset:0;
 
     width:100%;
@@ -633,6 +596,7 @@ select:focus{
     z-index:9999;
 
     align-items:center;
+
     justify-content:center;
 
     text-align:center;
@@ -640,33 +604,45 @@ select:focus{
 
 .alerta-contenido{
     width:100%;
+
     max-width:500px;
 }
 
 .alerta-dibujo{
     font-size:90px;
+
     margin-bottom:20px;
+
     animation:latido 1s infinite;
 }
 
 .alerta h2{
     font-size:28px;
+
     margin:0 0 12px;
+
     color:white;
 }
 
 .alerta p{
     font-size:18px;
+
     line-height:1.5;
+
     margin:10px 0 25px;
 }
 
 .alerta button{
     background:white;
+
     color:var(--color-oscuro);
+
     margin:7px;
+
     padding:14px 20px;
+
     font-size:15px;
+
     font-weight:bold;
 }
 
@@ -690,6 +666,10 @@ select:focus{
 
 <div class="app">
 
+<!-- =========================
+     ENCABEZADO
+========================= -->
+
 <header>
 
     <h1>Puntualízate</h1>
@@ -699,6 +679,10 @@ select:focus{
     </p>
 
 </header>
+
+<!-- =========================
+     MENÚ
+========================= -->
 
 <div class="barra-menu">
 
@@ -715,149 +699,6 @@ select:focus{
 <div class="contenido">
 
 <!-- =========================
-     INICIO
-========================= -->
-
-<div id="inicio" class="inicio">
-
-    <div class="saludo">
-
-        <h2>
-            ¡Hola! 👋
-        </h2>
-
-        <p id="mensajeSaludo">
-            Organiza tu día y no olvides lo importante.
-        </p>
-
-    </div>
-
-
-    <!-- RESUMEN -->
-
-    <div class="resumen">
-
-        <div class="resumen-item">
-
-            <div class="resumen-icono">
-                📚
-            </div>
-
-            <span
-                id="numeroPendientes"
-                class="resumen-numero"
-            >
-                0
-            </span>
-
-            <span class="resumen-texto">
-                Pendientes
-            </span>
-
-        </div>
-
-
-        <div class="resumen-item">
-
-            <div class="resumen-icono">
-                ⏰
-            </div>
-
-            <span
-                id="numeroProximas"
-                class="resumen-numero"
-            >
-                0
-            </span>
-
-            <span class="resumen-texto">
-                Próximas
-            </span>
-
-        </div>
-
-
-        <div class="resumen-item">
-
-            <div class="resumen-icono">
-                ✅
-            </div>
-
-            <span
-                id="numeroCompletadas"
-                class="resumen-numero"
-            >
-                0
-            </span>
-
-            <span class="resumen-texto">
-                Completadas
-            </span>
-
-        </div>
-
-    </div>
-
-
-    <!-- PROGRESO -->
-
-    <div class="progreso-card">
-
-        <div class="progreso-arriba">
-
-            <strong>
-                📊 Progreso de hoy
-            </strong>
-
-            <span
-                id="porcentajeProgreso"
-                class="porcentaje"
-            >
-                0%
-            </span>
-
-        </div>
-
-        <div class="barra-progreso">
-
-            <div
-                id="barraProgresoInterior"
-                class="barra-progreso-interior"
-            ></div>
-
-        </div>
-
-        <p
-            id="mensajeProgreso"
-            class="mensaje-progreso"
-        >
-            ¡Vamos, tú puedes! ✨
-        </p>
-
-    </div>
-
-
-    <!-- PRÓXIMA ACTIVIDAD -->
-
-    <div class="proxima-card">
-
-        <div class="proxima-titulo">
-            ⏰ PRÓXIMA ACTIVIDAD
-        </div>
-
-        <div
-            id="proximaActividad"
-            class="sin-proxima"
-        >
-            No tienes actividades pendientes.
-        </div>
-
-    </div>
-
-</div>
-
-
-<!-- =========================
      HORARIO
 ========================= -->
 
@@ -867,9 +708,7 @@ select:focus{
     style="display:none;"
 >
 
-    <h2>
-        🕒 Mi horario
-    </h2>
+    <h2>🕒 Mi horario</h2>
 
     <div class="turnos">
 
@@ -883,28 +722,30 @@ select:focus{
 
     </div>
 
+    <!-- MAÑANA -->
+
     <div id="horarioManana">
 
-        <h3>
-            ☀️ Turno mañana
-        </h3>
+        <h3>☀️ Turno mañana</h3>
 
         <div id="listaManana"></div>
 
     </div>
+
+    <!-- TARDE -->
 
     <div
         id="horarioTarde"
         style="display:none;"
     >
 
-        <h3>
-            🌙 Turno tarde
-        </h3>
+        <h3>🌙 Turno tarde</h3>
 
         <div id="listaTarde"></div>
 
     </div>
+
+    <!-- AGREGAR CLASE -->
 
     <button
         class="agregar"
@@ -913,19 +754,17 @@ select:focus{
         ＋ Agregar clase
     </button>
 
+    <!-- FORMULARIO -->
+
     <div
         id="formularioClase"
         class="formulario-clase"
         style="display:none;"
     >
 
-        <h3>
-            ➕ Nueva clase
-        </h3>
+        <h3>➕ Nueva clase</h3>
 
-        <label>
-            Día
-        </label>
+        <label>Día</label>
 
         <select id="diaClase">
 
@@ -938,18 +777,14 @@ select:focus{
 
         </select>
 
-        <label>
-            Hora
-        </label>
+        <label>Hora</label>
 
         <input
             id="horaClase"
             type="time"
         >
 
-        <label>
-            Curso
-        </label>
+        <label>Curso</label>
 
         <input
             id="nombreClase"
@@ -957,9 +792,7 @@ select:focus{
             placeholder="Ej.: Matemática"
         >
 
-        <label>
-            Turno
-        </label>
+        <label>Turno</label>
 
         <select id="turnoClase">
 
@@ -984,9 +817,8 @@ select:focus{
 
 </div>
 
-
 <!-- =========================
-     IMAGEN
+     CAMBIAR IMAGEN
 ========================= -->
 
 <div class="imagen-personalizada">
@@ -1007,7 +839,6 @@ select:focus{
     </button>
 
 </div>
-
 
 <!-- =========================
      PERSONALIZACIÓN
@@ -1075,7 +906,6 @@ select:focus{
 
 </div>
 
-
 <!-- =========================
      NUEVA ACTIVIDAD
 ========================= -->
@@ -1110,7 +940,7 @@ select:focus{
     <input
         id="actividad"
         type="text"
-        placeholder="Ej.: Resolver ejercicios"
+        placeholder="Ej.: Resolver ejercicios de probabilidad"
     >
 
     <label>
@@ -1217,9 +1047,8 @@ select:focus{
 
 </div>
 
-
 <!-- =========================
-     MIS ACTIVIDADES
+     ACTIVIDADES
 ========================= -->
 
 <div class="card">
@@ -1235,7 +1064,6 @@ select:focus{
 </div>
 
 </div>
-
 
 <!-- =========================
      ALERTA
@@ -1270,7 +1098,6 @@ select:focus{
 
 </div>
 
-
 <script>
 
 /* =========================
@@ -1279,16 +1106,14 @@ select:focus{
 
 let tareas =
     JSON.parse(
-        localStorage.getItem(
-            "tareasPuntualizate"
-        )
+        localStorage.getItem("tareasPuntualizate")
     ) || [];
 
-let tareaActual=null;
+let tareaActual = null;
 
 
 /* =========================
-   GUARDAR
+   GUARDAR TAREAS
 ========================= */
 
 function guardar(){
@@ -1302,7 +1127,7 @@ function guardar(){
 
 
 /* =========================
-   MOSTRAR INICIO
+   INICIO
 ========================= */
 
 function mostrarInicio(){
@@ -1310,10 +1135,6 @@ function mostrarInicio(){
     document.getElementById(
         "seccionHorario"
     ).style.display="none";
-
-    document.getElementById(
-        "inicio"
-    ).style.display="block";
 
     document.querySelector(
         ".imagen-personalizada"
@@ -1331,8 +1152,6 @@ function mostrarInicio(){
 
     });
 
-    actualizarInicio();
-
 }
 
 
@@ -1341,10 +1160,6 @@ function mostrarInicio(){
 ========================= */
 
 function mostrarHorario(){
-
-    document.getElementById(
-        "inicio"
-    ).style.display="none";
 
     document.querySelector(
         ".imagen-personalizada"
@@ -1372,187 +1187,32 @@ function mostrarHorario(){
 
 
 /* =========================
-   INICIO: ESTADÍSTICAS
+   MOSTRAR TURNO
 ========================= */
 
-function actualizarInicio(){
+function mostrarTurno(turno){
 
-    const pendientes =
-        tareas.filter(
-            t=>!t.completada
-        );
+    if(turno==="manana"){
 
-    const completadas =
-        tareas.filter(
-            t=>t.completada
-        );
-
-
-    document.getElementById(
-        "numeroPendientes"
-    ).textContent =
-        pendientes.length;
-
-
-    document.getElementById(
-        "numeroCompletadas"
-    ).textContent =
-        completadas.length;
-
-
-    const ahora =
-        new Date();
-
-
-    const proximas =
-        pendientes.filter(t=>
-            new Date(t.fecha)>=ahora
-        );
-
-
-    document.getElementById(
-        "numeroProximas"
-    ).textContent =
-        proximas.length;
-
-
-    /* =========================
-       PROGRESO
-    ========================= */
-
-    const total =
-        tareas.length;
-
-    let porcentaje=0;
-
-
-    if(total>0){
-
-        porcentaje =
-            Math.round(
-                (completadas.length/total)*100
-            );
-
-    }
-
-
-    document.getElementById(
-        "porcentajeProgreso"
-    ).textContent =
-        porcentaje+"%";
-
-
-    document.getElementById(
-        "barraProgresoInterior"
-    ).style.width =
-        porcentaje+"%";
-
-
-    let mensaje="";
-
-
-    if(total===0){
-
-        mensaje=
-            "Todavía no tienes actividades. ¡Agrega la primera! ✨";
-
-    }
-
-    else if(porcentaje===100){
-
-        mensaje=
-            "🎉 ¡Excelente! Completaste todas tus actividades.";
-
-    }
-
-    else if(porcentaje>=70){
-
-        mensaje=
-            "🔥 ¡Vas muy bien! Ya falta poco.";
-
-    }
-
-    else if(porcentaje>=40){
-
-        mensaje=
-            "💪 Buen trabajo. Sigue avanzando.";
-
-    }
-
-    else{
-
-        mensaje=
-            "🌷 ¡Vamos! Organizarte es el primer paso.";
-
-    }
-
-
-    document.getElementById(
-        "mensajeProgreso"
-    ).textContent =
-        mensaje;
-
-
-    /* =========================
-       PRÓXIMA ACTIVIDAD
-    ========================= */
-
-    proximas.sort(
-        (a,b)=>
-            new Date(a.fecha)-
-            new Date(b.fecha)
-    );
-
-
-    const contenedor =
         document.getElementById(
-            "proximaActividad"
-        );
+            "horarioManana"
+        ).style.display="block";
 
-
-    if(proximas.length===0){
-
-        contenedor.className=
-            "sin-proxima";
-
-        contenedor.innerHTML=
-            "✨ No tienes actividades próximas.";
+        document.getElementById(
+            "horarioTarde"
+        ).style.display="none";
 
     }
 
     else{
 
-        const tarea =
-            proximas[0];
+        document.getElementById(
+            "horarioManana"
+        ).style.display="none";
 
-        const fecha =
-            new Date(tarea.fecha);
-
-
-        contenedor.className="";
-
-
-        contenedor.innerHTML=`
-
-            <div class="proxima-nombre">
-                📚 ${tarea.actividad}
-            </div>
-
-            <div class="proxima-info">
-                ${tarea.materia}
-                ·
-                📅 ${fecha.toLocaleDateString()}
-                ·
-                ⏰ ${fecha.toLocaleTimeString(
-                    [],
-                    {
-                        hour:"2-digit",
-                        minute:"2-digit"
-                    }
-                )}
-            </div>
-
-        `;
+        document.getElementById(
+            "horarioTarde"
+        ).style.display="block";
 
     }
 
@@ -1569,7 +1229,6 @@ function agregarClase(){
         document.getElementById(
             "formularioClase"
         );
-
 
     if(
         formulario.style.display==="none" ||
@@ -1615,7 +1274,6 @@ function guardarClase(){
             "turnoClase"
         ).value;
 
-
     if(!hora || !nombre){
 
         alert(
@@ -1626,8 +1284,7 @@ function guardarClase(){
 
     }
 
-
-    const clase={
+    const clase = {
 
         id:Date.now(),
 
@@ -1641,7 +1298,6 @@ function guardarClase(){
 
     };
 
-
     let horario =
         JSON.parse(
             localStorage.getItem(
@@ -1649,30 +1305,24 @@ function guardarClase(){
             )
         ) || [];
 
-
     horario.push(clase);
-
 
     localStorage.setItem(
         "horarioPuntualizate",
         JSON.stringify(horario)
     );
 
-
     document.getElementById(
         "horaClase"
     ).value="";
-
 
     document.getElementById(
         "nombreClase"
     ).value="";
 
-
     document.getElementById(
         "formularioClase"
     ).style.display="none";
-
 
     mostrarHorarioClases();
 
@@ -1680,7 +1330,7 @@ function guardarClase(){
 
 
 /* =========================
-   MOSTRAR HORARIO
+   MOSTRAR CLASES
 ========================= */
 
 function mostrarHorarioClases(){
@@ -1692,20 +1342,19 @@ function mostrarHorarioClases(){
             )
         ) || [];
 
+    const dias = [
 
-    const dias=[
         "Lunes",
         "Martes",
         "Miércoles",
         "Jueves",
         "Viernes",
         "Sábado"
-    ];
 
+    ];
 
     let manana="";
     let tarde="";
-
 
     dias.forEach(dia=>{
 
@@ -1721,7 +1370,6 @@ function mostrarHorarioClases(){
                 )
             );
 
-
         const clasesTarde =
             horario
             .filter(c=>
@@ -1735,11 +1383,12 @@ function mostrarHorarioClases(){
             );
 
 
+        /* MAÑANA */
+
         if(clasesManana.length>0){
 
             manana +=
                 `<h4>📅 ${dia}</h4>`;
-
 
             clasesManana.forEach(c=>{
 
@@ -1770,11 +1419,12 @@ function mostrarHorarioClases(){
         }
 
 
+        /* TARDE */
+
         if(clasesTarde.length>0){
 
             tarde +=
                 `<h4>📅 ${dia}</h4>`;
-
 
             clasesTarde.forEach(c=>{
 
@@ -1824,39 +1474,6 @@ function mostrarHorarioClases(){
 
 
 /* =========================
-   CAMBIAR TURNO
-========================= */
-
-function mostrarTurno(turno){
-
-    if(turno==="manana"){
-
-        document.getElementById(
-            "horarioManana"
-        ).style.display="block";
-
-        document.getElementById(
-            "horarioTarde"
-        ).style.display="none";
-
-    }
-
-    else{
-
-        document.getElementById(
-            "horarioManana"
-        ).style.display="none";
-
-        document.getElementById(
-            "horarioTarde"
-        ).style.display="block";
-
-    }
-
-}
-
-
-/* =========================
    ELIMINAR CLASE
 ========================= */
 
@@ -1869,18 +1486,15 @@ function eliminarClase(id){
             )
         ) || [];
 
-
     horario =
         horario.filter(
             c=>c.id!==id
         );
 
-
     localStorage.setItem(
         "horarioPuntualizate",
         JSON.stringify(horario)
     );
-
 
     mostrarHorarioClases();
 
@@ -1942,7 +1556,6 @@ async function agregarTarea(){
 
         }
 
-
         sonidoPersonalizado =
             await convertirAudioBase64(
                 archivoSonido
@@ -2003,7 +1616,6 @@ async function agregarTarea(){
         "actividad"
     ).value="";
 
-
     document.getElementById(
         "archivoSonido"
     ).value="";
@@ -2011,13 +1623,11 @@ async function agregarTarea(){
 
     mostrarTareas();
 
-    actualizarInicio();
-
 }
 
 
 /* =========================
-   AUDIO BASE64
+   CONVERTIR AUDIO
 ========================= */
 
 function convertirAudioBase64(
@@ -2030,20 +1640,17 @@ function convertirAudioBase64(
             const lector =
                 new FileReader();
 
-
             lector.onload=()=>{
                 resolve(
                     lector.result
                 );
             };
 
-
             lector.onerror=()=>{
                 reject(
                     lector.error
                 );
             };
-
 
             lector.readAsDataURL(
                 archivo
@@ -2066,7 +1673,6 @@ function mostrarTareas(){
             "lista"
         );
 
-
     lista.innerHTML="";
 
 
@@ -2088,7 +1694,7 @@ function mostrarTareas(){
 
     .sort(
         (a,b)=>
-            new Date(a.fecha)-
+            new Date(a.fecha) -
             new Date(b.fecha)
     )
 
@@ -2097,12 +1703,10 @@ function mostrarTareas(){
         const fecha =
             new Date(t.fecha);
 
-
         const div =
             document.createElement(
                 "div"
             );
-
 
         div.className="tarea";
 
@@ -2120,15 +1724,19 @@ function mostrarTareas(){
             </p>
 
             <p>
+
                 📅 ${fecha.toLocaleDateString()}
+
                 <br>
+
                 ⏰ ${fecha.toLocaleTimeString(
                     [],
                     {
-                        hour:"2-digit",
-                        minute:"2-digit"
+                        hour:'2-digit',
+                        minute:'2-digit'
                     }
                 )}
+
             </p>
 
             <p>
@@ -2183,10 +1791,8 @@ function tiempoRestante(t){
     const ahora =
         new Date();
 
-
     const fecha =
         new Date(t.fecha);
-
 
     const diferencia =
         fecha-ahora;
@@ -2217,7 +1823,6 @@ function tiempoRestante(t){
             minutos/60
         );
 
-
     const min =
         minutos%60;
 
@@ -2228,7 +1833,7 @@ function tiempoRestante(t){
 
 
 /* =========================
-   COMPLETAR
+   COMPLETAR TAREA
 ========================= */
 
 function completar(id){
@@ -2246,8 +1851,6 @@ function completar(id){
         guardar();
 
         mostrarTareas();
-
-        actualizarInicio();
 
     }
 
@@ -2271,12 +1874,9 @@ function eliminarTarea(id){
                 t=>t.id!==id
             );
 
-
         guardar();
 
         mostrarTareas();
-
-        actualizarInicio();
 
     }
 
@@ -2308,14 +1908,12 @@ function editarTarea(id){
 
     if(nuevoNombre){
 
-        tarea.actividad=
+        tarea.actividad =
             nuevoNombre;
 
         guardar();
 
         mostrarTareas();
-
-        actualizarInicio();
 
     }
 
@@ -2339,7 +1937,10 @@ function sonidoCampana(){
 
 
     osc.connect(gain);
-    gain.connect(ctx.destination);
+
+    gain.connect(
+        ctx.destination
+    );
 
 
     osc.frequency.value=900;
@@ -2383,15 +1984,18 @@ function sonidoDigital(){
 
 
             osc.connect(gain);
-            gain.connect(ctx.destination);
+
+            gain.connect(
+                ctx.destination
+            );
 
 
-            osc.frequency.value=
+            osc.frequency.value =
                 frecuencia;
 
 
-            const inicio=
-                ctx.currentTime+
+            const inicio =
+                ctx.currentTime +
                 i*0.25;
 
 
@@ -2424,7 +2028,6 @@ function sonidoAlarma(){
     const ctx =
         new AudioContext();
 
-
     let i=0;
 
 
@@ -2439,7 +2042,10 @@ function sonidoAlarma(){
 
 
             osc.connect(gain);
-            gain.connect(ctx.destination);
+
+            gain.connect(
+                ctx.destination
+            );
 
 
             osc.frequency.value =
@@ -2500,14 +2106,17 @@ function sonidoMelodia(){
 
 
             osc.connect(gain);
-            gain.connect(ctx.destination);
+
+            gain.connect(
+                ctx.destination
+            );
 
 
-            osc.frequency.value=
+            osc.frequency.value =
                 frecuencia;
 
 
-            const inicio=
+            const inicio =
                 ctx.currentTime+
                 i*0.3;
 
@@ -2597,11 +2206,11 @@ function hablar(tarea){
         return;
 
 
-    const mensaje=
+    const mensaje =
         `Atención. Te quedan ${tarea.minutos} minutos para completar tu actividad de ${tarea.materia}: ${tarea.actividad}.`;
 
 
-    const voz=
+    const voz =
         new SpeechSynthesisUtterance(
             mensaje
         );
@@ -2630,7 +2239,7 @@ function mostrarAlerta(tarea){
 
     document.getElementById(
         "mensajeAlerta"
-    ).textContent=
+    ).textContent =
         `⏰ Te quedan ${tarea.minutos} minutos para: ${tarea.actividad}`;
 
 
@@ -2690,8 +2299,6 @@ function cerrarAlerta(){
 
     mostrarTareas();
 
-    actualizarInicio();
-
 }
 
 
@@ -2708,14 +2315,14 @@ function recordarDespues(){
     tareaActual.avisada=false;
 
 
-    const nuevaFecha=
+    const nuevaFecha =
         new Date(
             Date.now()+
             5*60000
         );
 
 
-    tareaActual.fecha=
+    tareaActual.fecha =
         nuevaFecha.toISOString();
 
 
@@ -2732,8 +2339,6 @@ function recordarDespues(){
 
     mostrarTareas();
 
-    actualizarInicio();
-
 }
 
 
@@ -2743,7 +2348,7 @@ function recordarDespues(){
 
 function revisarRecordatorios(){
 
-    const ahora=
+    const ahora =
         new Date();
 
 
@@ -2756,11 +2361,11 @@ function revisarRecordatorios(){
             return;
 
 
-        const fecha=
+        const fecha =
             new Date(t.fecha);
 
 
-        const aviso=
+        const aviso =
             new Date(
                 fecha.getTime()-
                 t.minutos*60000
@@ -2787,20 +2392,21 @@ function revisarRecordatorios(){
 
     mostrarTareas();
 
-    actualizarInicio();
-
 }
 
 
 /* =========================
-   IMAGEN
+   IMAGEN PERSONALIZADA
 ========================= */
 
 function elegirImagen(){
 
-    document.getElementById(
-        "imagenPersonalizada"
-    ).click();
+    const archivo =
+        document.getElementById(
+            "imagenPersonalizada"
+        );
+
+    archivo.click();
 
 }
 
@@ -2813,7 +2419,7 @@ document
     "change",
     function(){
 
-        const archivo=
+        const archivo =
             this.files[0];
 
 
@@ -2821,13 +2427,13 @@ document
             return;
 
 
-        const lector=
+        const lector =
             new FileReader();
 
 
         lector.onload=function(){
 
-            const imagen=
+            const imagen =
                 lector.result;
 
 
@@ -2839,7 +2445,7 @@ document
 
             document.querySelector(
                 "header"
-            ).style.backgroundImage=
+            ).style.backgroundImage =
                 `linear-gradient(#8f6b9b66,#8f6b9b66), url("${imagen}")`;
 
         };
@@ -2864,7 +2470,33 @@ function restaurarImagen(){
     );
 
 
-    aplicarTema();
+    const tema =
+        localStorage.getItem(
+            "temaPuntualizate"
+        ) || "lila";
+
+
+    const overlays={
+
+        lila:"#8f6b9b66",
+
+        azul:"#527da566",
+
+        rosa:"#a45f7866",
+
+        verde:"#568a7066",
+
+        celeste:"#438b9166",
+
+        durazno:"#a86f4d66"
+
+    };
+
+
+    document.querySelector(
+        "header"
+    ).style.backgroundImage =
+        `linear-gradient(${overlays[tema]},${overlays[tema]}), url("lan-zhan.png")`;
 
 
     document.getElementById(
@@ -2874,10 +2506,24 @@ function restaurarImagen(){
 }
 
 
-const imagenGuardada=
+/* =========================
+   CARGAR IMAGEN GUARDADA
+========================= */
+
+const imagenGuardada =
     localStorage.getItem(
         "imagenPuntualizate"
     );
+
+
+if(imagenGuardada){
+
+    document.querySelector(
+        "header"
+    ).style.backgroundImage =
+        `linear-gradient(#8f6b9b66,#8f6b9b66), url("${imagenGuardada}")`;
+
+}
 
 
 /* =========================
@@ -2892,13 +2538,17 @@ document
     "change",
     function(){
 
+        const archivo =
+            document.getElementById(
+                "archivoSonido"
+            );
+
+
         if(
             this.value==="personalizado"
         ){
 
-            document.getElementById(
-                "archivoSonido"
-            ).click();
+            archivo.click();
 
         }
 
@@ -2912,7 +2562,7 @@ document
 
 function mostrarColores(){
 
-    const colores=
+    const colores =
         document.getElementById(
             "colores"
         );
@@ -2994,7 +2644,7 @@ function cambiarColor(color){
     };
 
 
-    const tema=
+    const tema =
         temas[color];
 
 
@@ -3042,7 +2692,7 @@ function cambiarColor(color){
 
         document.querySelector(
             "header"
-        ).style.backgroundImage=
+        ).style.backgroundImage =
             `linear-gradient(${tema.overlay},${tema.overlay}), url("lan-zhan.png")`;
 
     }
@@ -3051,12 +2701,12 @@ function cambiarColor(color){
 
 
 /* =========================
-   APLICAR TEMA
+   APLICAR TEMA GUARDADO
 ========================= */
 
 function aplicarTema(){
 
-    const tema=
+    const tema =
         localStorage.getItem(
             "temaPuntualizate"
         ) || "lila";
@@ -3115,7 +2765,7 @@ function aplicarTema(){
     };
 
 
-    const colores=
+    const colores =
         estilos[tema];
 
 
@@ -3157,7 +2807,7 @@ function aplicarTema(){
 
         document.querySelector(
             "header"
-        ).style.backgroundImage=
+        ).style.backgroundImage =
             `linear-gradient(${colores[4]},${colores[4]}), url("lan-zhan.png")`;
 
     }
@@ -3166,7 +2816,7 @@ function aplicarTema(){
 
 
 /* =========================
-   INICIAR
+   INICIAR APLICACIÓN
 ========================= */
 
 aplicarTema();
@@ -3174,8 +2824,6 @@ aplicarTema();
 mostrarTareas();
 
 mostrarHorarioClases();
-
-actualizarInicio();
 
 
 /* =========================
@@ -3205,5 +2853,4 @@ if(
 </script>
 
 </body>
-
 </html>
