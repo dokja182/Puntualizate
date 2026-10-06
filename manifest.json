@@ -1,16 +1,26 @@
 {
   "name": "Puntualízate",
   "short_name": "Puntualízate",
+  "description": "Organiza tus tareas, horarios y recordatorios escolares.",
   "start_url": "./index.html",
+  "scope": "./",
   "display": "standalone",
+  "orientation": "portrait",
   "background_color": "#fffaff",
-  "theme_color": "#c98fc9",
-  "description": "Organiza tus tareas y evita las tardanzas.",
+  "theme_color": "#c58bc7",
+  "lang": "es",
   "icons": [
     {
-      "src": "puntualizate-icon-192.png",
+      "src": "icon-192.png",
       "sizes": "192x192",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
     }
   ]
 }
